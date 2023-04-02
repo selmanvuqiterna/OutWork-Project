@@ -1,6 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css'; 
 import React from 'react';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import ReactDOM from "react-dom/client";
 
 
 class App extends React.Component{
@@ -23,12 +25,16 @@ class App extends React.Component{
 
   render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <p>{this.state.apiResponse}</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route /> 
+        <Route />
+        <Route />
+        <Route />
+
+      </Routes>
+    
+    </BrowserRouter>
   );
 }
 }
