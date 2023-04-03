@@ -1,8 +1,10 @@
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; 
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import Home from './pages/Home/Home';
+
 
 
 class App extends React.Component{
@@ -27,7 +29,7 @@ class App extends React.Component{
   return (
     <BrowserRouter>
       <Routes>
-        <Route /> 
+        <Route index element={<Home />}/> 
         <Route />
         <Route />
         <Route />
