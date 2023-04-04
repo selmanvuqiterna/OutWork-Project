@@ -1,7 +1,6 @@
 /* css per mobile responsive  */
 .navbar{
     background-color: #187BCD;
-
 }
 
 .navbar-brand{
@@ -11,7 +10,7 @@
 }
 
 .navbar-toggler{
-    margin-left: 80px;
+    margin-left: 120px;
 }
 
 
@@ -27,6 +26,33 @@
 
 /* css per desktop responsive  */
 @media screen and (min-width:480px) {
+    .navbar{
+        position: fixed;
+        width: 100%;
+        margin-top: 18px;
+        background-color: transparent;
+    }
+
+    .navbar.active{
+        background-color: #187BCD;
+    }
+
+
+.navbar-brand:hover{
+    color: #03254C;
+}
+
+.nav-link:hover{
+    color: #03254C;
+}
+
+
+.nav-link{
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+
 
 
 

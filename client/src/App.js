@@ -4,6 +4,9 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import Home from './pages/Home/Home';
+import Employees from './pages/Employees/Employees';
+import Apply from './pages/Apply/Apply';
+import Login from './pages/Login/Login';
 
 
 
@@ -29,10 +32,10 @@ class App extends React.Component{
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />}/> 
-        <Route />
-        <Route />
-        <Route />
+        <Route path='/' index element={<Home />}/> 
+        <Route path='/Employees' element={<Employees />}/>
+        <Route path='/Apply' element={<Apply />} />
+        <Route  path='/Login' element={<Login />}/>
 
       </Routes>
     
