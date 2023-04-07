@@ -5,7 +5,7 @@ import "./employees.css";
 
 const Employees  =()=>{
     return(
-        <div className="body">
+        <div className="body-employees">
             <div className="navbar">
                  <Navbar />
             </div>

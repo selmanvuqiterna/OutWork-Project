@@ -6,7 +6,7 @@ import "./login.css"
 
 const Login  =()=>{
     return(
-        <div className="body">
+        <div className="body-login">
             <div className="navbar">
                  <Navbar />
             </div>

@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import './home.css'
 
 const Home =()=>{
@@ -9,8 +10,26 @@ const Home =()=>{
             </div>
 
             <div className="mainDiv">
+               <div className="title-container">
+                    <h1 id="titleContainer">Welcome to Outwork</h1>
+                    <div id="introText">
+                         <p id="text">
+                         Welcome to OutWork <br/> The ultimate platform for connecting job seekers with employers! <br />
+                         OutWork is designed to make the job search process easier, faster, and more efficient.
+                         </p>
+                    </div>
 
-              <h1 className="title">Home</h1>   
+               </div>
+
+               <div className="button-class">
+                    <a id="button-id" href="/Apply">Apply</a>
+               </div>
+
+
+               <div className="footer">
+                    <Footer />
+               </div>
+               
 
             </div>
 

@@ -6,7 +6,7 @@ import "./apply.css";
 
 const Apply  =()=>{
     return(
-        <div className="body">
+        <div className="body-apply">
         <div className="navbar">
              <Navbar />
         </div>
