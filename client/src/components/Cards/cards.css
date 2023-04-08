@@ -1,0 +1,58 @@
+
+.cards{
+    width: 250px;
+    height: 300px;
+    border: 2px solid #03254C;
+    margin-left: 60px;
+    margin-top: 70px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#fullname{
+    margin-top: 10px;
+}
+
+#description{
+    font-size: 15px;
+}
+
+#cv-button{
+    background-color: #187BCD;
+    color: white;
+    border-radius: 5px;
+}
+
+#cv-button:hover{
+    background-color: #03254C;
+}
+
+#worktype{
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width:480px) {
+
+.cards{
+    margin-left: 200px;
+
+}
+
+#cv-button{
+   border: none;
+}
+
+.card-div{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+}

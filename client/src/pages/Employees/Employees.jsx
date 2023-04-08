@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import Cards from "../../components/Cards/Cards";
 import "./employees.css";
 
 
@@ -10,10 +11,15 @@ const Employees  =()=>{
                  <Navbar />
             </div>
 
-            <div className="mainDiv">
+            <div className="main-div">
+                <div className="search-div">
+                   <input type="text" name="search" id="search-bar" placeholder="Search Employees"/>
+                   <button id="search-btn" >Search</button>
+                </div>
 
-              <h1 className="title">Employess</h1>   
-
+                <div className="cards-div">
+                <Cards />
+                </div>
             </div>
         </div>
     )
