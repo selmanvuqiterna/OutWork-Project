@@ -19,8 +19,15 @@
 
 #cv-button{
     background-color: #187BCD;
-    color: white;
     border-radius: 5px;
+    
+    
+    
+}
+
+#cv-link{
+    color: white;
+    text-decoration: none;
 }
 
 #cv-button:hover{

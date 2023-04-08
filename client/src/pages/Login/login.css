@@ -1,4 +1,48 @@
 
+.title-login{
+    margin-left: 150px;
+    margin-top: 100px;
+    color: #03254C;
+}
+
+.login-form{
+    margin-left: 60px;
+    margin-top: 70px;
+    
+}
+
+.inputs-form{
+    margin-top: 40px;
+    width: 250px;
+    border: #03254C 1px solid;
+    border-radius: 10px;
+}
+
+.inputs-button{
+    width: 200px;
+    background-color: #03254C;
+    margin-top: 40px;
+    height: 40px;
+    margin-left: 25px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.inputs-button:hover{
+    background-color: #187BCD;
+    color: white;
+}
+
+#register-btn{
+    text-decoration: none;
+    color: white;
+    font: bold;
+}
+
+
+
 
 
 
@@ -6,10 +50,38 @@
 
 @media screen and (min-width:480px) {
 
-    .mainDiv{
+    .mainDiv-login{
         width: 100%;
         height: 600px;
-        padding-top: 300px;
+        padding-top: 100px;
 
+    }
+
+    .title-login{
+        margin-left: 700px;
+    }
+
+   
+    .form{
+        display: flex;
+        flex-direction: column;
+        margin-left: 570px;
+    }
+
+    .inputs-form{
+        height: 40px;
+    }
+
+    .inputs-button{
+        color: white;
+        border-radius: 10px;
+        border: none;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .inputs-button:hover{
+        background-color: #187BCD;
+        color: white;
     }
 }

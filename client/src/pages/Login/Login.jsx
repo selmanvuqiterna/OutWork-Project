@@ -11,9 +11,20 @@ const Login  =()=>{
                  <Navbar />
             </div>
 
-            <div className="mainDiv">
+            <div className="mainDiv-login">
 
-              <h1 className="title">Login</h1>   
+              <div className="title-login">
+                    <h1>Login</h1>
+              </div>
+
+              <div className="login-form">
+                    <form action="" className="form">
+                    <input className="inputs-form"  type="text" placeholder="Email" />
+                    <input className="inputs-form" type="password" placeholder="Password" />
+                    <input className="inputs-button" type="submit" value={"Login"}  />
+                    <div className="inputs-button"><a href="/Register" id="register-btn">Register</a></div>
+                    </form>
+              </div>
 
             </div>
         </div>
