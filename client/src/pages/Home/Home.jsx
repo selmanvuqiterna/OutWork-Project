@@ -12,6 +12,23 @@ const Home =()=>{
             <div className="mainDiv">
                <div className="title-container">
                     <h1 id="titleContainer">Welcome to Outwork</h1>
+
+                    <div className="card-home">
+                         <p id="text-card">
+                              <h3 id="title-card">OutWork</h3> <br /> 
+                         The ultimate platform for connecting job seekers with employers! 
+                         </p>
+                    </div>
+
+                    <div className="home-card"> 
+                         
+                         <div className="chose-card">
+                         <h2 id="title-homecard">Who are you using this as?</h2>
+                              <a className="btns" id="employee-user" href="/Employees">Employer</a>
+                              <a className="btns" id="employeer-user" href="/Login">Employee</a>
+                         </div>
+                    </div>
+
                     <div id="introText">
                          <p id="text">
                          Welcome to OutWork <br/> The ultimate platform for connecting job seekers with employers! <br />
