@@ -1,10 +1,10 @@
 
 .body{
-    background-color: #8cb9e2;
+    background-color: white;
     height: 800px;
 }
 #titleContainer{
-    color: white;
+    color:#03254C;
     margin-top: 40px;
     margin-left: 40px;
     font-size: 32px;
@@ -74,6 +74,10 @@
     margin-top: -70px;
 }
 
+#text{
+    color: #03254C;
+}
+
 .home-card{
     display: none;
 }
@@ -85,7 +89,7 @@
 /* css per desktop responsive  */
 @media screen and (min-width:480px) {
     .body{
-      background-color: #8cb9e2;
+      background-color: white;
         height:1000px;
         
         
@@ -113,7 +117,7 @@
     #text{
         margin-left: 850px;
         margin-top: -300px;
-        color: white;
+        color: #03254C;
         font-size:20px;
         font: bolder;
     }
@@ -169,7 +173,7 @@
 
 
     #employee-user{
-        background-color: #8cb9e2;
+        background-color: #187BCD;
         border: 1px solid #03254C;
         color: white;
         text-align: center;
@@ -196,4 +200,6 @@
         font-size: 22px;
         margin-left: 90px;
     }
+
+    
 }

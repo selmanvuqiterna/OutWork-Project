@@ -1,71 +1,43 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors  = require("cors"  ); 
-const mysql = require('mysql');
+import express from 'express';
+import mysql from "mysql";
+import cors from "cors";
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var testAPIRouter = require('./routes/testAPI');
 
-var app = express();
+const db = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"",
+    database:"outwork"
+})
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
 app.use(express.json());
-app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/testAPI',testAPIRouter);
+app.get("/", (req,res)=>{
+    res.json("hello this is backend")
+})
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-
-
-//database connection with usss
-//aa
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user:'root',
-  password: '',
-  database:'outwork',
-  
+app.get("/users", (req,res)=>{
+    const q = "SELECT * FROM users"
+    db.query(q,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
 })
 
 
-connection.connect();
-
-connection.query('SELECT * FROM users', (error,results,fields)=>{
-  if(error) throw error;
-
-  console.log(results);
-});
-
-connection.end();
+app.post("/users", (req,res)=>{
+    const q  = "INSERT INTO users  (`fullname`,`location`,`profession`,`description`,`resume`,`worktype`,`privilege`) VALUES(?)";
+    const values = ["Selman Vuqiterna","Prishtina","FrontEnd Developer","Programer i licencuar","linku","remote","admin"];
 
 
-module.exports = app;
+    db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err);
+        return res.json(data)
+    })
+})
+
+app.listen(8800, ()=>{
+    console.log("connected to backend")
+})
