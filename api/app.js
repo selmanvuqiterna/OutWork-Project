@@ -27,9 +27,11 @@ app.get("/users", (req,res)=>{
 })
 
 
+
+
 app.post("/users", (req,res)=>{
     const q  = "INSERT INTO users  (`fullname`,`location`,`profession`,`description`,`resume`,`worktype`,`privilege`) VALUES(?)";
-    const values = ["Selman Vuqiterna","Prishtina","FrontEnd Developer","Programer i licencuar","linku","remote","admin"];
+    const values = ["Esned Spahiu","Prishtina","FrontEnd Developer","Programer","linku","remote","admin"];
 
 
     db.query(q,[values], (err,data)=>{
@@ -37,6 +39,7 @@ app.post("/users", (req,res)=>{
         return res.json(data)
     })
 })
+
 
 app.listen(8800, ()=>{
     console.log("connected to backend")
