@@ -27,6 +27,8 @@ app.get("/users", (req,res)=>{
 })
 
 
+
+
 app.post("/users", (req,res)=>{
     const q  = "INSERT INTO users  (`fullname`,`location`,`profession`,`description`,`resume`,`worktype`,`privilege`) VALUES(?)";
     const values = ["Esned Spahiu","Prishtina","FrontEnd Developer","Programer","linku","remote","admin"];
@@ -37,6 +39,7 @@ app.post("/users", (req,res)=>{
         return res.json(data)
     })
 })
+
 
 app.listen(8800, ()=>{
   
