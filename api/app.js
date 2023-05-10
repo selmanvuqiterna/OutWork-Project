@@ -3,6 +3,9 @@ import mysql from "mysql";
 import cors from "cors";
 const app = express();
 
+app.use(express.json());
+
+
 
 const db = mysql.createConnection({
     host:"localhost",
@@ -18,8 +21,8 @@ app.get("/", (req,res)=>{
     res.json("hello this is backend")
 })
 
-app.get("/users", (req,res)=>{
-    const q = "SELECT * FROM users"
+app.get("/employees", (req,res)=>{
+    const q = "SELECT * FROM employees"
     db.query(q,(err,data)=>{
         if(err) return res.json(err)
         return res.json(data)
@@ -27,16 +30,10 @@ app.get("/users", (req,res)=>{
 })
 
 
-app.post("/users", (req,res)=>{
-    const q  = "INSERT INTO users  (`fullname`,`location`,`profession`,`description`,`resume`,`worktype`,`privilege`) VALUES(?)";
-    const values = ["Selman Vuqiterna","Prishtina","FrontEnd Developer","Programer i licencuar","linku","remote","admin"];
 
 
-    db.query(q,[values], (err,data)=>{
-        if(err) return res.json(err);
-        return res.json(data)
-    })
-})
+
+
 
 app.listen(8800, ()=>{
     console.log("connected to backend")

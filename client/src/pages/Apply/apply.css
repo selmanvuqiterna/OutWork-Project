@@ -6,7 +6,13 @@
 .title-apply{
     margin-top: 80px;
     margin-left: 160px;
+    
 }
+#title-apply{
+    margin-left: 60px;
+}
+
+
 
 
 .apply-form{
@@ -20,6 +26,10 @@
     height: 200px;
 }
 
+.select-input{
+    padding-top: 20px;
+}
+
 
 
 
@@ -31,8 +41,8 @@
         padding-top: 100px;
     }
     
-    .title-apply{
-        margin-left: 690px;
+    #title-apply{
+        margin-left: 70px;
     }
 
     #file-upload{
@@ -41,6 +51,15 @@
     #description-form{
         height: 100px;
     }
-    
+
+
+    .select-input{
+        width: 250px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        
+       
+        
+    }
     
 }

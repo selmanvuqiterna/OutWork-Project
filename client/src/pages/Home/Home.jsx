@@ -14,10 +14,10 @@ const Home =()=>{
                     <h1 id="titleContainer">Welcome to Outwork</h1>
 
                     <div className="card-home">
-                         <p id="text-card">
+                         <div id="text-card">
                               <h3 id="title-card">OutWork</h3> <br /> 
                          The ultimate platform for connecting job seekers with employers! 
-                         </p>
+                         </div>
                     </div>
 
                     <div className="home-card"> 

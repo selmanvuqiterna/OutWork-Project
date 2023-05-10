@@ -9,17 +9,17 @@ const  Modal = ({closeModal}) =>{
 
         <button className="cls-btn" onClick={() =>closeModal(false)}>Close</button>
                       
-        <ul class="navbar-nav">
-          <li class="nav-item">
+        <ul className="navbar-nav">
+          <li className="nav-item">
           <Link className="nav-link" to='/'>Home</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
           <Link className="nav-link" to='/Employees'>Employees</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
           <Link className="nav-link" to='/Apply'>Apply</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
           <Link className="nav-link" to='/Login'>Login</Link>
           </li>
         </ul>

@@ -7,6 +7,9 @@ import Employees from './pages/Employees/Employees';
 import Apply from './pages/Apply/Apply';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import axios from 'axios';
+
+import AddEmployees from './pages/Dashboard/AddEmployees';
 
 
 
@@ -21,6 +24,7 @@ import Register from './pages/Register/Register';
         <Route path='/Apply' element={<Apply />} />
         <Route  path='/Login' element={<Login />}/>
         <Route path='/Register' element={<Register />} />
+        <Route path='/AddEmployees' element={<AddEmployees />} />
 
       </Routes>
     
