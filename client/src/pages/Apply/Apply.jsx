@@ -24,11 +24,6 @@ const Apply  =()=>{
                 <input className="inputs-form"  type="text" placeholder="Location" />
                 <input className="inputs-form" type="text" placeholder="Profession" />
                 <textarea className="inputs-form" id="description-form" type="text" placeholder="Description"></textarea>
-                <label for="worktype"  className="select-input" >Select Worktype:</label>
-                <select name="worktype" className="select-input" id="worktype">
-                    <option value="hybrid" className="option">Hybrid</option>
-                    <option value="Remote" className="option">Remote</option>
-                </select>
                 <label htmlFor="" id="upload">Upload CV or Resume</label>
                 <input className="inputs-form" id="file-upload" type="file"  />
                 <input className="inputs-button" id="register-btn" type="submit" value={"Apply"}  />
@@ -44,6 +39,5 @@ const Apply  =()=>{
     
     )
 }
-
 
 export default Apply;

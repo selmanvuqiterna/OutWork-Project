@@ -11,7 +11,8 @@ const Home =()=>{
 
             <div className="mainDiv">
                <div className="title-container">
-                    <h1 id="titleContainer">Welcome to Outwork</h1>
+                    <h1 id="titleContainer">Welcome to Outwork!</h1>
+      
 
                     <div className="card-home">
                          <div id="text-card">
@@ -32,7 +33,7 @@ const Home =()=>{
                     <div id="introText">
                          <p id="text">
                          Welcome to OutWork <br/> The ultimate platform for connecting job seekers with employers! <br />
-                         OutWork is designed to make the job search process easier, faster, and more efficient.
+                         OutWork is designed to make the job search process easier, faster and more efficient.
                          </p>
                     </div>
 
