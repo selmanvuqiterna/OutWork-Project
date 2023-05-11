@@ -10,6 +10,7 @@ import Register from './pages/Register/Register';
 
 
 import AddEmployees from './pages/Dashboard/AddEmployees';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 
 
@@ -25,6 +26,7 @@ import AddEmployees from './pages/Dashboard/AddEmployees';
         <Route  path='/Login' element={<Login />}/>
         <Route path='/Register' element={<Register />} />
         <Route path='/AddEmployees' element={<AddEmployees />} />
+        <Route path='/Dashboard' element={<Dashboard/>} />
 
       </Routes>
     
