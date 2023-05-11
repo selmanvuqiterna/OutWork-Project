@@ -2,6 +2,8 @@ import "./AddEmployees.css";
 import Navbar from "../../components/Navbar/Navbar"
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -10,14 +12,14 @@ import axios from "axios";
 const AddEmployees =()=>{
 
 
-    const [users, setUsers] = useState([]);
     const[fullname, setFullname] = useState('');
     const[location, setLocation] = useState('');
     const[profession, setProfession] = useState('');
     const[description, setDescription] = useState('');
     const[resume, setResume] = useState('');
     const[worktype, setWorktype] = useState('');
-    const[privilege, setPrivilege] = useState('');
+
+    const navigate = useNavigate();
  
    
 
@@ -28,34 +30,14 @@ const AddEmployees =()=>{
     
     
 
-    const handleSubmit = () =>{
-
-        axios.post("http//localhost:8800/create", {
-
-            fullname:fullname,
-            location:location,
-            profession:profession,
-            description:description,
-            resume:resume,
-            worktype:worktype,
-            privilege:privilege
-        }).then(() =>{
-            setUsers([
-                ...users,
-                {
-            fullname:fullname,
-            location:location,
-            profession:profession,
-            description:description,
-            resume:resume,
-            worktype:worktype,
-            privilege:privilege
-                }
-            ])
-        })
-
- 
-    }
+    function handleSubmit(event){
+        event.preventDefault();
+        axios.post('http://localhost:8800/addEmployees', {fullname,location,profession,description,worktype,resume})
+        .then(res =>{
+            console.log(res);
+            navigate('/Employees');
+        }).catch(err => console.log(err))
+     }
    
 
     return(
@@ -70,7 +52,7 @@ const AddEmployees =()=>{
             </div>
 
             <div className="apply-form">
-                <form action="" className="form" method="POST" >
+                <form action="" className="form" method="POST" onSubmit={handleSubmit}>
                 <input className="inputs-form"  type="text" placeholder="Full Name"   name="fullname" onChange={e =>setFullname(e.target.value)} />
                 <input className="inputs-form"  type="text" placeholder="Location"   name="location"  onChange={e =>setLocation(e.target.value)} />
                 <input className="inputs-form" type="text" placeholder="Profession"  name="profession" onChange={e =>setProfession(e.target.value)} />
@@ -81,15 +63,9 @@ const AddEmployees =()=>{
                     <option value="remote">Remote</option>
                     <option value="none">None</option>
                 </select>
-                <label   className="select-input">Select Privilege:</label>
-                <select name="privilege" className="select-input "  onChange={e =>setPrivilege(e.target.value)} >
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                </select>
-                
                 <label  id="upload">Upload CV or Resume</label>
                 <input className="inputs-form" id="file-upload" type="file"  name="resume" onChange={e =>setResume(e.target.value)} /> 
-                <button className="inputs-button" type="submit" name="submit" id="register-btn" onSubmit={handleSubmit}w >Apply</button>
+                <button className="inputs-button" type="submit" name="submit" id="register-btn" >Apply</button>
 
                 </form>
                 

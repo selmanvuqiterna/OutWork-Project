@@ -48,6 +48,26 @@ app.post('/create', (req,res) =>{
 })
 
 
+app.post('/addEmployees', (req,res) =>{
+  const query = "INSERT INTO employees (`fullname`, `location`, `profession`, `description`,`worktype`,`resume`)   VALUES(?)";
+
+  const values  = [
+    req.body.fullname,
+    req.body.location,
+    req.body.profession,
+    req.body.description,
+    req.body.worktype,
+    req.body.resume
+  ]
+
+  db.query(query, [values], (err,data) =>{
+    if(err) return res.json("Error")
+    return res.json(data)
+  })
+})
+
+
+
 
   
 
