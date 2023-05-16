@@ -30,15 +30,16 @@ app.get("/", (req,res)=>{
     
 })
 
-
+//create users
 app.post('/create', (req,res) =>{
-  const query = "INSERT INTO users (`fullname`, `email`, `password`, `confirmPassword`)   VALUES(?)";
+  const query = "INSERT INTO users (`fullname`, `email`, `password`, `confirmPassword`,`privilege`)   VALUES(?)";
 
   const values  = [
     req.body.fullname,
     req.body.email,
     req.body.password,
-    req.body.confirmPassword
+    req.body.confirmPassword,
+    req.body.privilege
   ]
 
   db.query(query, [values], (err,data) =>{
@@ -47,6 +48,38 @@ app.post('/create', (req,res) =>{
   })
 })
 
+//update users
+app.put('/update/:id', (req,res) =>{
+  const query = "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `confirmPassword` = ?, `privilege` = ? WHERE ID = ? ";
+
+  const values  = [
+    req.body.fullname,
+    req.body.email,
+    req.body.password,
+    req.body.confirmPassword,
+    req.body.privilege
+  ]
+  const id = req.params.id;
+
+  db.query(query, [...values,id], (err,data) =>{
+    if(err) return res.json("Error")
+    return res.json(data)
+  })
+})
+
+
+//fshirja e userave
+app.delete('/users/:id', (req,res) =>{
+  const query = "DELETE FROM users WHERE id=?";
+  const id = req.params.id;
+
+  db.query(query, [id], (err,data) =>{
+    if(err) return res.json("Error")
+    return res.json(data)
+  })
+})
+
+//shtimi i punetoreve
 
 app.post('/addEmployees', (req,res) =>{
   const query = "INSERT INTO employees (`fullname`, `location`, `profession`, `description`,`worktype`,`resume`)   VALUES(?)";
@@ -71,13 +104,22 @@ app.post('/addEmployees', (req,res) =>{
 
   
 
-
+//selektimi i te gjithe punetoreve
 app.get("/employees", (req,res)=>{
     const q = "SELECT * FROM employees"
     db.query(q,(err,data)=>{
         if(err) return res.json(err)
         return res.json(data)
     })
+})
+
+//selektimi i te gjithe userave
+app.get("/users", (req,res)=>{
+  const q = "SELECT * FROM users"
+  db.query(q,(err,data)=>{
+      if(err) return res.json(err)
+      return res.json(data)
+  })
 })
 
 

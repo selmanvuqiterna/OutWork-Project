@@ -17,7 +17,7 @@ const Employees  =()=>{
                    <button id="search-btn" >Search</button>
                 </div>
 
-                <div className="cards-div">
+                <div className="cardss-div">
                 <Cards />
                 </div>
             </div>

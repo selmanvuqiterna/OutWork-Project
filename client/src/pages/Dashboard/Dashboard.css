@@ -7,7 +7,7 @@
 
 /*#03254C */
 
-.navbar{
+.navbar-dashboard{
     background-color: #187BCD ;
     color: white;
     margin-top: 0px;
@@ -64,14 +64,17 @@ background-color: #03254C;
 }
 
 
-#home-c{
+.home-c{
     text-decoration: none;
     color: white;
     font-size: 22px;
     font-weight: bold;
     margin-top: 20px;
+    width: 30px;
+    height: 10px;
+    margin-left: 70px;
 }
 
-#home-c:hover{
+.home-c:hover{
     color: #03254C;
 }

@@ -1,0 +1,72 @@
+
+.mainDiv-d{
+    margin-top: 100px;
+}
+.body-div-dashboard{
+    min-height: 1000px;
+}
+.dashboard-table{
+    margin-top: 30px;
+}
+.table-div{
+    text-align: center;
+    margin-left: 170px;
+    height: auto;
+    width: 1200px;
+}
+
+#head-row{
+    border-bottom: 1px #03254C solid;
+    
+}
+
+.table-head{
+    
+    width: 500px;
+    border: 1px #03254C solid;
+}
+.table-data{
+    border: 1px #03254C solid;
+}
+
+
+
+
+.button-add{
+    background-color: #187BCD;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 100px;
+}
+.button-add:hover{
+    background-color: #03254C;
+}
+
+#btn-up{
+    background-color: #00c851;
+    color: white;
+    border: none;
+    width: 70px;
+    border-radius: 5px;
+    text-decoration: none;
+    
+}
+#btn-del{
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    width: 70px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+#btn-del:hover{
+    background-color: #03254C;
+}
+#btn-up:hover{
+    background-color: #03254C;
+}
+

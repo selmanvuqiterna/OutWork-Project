@@ -10,10 +10,11 @@ const Dashboard =()=>{
     return(
 
         <div className="body-apply">
-            <div className="navbar">
+            <div className="navbar-dashboard">
              <div className="nav-div">
                 <img className="element-nav" src={Logo} alt="logo" id="logo" />
-                <Link id="home-c" to='/'>Go to Homepage</Link>
+                <Link className="home-c" to='/'>Home</Link>
+                <Link className="home-c" to='/Dashboard'>Dashboard</Link>
              </div>
             </div>
 
@@ -26,21 +27,21 @@ const Dashboard =()=>{
 
                     <div className="card">
                         <h3 className="cards-title"> Employee Dashboard</h3>
-                        <Link to="/">
+                        <Link to="/EmployeeDashboard">
                         <button className="button-card" >Go to Employee Dashboard</button>
                         </Link>
                     </div>
 
                     <div className="card">
                         <h3 className="cards-title">Users Dashboard</h3>
-                        <Link to="/">
+                        <Link to="/UserDashboard">
                         <button className="button-card" >Go to Users Dashboard</button>
                         </Link>
                     </div>
 
                     <div className="card">
                         <h3 className="cards-title" >Suggestions Dashboard</h3>
-                        <Link to="/">
+                        <Link to="/SuggestionDashboard">
                         <button className="button-card" >Go to Suggestions Dashboard</button>
                         </Link>
                     </div>

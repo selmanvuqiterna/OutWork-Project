@@ -10,11 +10,12 @@ const Register =()=>{
          const [email, setEmail] = useState('');
          const [password, setPassword] = useState('');
          const [confirmPassword, setConfirmPassword] = useState('');
+         const [privilege] = useState('user');
          const navigate = useNavigate(); 
 
          function handleSubmit(event){
             event.preventDefault();
-            axios.post('http://localhost:8800/create', {fullname,email,password,confirmPassword})
+            axios.post('http://localhost:8800/create', {fullname,email,password,confirmPassword,privilege})
             .then(res =>{
                 console.log(res);
                 navigate('/');
