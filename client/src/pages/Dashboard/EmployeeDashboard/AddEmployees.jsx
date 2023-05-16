@@ -1,5 +1,5 @@
 import "./AddEmployees.css";
-import Navbar from "../../components/Navbar/Navbar"
+import Navbar from "../../../components/Navbar/Navbar"
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +35,7 @@ const AddEmployees =()=>{
         axios.post('http://localhost:8800/addEmployees', {fullname,location,profession,description,worktype,resume})
         .then(res =>{
             console.log(res);
-            navigate('/Employees');
+            navigate('/EmployeesDashboard');
         }).catch(err => console.log(err))
      }
    
@@ -59,9 +59,9 @@ const AddEmployees =()=>{
                 <textarea className="inputs-form" id="description-form" type="text"   placeholder="Description" name="description" onChange={e =>setDescription(e.target.value)}></textarea>
                 <label   className="select-input" >Select Worktype:</label>
                 <select name="worktype" className="select-input"  onChange={e =>setWorktype(e.target.value)} >
-                    <option value="hybrid">Hybrid</option>
-                    <option value="remote">Remote</option>
-                    <option value="none">None</option>
+                    <option value="?">Zgjedhni nje Opsion</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Hybrid">Hybrid</option>
                 </select>
                 <label  id="upload">Upload CV or Resume</label>
                 <input className="inputs-form" id="file-upload" type="file"  name="resume" onChange={e =>setResume(e.target.value)} /> 

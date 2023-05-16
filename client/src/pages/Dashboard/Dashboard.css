@@ -34,6 +34,7 @@
 .cards-div{
     margin-left: 100px;
     margin-top: 100px;
+    display: flex;
 }
 .card{
     margin-left: 100px;

@@ -12,7 +12,7 @@ const AddUser =()=>{
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const [confirmPassword, setConfirmPassword] = useState('');
-        const [privilege] = useState('user');
+        const [privilege,setPrivilege] = useState('');
         const navigate = useNavigate(); 
 
         function handleSubmit(event){
@@ -42,6 +42,11 @@ const AddUser =()=>{
                    <input className="inputs-form"  type="text" placeholder="Email" name="email" onChange={e=> setEmail(e.target.value)} />
                    <input className="inputs-form" type="password" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
                    <input className="inputs-form" type="password" placeholder="Confirm Password" name="confirmPassword" onChange={e=> setConfirmPassword(e.target.value)} />
+                   <select className="inputs-form" name="privilege" id="" onChange={e=> setPrivilege(e.target.value)}>
+                    <option value="?">Zgjedhni Rolin</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+               </select>
                    <button className="inputs-button" id="register-btn" type="submit" value={"Add"} > Add</button>
 
                    </form>

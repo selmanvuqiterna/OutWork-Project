@@ -39,9 +39,13 @@ return(
                <form action="" className="form" method="POST" onSubmit={handleSubmit} >
                <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)} />
                <input className="inputs-form"  type="text" placeholder="Email" name="email" onChange={e=> setEmail(e.target.value)} />
-               <input className="inputs-form" type="password" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
-               <input className="inputs-form" type="password" placeholder="Confirm Password" name="confirmPassword" onChange={e=> setConfirmPassword(e.target.value)} />
-               <input className="inputs-form" type="text" placeholder="Set Role" name="privilege" onChange={e=> setPrivilege(e.target.value)} />
+               <input className="inputs-form" type="text" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
+               <input className="inputs-form" type="text" placeholder="Confirm Password" name="confirmPassword" onChange={e=> setConfirmPassword(e.target.value)} />
+               <select className="inputs-form" name="privilege" id="" onChange={e=> setPrivilege(e.target.value)}>
+                <option value="?">Zgjedhni Rolin</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+               </select>
                <button className="inputs-button" id="register-btn" type="submit" value={"Update"} >Update</button>
                <Link to="/UserDashboard" className="inputs-button" id="register-btn" value={"Back"} >Back</Link>
 

@@ -62,7 +62,7 @@ app.put('/update/:id', (req,res) =>{
   const id = req.params.id;
 
   db.query(query, [...values,id], (err,data) =>{
-    if(err) return res.json("Error")
+    if(err) return res.json(err)
     return res.json(data)
   })
 })
@@ -94,6 +94,39 @@ app.post('/addEmployees', (req,res) =>{
   ]
 
   db.query(query, [values], (err,data) =>{
+    if(err) return res.json("Error")
+    return res.json(data)
+  })
+})
+
+//update i punetoreve
+
+app.put('/updateEmployees/:id', (req,res) =>{
+  const query = "UPDATE employees SET `fullname` = ?, `location` = ?, `profession` = ?, `description` = ?, `worktype` = ?, `resume` = ? WHERE ID = ? ";
+
+  const values  = [
+    req.body.fullname,
+    req.body.location,
+    req.body.profession,
+    req.body.description,
+    req.body.worktype,
+    req.body.resume
+  ]
+  const id = req.params.id;
+
+  db.query(query, [...values,id], (err,data) =>{
+    if(err) return res.json(err)
+    return res.json(data)
+  })
+})
+
+
+//fshirja e punetorve
+app.delete('/employees/:id', (req,res) =>{
+  const query = "DELETE FROM employees WHERE id=?";
+  const id = req.params.id;
+
+  db.query(query, [id], (err,data) =>{
     if(err) return res.json("Error")
     return res.json(data)
   })
