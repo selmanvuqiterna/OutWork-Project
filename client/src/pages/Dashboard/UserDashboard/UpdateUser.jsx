@@ -37,7 +37,7 @@ return(
 
            <div className="register-form">
                <form action="" className="form" method="POST" onSubmit={handleSubmit} >
-               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)} />
+               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)} autoComplete='on' />
                <input className="inputs-form"  type="text" placeholder="Email" name="email" onChange={e=> setEmail(e.target.value)} />
                <input className="inputs-form" type="text" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
                <input className="inputs-form" type="text" placeholder="Confirm Password" name="confirmPassword" onChange={e=> setConfirmPassword(e.target.value)} />

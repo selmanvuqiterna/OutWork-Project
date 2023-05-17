@@ -65,7 +65,7 @@ const AddEmployees =()=>{
                 </select>
                 <label  id="upload">Upload CV or Resume</label>
                 <input className="inputs-form" id="file-upload" type="file"  name="resume" onChange={e =>setResume(e.target.value)} /> 
-                <button className="inputs-button" type="submit" name="submit" id="register-btn" >Apply</button>
+                <button className="inputs-button" type="submit" name="submit" id="register-btn" >Add</button>
 
                 </form>
                 
