@@ -1,4 +1,4 @@
-import React from "react-routr-dom";
+import React from "react-router-dom";
 import "./SuggestionD.css";
 
 
