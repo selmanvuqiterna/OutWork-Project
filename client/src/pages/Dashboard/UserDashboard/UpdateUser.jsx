@@ -1,4 +1,5 @@
 import React from 'react';
+import "./UpdateUser.css";
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -31,7 +32,7 @@ return(
        <div className="main-divRegister">
 
 
-           <div className="title-register">
+           <div className="title-updater">
                <h1>Update User</h1>
            </div>
 
