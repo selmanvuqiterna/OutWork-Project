@@ -26,7 +26,7 @@ const Dashboard =()=>{
                 <div className="cards-div">
 
                     <div className="card">
-                        <h3 className="cards-title"> Employee Dashboard</h3>
+                        <h3 className="cards-title"> Employees Dashboard</h3>
                         <Link to="/EmployeesDashboard">
                         <button className="button-card" >Go to Employee Dashboard</button>
                         </Link>
