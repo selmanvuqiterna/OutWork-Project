@@ -10,10 +10,10 @@ const Footer =()=>{
     return(
         <div id="footer-main">
             <h1 id="title-footer">Our Partners</h1>
-            <img className="images" id="gjirafa" src={Gjirafa} alt="logos"  />
-            <img className="images" id="kerkoj" src={Kerkoj} alt="logos"  />
-            <img className="images" id="linked" src={Linked}   alt="logos" />
-            <img className="images" id="upwork" src={Upwork}  alt="logos" />
+            <img className="images" id="gjirafa" src={Gjirafa} alt="gjirafa"  />
+            <img className="images" id="kerkoj" src={Kerkoj} alt="kerkoj"  />
+            <img className="images" id="linked" src={Linked}   alt="linkedIn" />
+            <img className="images" id="upwork" src={Upwork}  alt="upWork" />
 
         </div>
 
