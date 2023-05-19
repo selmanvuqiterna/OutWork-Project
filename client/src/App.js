@@ -14,7 +14,7 @@ import AddUser from './pages/Dashboard/UserDashboard/AddUser';
 import UpdateUser from './pages/Dashboard/UserDashboard/UpdateUser';
 import EmployeesDashboard from './pages/Dashboard/EmployeeDashboard/EmployeesDashboard';
 import UpdateEmployees from './pages/Dashboard/EmployeeDashboard/UpdateEmployees';
-
+import SuggestionDashboard from './pages/Dashboard/SuggestionDashboard/SuggestionDashboard';
 
 
   const App =()=>{
@@ -35,6 +35,7 @@ import UpdateEmployees from './pages/Dashboard/EmployeeDashboard/UpdateEmployees
         <Route path='/AddUser' element={<AddUser/>} />
         <Route path='/EmployeesDashboard' element={<EmployeesDashboard/>} />
         <Route path='/updateEmployees/:id' element={<UpdateEmployees/>} />
+        
         
         
         
