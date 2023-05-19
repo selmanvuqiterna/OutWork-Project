@@ -35,6 +35,7 @@ import SuggestionDashboard from './pages/Dashboard/SuggestionDashboard/Suggestio
         <Route path='/AddUser' element={<AddUser/>} />
         <Route path='/EmployeesDashboard' element={<EmployeesDashboard/>} />
         <Route path='/updateEmployees/:id' element={<UpdateEmployees/>} />
+        <Route path='/SuggestionDashboard' element={<SuggestionDashboard/>} />
         
         
         
