@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
+import Logo from "../../assets/logo-no-background-OW.png";
 
 
 const Navbar  = () =>{
@@ -13,7 +14,10 @@ return(
 // 
     <nav className={"navbar active navbar-expand-lg bg-body-tertiary" }    >
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">OutWork</a>
+      <div className="logo-div">
+    <Link to="/">  <img src={Logo} alt="" id="logo" /></Link>
+      </div>
+     
       <button onClick={() => {
           setOpenModal(true);
         }}  className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

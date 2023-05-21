@@ -1,6 +1,10 @@
 /* css per mobile responsive  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 .navbar{
-    background-color: #187BCD;
+    background-color: #222831;
+    border-bottom: 2px white solid;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     
    
 }
@@ -15,6 +19,16 @@
     margin-left: 120px;
 }
 
+
+#logo{
+width: 120px;
+margin-top: 10px;
+    
+}
+
+.logo-div{
+    margin-top: 5px;
+}
 
 
 
@@ -36,22 +50,26 @@
     }
 
     .navbar.active{
-        background-color: #187BCD;
+        background-color: #222831;
     }
+    
 
 
 .navbar-brand:hover{
-    color: #03254C;
+    color: #00D0B0;
 }
 
 .nav-link:hover{
-    color: #03254C;
+    color: #00D0B0;
 }
 
 
 .nav-link{
     font-size: 18px;
     margin-left: 30px;
+}
+.navbar-nav{
+    margin-top: 20px;
 }
 
 
