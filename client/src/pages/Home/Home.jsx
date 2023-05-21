@@ -24,9 +24,7 @@ const Home =()=>{
                     <div className="home-card"> 
                          
                          <div className="chose-card">
-                         <h2 id="title-homecard">What is your purpose?</h2>
-                              <a className="btns" id="employee-user" href="/Employees">Find Employees</a>
-                              <a className="btns" id="employeer-user" href="/Login">Get Employed</a>
+                         <p id="text-home">We are <span id="alw">always</span> there for all your needs</p>
                          </div>
                     </div>
 
