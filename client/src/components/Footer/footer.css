@@ -42,7 +42,9 @@
 
 /* css per desktop responsive  */
 @media screen and (min-width:480px) {
-
+    .footer-main{
+        background-color: white;
+    }
     #kerkoj{
         width:320px;
         height: 220px;
@@ -70,8 +72,9 @@
     
     #title-footer{
         margin-left: 620px;
-        padding-top: 70px;
-        color: #187BCD;
+        padding-top: 300px;
+        color: #00D0B0;
+
     }
 
 }

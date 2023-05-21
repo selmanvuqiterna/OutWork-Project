@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import './home.css'
+import ImageWorkers from "../../assets/ImageWorkers.png"
 
 const Home =()=>{
    return(
@@ -11,7 +12,6 @@ const Home =()=>{
 
             <div className="mainDiv">
                <div className="title-container">
-                    <h1 id="titleContainer">Welcome to Outwork!</h1>
       
 
                     <div className="card-home">
@@ -30,17 +30,19 @@ const Home =()=>{
 
                     <div id="introText">
                          <p id="text">
-                         Welcome to OutWork <br/> The ultimate platform for connecting job seekers with employers! <br />
-                         OutWork is designed to make the job search process easier, faster and more efficient.
+                         If you are looking for a job <br />
+                         we are here to help you find <br />
+                         your desired job.
                          </p>
                     </div>
 
                </div>
 
-               <div className="button-class">
-                    <a id="button-id" href="/Apply">Apply</a>
+               <div className="link-class">
+                    <a id="link-id" href="/">/APPLY NOW</a>
                </div>
 
+               
 
                <div className="footer">
                     <Footer />
@@ -48,7 +50,9 @@ const Home =()=>{
                
 
             </div>
-
+            <div className="body-img">
+                    <img src={ImageWorkers} alt="" />
+           </div>
             
         </div>
     
