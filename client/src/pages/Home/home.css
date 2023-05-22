@@ -111,6 +111,7 @@
        display: unset;
        text-align: center;
        
+       
     }
 
     #text{
@@ -121,7 +122,12 @@
         color: white;
         font-family: 'Poppins', sans-serif;
         opacity: 0.6;
+        
     }
+
+    
+
+
 
     .button-class{
         margin-left: 1100px;
@@ -182,27 +188,7 @@
     }
 
 
-    #employee-user{
-        background-color: #187BCD;
-        border: 1px solid #03254C;
-        color: white;
-        text-align: center;
-    }
-    #employeer-user{
-        background-color: #187BCD;
-        border: 1px solid #03254C;
-        color: white;
-        text-align: center;
-    }
-
-    #employeer-user:hover{
-        background-color: #03254C;
-        
-    }
-    #employee-user:hover{
-        background-color: #03254C;
-        
-    }
+   
 
 
     #title-homecard{

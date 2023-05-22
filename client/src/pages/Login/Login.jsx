@@ -6,7 +6,7 @@ import "./login.css"
 
 const Login  =()=>{
     return(
-        <div className="body-login">
+        <div className="bodyLogin">
             <div className="navbar">
                  <Navbar />
             </div>
@@ -27,7 +27,7 @@ const Login  =()=>{
               </div>
 
             </div>
-        </div>
+        </div> 
     
     )
 }

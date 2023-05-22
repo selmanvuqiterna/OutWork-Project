@@ -1,6 +1,7 @@
 import "./Dashboard.css";
-import Logo from "../../assets/logo-color-OW.png";
+import Logo from "../../assets/logo-no-background-OW.png";
 import { Link } from "react-router-dom";
+import Image from "../../assets/ImageWorkers.png";
 
 
 
@@ -9,7 +10,7 @@ import { Link } from "react-router-dom";
 const Dashboard =()=>{
     return(
 
-        <div className="body-apply">
+        <div className="body-dashboard">
             <div className="navbar-dashboard">
              <div className="nav-div">
                 <img className="element-nav" src={Logo} alt="logo" id="logo" />
@@ -17,8 +18,12 @@ const Dashboard =()=>{
                 <Link className="home-c" to='/Dashboard'>Dashboard</Link>
              </div>
             </div>
+            
 
             <div className="mainDiv">
+            <div>
+                <img className="img-card"  src={Image} alt="" />
+            </div>
                 <div className="title-div">
                     <h1 className="title">Welcome to OutWork Dashboard</h1>
                 </div>

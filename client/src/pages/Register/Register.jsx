@@ -24,7 +24,7 @@ const Register =()=>{
 
 
     return(
-        <div className="body-register">
+        <div className="bodyRegister">
             <div className="navbar">
                 <Navbar />
             </div>

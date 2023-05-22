@@ -63,8 +63,8 @@ const AddEmployees =()=>{
                     <option value="Remote">Remote</option>
                     <option value="Hybrid">Hybrid</option>
                 </select>
-                <label  id="upload">Upload CV or Resume</label>
-                <input className="inputs-form" id="file-upload" type="file"  name="resume" onChange={e =>setResume(e.target.value)} /> 
+                <label  id="upload"> CV or Portfolio Link</label>
+                <input className="inputs-form" id="file-upload" type="text"  name="resume" onChange={e =>setResume(e.target.value)} /> 
                 <button className="inputs-button" type="submit" name="submit" id="register-btn" >Add</button>
 
                 </form>

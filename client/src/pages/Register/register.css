@@ -1,7 +1,11 @@
-
+.bodyRegister{
+    background-color: #222831;
+    height: 900px;
+}
 .title-register{
     margin-top: 40px;
     margin-left: 140px;
+    color: #00D0B0;
 }
 
 .register-form{
@@ -25,6 +29,7 @@
 
 .title-register{
     margin-left: 690px;
+    
 }
 
 #already{

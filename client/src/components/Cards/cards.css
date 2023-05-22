@@ -2,14 +2,16 @@
 .cards{
     width: 250px;
     height: 300px;
-    border: 2px solid #03254C;
+    border: 2px solid #00D0B0;
     margin-top: 70px;
     border-radius: 15px;
     text-align: center;
+    color: white;
 }
 
 #fullname{
     margin-top: 10px;
+    font-weight: bolder;
 }
 
 #description{
@@ -17,7 +19,7 @@
 }
 
 #cv-button{
-    background-color: #187BCD;
+    background-color: #00D0B0;
     border-radius: 5px;
     
     
@@ -29,9 +31,6 @@
     text-decoration: none;
 }
 
-#cv-button:hover{
-    background-color: #03254C;
-}
 
 #worktype{
     margin-top: 10px;

@@ -23,12 +23,12 @@ const Cards =()=>{
         <div className="card-div">
             {employees.map(employees=>(
                 <div className="cards" key={employees.id}>
-                <h2 id="fullname">{employees.fullname}</h2>
-                <h3 id="location">{employees.location}</h3>
-                <h4 id="profession">{employees.profession}</h4>
-                <p id="description">{employees.description}</p>
-                <button id="cv-button"><a href="/" id="cv-link">Download CV/Resume</a></button>
-                <p id="worktype">{employees.worktype}</p>
+                <p id="fullname">Fullname: {employees.fullname}</p>
+                <p id="location">Location: {employees.location}</p>
+                <p id="profession">Profession: {employees.profession}</p>
+                <p id="description">Descripiton: {employees.description}</p>
+                <button id="cv-button"><a href={employees.resume} target="_blank" rel="noopener noreferrer" id="cv-link">Portfolio or CV/Resume</a></button>
+                <p id="worktype">Worktype: {employees.worktype}</p>
             </div>
 
             ))}

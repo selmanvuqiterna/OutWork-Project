@@ -1,24 +1,33 @@
-.body-apply{
+.body-dashboard{
     margin: 0;
     padding: 0;
     height: 800px;
+    background-color: #222831;
+    font-family: 'Poppins',sans-serif;
 }
 
 
 /*#03254C */
 
 .navbar-dashboard{
-    background-color: #187BCD ;
+    background-color: #222831 ;
     color: white;
     margin-top: 0px;
+    border-bottom: 2px white solid;
+    font-family: 'Poppins' ,sans-serif;
     
 }
-
+#logo{
+    width: 120px;
+    margin-top: 10px;
+        
+    }
 .nav-div{
     display: flex;
     margin-left: 300px;
     text-align: center;
-    height: 70px;
+    height: 85px;
+
 }
 
 .element-nav{
@@ -27,29 +36,39 @@
 
 
 .title{
-    color:#03254C ;
+    color:#00D0B0 ;
     margin-left: 450px;
 
 }
+
 .cards-div{
-    margin-left: 100px;
+    margin-left: 60px;
     margin-top: 100px;
     display: flex;
 }
 .card{
     margin-left: 100px;
-    border: 2px solid #03254C ;
-    width: 320px;
+    border: 2px solid #00D0B0 ;
+    width: 340px;
     height: 150px;
+    background-color: transparent;
+    color: white;
 }
 
+
+.img-card{
+    width: 900px;
+    height: 200px;
+    margin-top: -200px;
+    margin-left: 310px;
+}
 .cards-title{
     text-align: center;
     margin-top:20px ;
 }
 
 .button-card{
-    background-color: #187BCD;
+    background-color: #00D0B0;
     color: white;
     border: none;
     width: 150px;
@@ -60,9 +79,6 @@
     color: white;
 }
 
-.button-card:hover{
-background-color: #03254C;
-}
 
 
 .home-c{
@@ -77,5 +93,5 @@ background-color: #03254C;
 }
 
 .home-c:hover{
-    color: #03254C;
+    color: #00D0B0;
 }

@@ -39,7 +39,7 @@ const Home =()=>{
                </div>
 
                <div className="link-class">
-                    <a id="link-id" href="/">/APPLY NOW</a>
+                    <a id="link-id" href="/Apply">/APPLY NOW</a>
                </div>
 
                

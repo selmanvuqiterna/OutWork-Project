@@ -1,11 +1,13 @@
 
-.body-apply{
+.body-aapply{
     height: 1000px;
+    background-color: #222831;
 }
 
 .title-apply{
     margin-top: 80px;
     margin-left: 160px;
+    color: #00D0B0;
     
 }
 #title-apply{
@@ -20,6 +22,7 @@
 }
 #upload{
     margin-top: 30px;
+    color: white;
 }
 
 #description-form{
@@ -30,6 +33,9 @@
     padding-top: 20px;
 }
 
+#register-btn{
+    background-color: #00D0B0;
+}
 
 
 
@@ -60,6 +66,9 @@
         
        
         
+    }
+    .inputs-form{
+        border: 1px solid #00D0B0;
     }
     
 }

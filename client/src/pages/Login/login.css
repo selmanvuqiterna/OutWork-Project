@@ -1,8 +1,11 @@
-
+.bodyLogin{
+    background-color: #222831;
+    height: 800px;
+}
 .title-login{
     margin-left: 150px;
     margin-top: 100px;
-    color: #03254C;
+    color: white;
 }
 
 .login-form{
@@ -20,7 +23,7 @@
 
 .inputs-button{
     width: 200px;
-    background-color: #03254C;
+    background-color: #00D0B0;
     margin-top: 40px;
     height: 40px;
     margin-left: 25px;
@@ -30,10 +33,7 @@
     border-radius: 10px;
 }
 
-.inputs-button:hover{
-    background-color: #187BCD;
-    color: white;
-}
+
 
 #register-btn{
     text-decoration: none;
@@ -59,6 +59,7 @@
 
     .title-login{
         margin-left: 700px;
+        color: #00D0B0;
     }
 
    
@@ -78,10 +79,5 @@
         border: none;
         text-decoration: none;
         text-align: center;
-    }
-
-    .inputs-button:hover{
-        background-color: #187BCD;
-        color: white;
     }
 }
