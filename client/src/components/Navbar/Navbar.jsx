@@ -38,6 +38,12 @@ return(
           <li className="nav-item">
           <Link className="nav-link" to='/Login'>Login</Link>
           </li>
+          <li className="nav-item">
+          <Link className="nav-link" to='/About'>About</Link>
+          </li>
+          <li className="nav-item">
+          <Link className="nav-link" to='/Jobs'>Jobs</Link>
+          </li>
         </ul>
       </div>
     </div>
