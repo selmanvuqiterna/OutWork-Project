@@ -28,9 +28,7 @@ import {
   return (
     <BrowserRouter>
 
-    <Route render={()=>{
-
-    }} />
+    
     <TransitionGroup >
     <CSSTransition
               timeout={300}
