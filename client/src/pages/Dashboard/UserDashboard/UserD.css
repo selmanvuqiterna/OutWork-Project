@@ -4,6 +4,7 @@
 }
 .body-div-dashboard{
     min-height: 1000px;
+    background-color: #222831;
 }
 .dashboard-table{
     margin-top: 30px;
@@ -23,17 +24,19 @@
 .table-head{
     
     width: 500px;
-    border: 1px #03254C solid;
+    border: 1px #00D0B0 solid;
+    color: white;
 }
 .table-data{
-    border: 1px #03254C solid;
+    border: 1px #00D0B0 solid;
+    color: white;
 }
 
 
 
 
 .button-add{
-    background-color: #187BCD;
+    background-color: #00D0B0;
     color: white;
     margin-top: 20px;
     border: none;
@@ -41,15 +44,13 @@
     height: 40px;
     width: 100px;
 }
-.button-add:hover{
-    background-color: #03254C;
-}
+
 
 #btn-up{
     background-color: #00c851;
     color: white;
     border: none;
-    width: 70px;
+    width: 65px;
     border-radius: 5px;
     text-decoration: none;
     
@@ -59,14 +60,8 @@
     color: white;
     border: none;
     margin-left: 10px;
-    width: 70px;
+    width: 65px;
     border-radius: 5px;
     text-decoration: none;
-}
-#btn-del:hover{
-    background-color: #03254C;
-}
-#btn-up:hover{
-    background-color: #03254C;
 }
 

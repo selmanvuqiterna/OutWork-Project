@@ -1,7 +1,7 @@
 import React from "react";
 import "./EmployeesD.css";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/logo-color-OW.png";
+import Logo from "../../../assets/logo-no-background-OW.png";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
@@ -67,7 +67,7 @@ return(
                                     <td className="table-data">{data.description}</td>
                                     <td className="table-data">{data.worktype}</td>
                                     <td className="table-data">{data.resume}</td>
-                                    <td className="table-data">
+                                    <td className="table-data" id="table-buttons">
                                        <button id="btn-up"> <Link to={`/updateEmployees/${data.id}`} id="btn-up" >Update</Link></button>
                                         <button id="btn-del" onClick={e => handleDelete(data.id)}>Delete</button>
                                     </td>
