@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from "../../components/Navbar/Navbar";
 import './about.css';
-import ad from '../../assets/ad.mp4'
+import ad from '../../assets/outwork-ad.mp4'
 
 const About = () => {
 
@@ -22,7 +22,7 @@ const About = () => {
             <span className='header-first-span'>and employees and we are the best agency</span>
             <span className='header-first-span'>for this job because it's our expertise</span>
           </div>
-          <div className='header-second'>
+          <div className='header-second'> 
             <span className='header-second-span'>We create connections between employers and employees by</span>
             <span className='header-second-span'>using your information for this website we totally agree to keep</span>
             <span className='header-second-span'>your data private and safe.</span>
@@ -44,6 +44,12 @@ const About = () => {
         <p>Video cannot be displayed at the moment</p>
       )}
     </div>
+      </div>
+
+
+
+      <div className='our-team-div'>
+
       </div>
     </div>
   );

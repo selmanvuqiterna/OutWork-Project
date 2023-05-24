@@ -19,6 +19,7 @@
         font-size: 48px;
         color: #00D0B0;
         line-height: 1;
+        font-family: 'Poppins', sans-serif;
     }
 
     .header-first, .header-second{
@@ -26,6 +27,7 @@
         display: flex;
         flex-direction: column;
         margin-top: 20px;
+        font-family: 'Playfair Display', serif;
         }
 
         .header-first{
@@ -62,6 +64,7 @@
             width: 150px;
             font-size: 16px;
             transition: 1s all;
+            border-radius: 10px;
         }
 
         .btn-about:hover{
@@ -72,5 +75,4 @@
         .video{
             width: 600px;
             margin-top: 50px;
-            /* height: 800px; */
         }

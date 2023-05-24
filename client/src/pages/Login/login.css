@@ -40,6 +40,11 @@
     color: white;
     font: bold;
 }
+#register-btn:hover{
+    background-color: white;
+    color: #00D0B0;
+    transition: 1s all;
+}
 
 
 
@@ -79,5 +84,10 @@
         border: none;
         text-decoration: none;
         text-align: center;
+    }
+    .inputs-button:hover{
+        background-color: white;
+        color: #00D0B0;
+        transition: 1s all;
     }
 }

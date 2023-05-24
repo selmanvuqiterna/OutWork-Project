@@ -12,6 +12,7 @@ const Jobs = () => {
             </div>
           <div className='container-jobs'>
             <div className='jobs-search'>
+              <input type="text" placeholder='Search Jobs' className='search-field' />
             <button class="search-button" type="submit">Search</button>
             </div>
             <div className='jobs-post'>Post a job</div>

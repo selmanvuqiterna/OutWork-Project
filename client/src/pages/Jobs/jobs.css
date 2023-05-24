@@ -16,15 +16,25 @@
 }
 
 .search-button {
-    background-color: #4CAF50; /* Green background color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding around the text */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Show pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    background-color: #00D0B0; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    border-radius: 10px;
+    margin-left: 20px;
   }
   
   .search-button:hover {
-    background-color: #45a049; /* Darker green background on hover */
+    background-color: white;
+    color: #00D0B0; 
+  }
+
+  .search-field{
+    width: 500px;
+    margin-left: 50px;
+    height: 45px;
+    border-radius: 10px;
   }
