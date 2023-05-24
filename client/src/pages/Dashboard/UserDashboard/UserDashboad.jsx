@@ -1,6 +1,6 @@
 import "./UserD.css";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/logo-color-OW.png";
+import Logo from "../../../assets/logo-no-background-OW.png";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 

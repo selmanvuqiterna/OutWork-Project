@@ -41,7 +41,7 @@ const AddEmployees =()=>{
    
 
     return(
-        <div className="body-apply">
+        <div className="body-aapply">
             <div className="navbar">
             <Navbar />
             </div>
