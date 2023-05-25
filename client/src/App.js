@@ -17,6 +17,7 @@ import UpdateEmployees from './pages/Dashboard/EmployeeDashboard/UpdateEmployees
 import SuggestionDashboard from './pages/Dashboard/SuggestionDashboard/SuggestionDashboard';
 import About from './pages/About/About'
 import Jobs from './pages/Jobs/Jobs'
+import PostJob from './pages/PostJob/PostJob'
 
   const App =()=>{
  
@@ -39,6 +40,7 @@ import Jobs from './pages/Jobs/Jobs'
         <Route path='/SuggestionDashboard' element={<SuggestionDashboard/>} />
         <Route path='/About' element={<About/>} />
         <Route path='/Jobs' element={<Jobs/>} />
+        <Route path='/Shpallje' element={<PostJob/>} />
         
         
         

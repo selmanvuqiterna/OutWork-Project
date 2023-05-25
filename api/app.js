@@ -134,9 +134,6 @@ app.delete('/employees/:id', (req,res) =>{
 
 
 
-
-  
-
 //selektimi i te gjithe punetoreve
 app.get("/employees", (req,res)=>{
     const q = "SELECT * FROM employees"
@@ -156,9 +153,15 @@ app.get("/users", (req,res)=>{
 })
 
 
-
-
-
+//Selektimi i puneve
+app.get("/jobs",(req,res)=>{
+  const q = "SELECT id, job_category, job_location, job_company_name, job_source, jobs_date_expired, DATE_FORMAT(job_date_created, '%y-%m-%d') AS formatted_date FROM jobs"
+  db.query(q,(err,data)=>{
+    if(err)return res.json(err)
+    return res.json(data)
+  })
+})
+  
 
 
 app.listen(8800, ()=>{
