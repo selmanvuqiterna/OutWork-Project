@@ -18,13 +18,25 @@ import SuggestionDashboard from './pages/Dashboard/SuggestionDashboard/Suggestio
 import About from './pages/About/About'
 import Jobs from './pages/Jobs/Jobs'
 import PostJob from './pages/PostJob/PostJob'
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
   const App =()=>{
  
 
   return (
     <BrowserRouter>
+
+    
+    <TransitionGroup >
+    <CSSTransition
+              timeout={300}
+              classNames="fade"
+            >
       <Routes>
+        
         <Route path='/' index element={<Home />}/> 
         <Route path='/Employees' element={<Employees />}/>
         <Route path='/Apply' element={<Apply />} />
@@ -47,6 +59,8 @@ import PostJob from './pages/PostJob/PostJob'
         
 
       </Routes>
+      </CSSTransition>
+      </TransitionGroup>
     
     </BrowserRouter>
   );

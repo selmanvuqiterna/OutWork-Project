@@ -20,7 +20,8 @@
     
 }
 #link-id:hover{
-    color: blue;
+    color: white;
+    transition: 0.5s all;
 }
 
 #button-id{
