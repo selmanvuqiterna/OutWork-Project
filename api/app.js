@@ -155,12 +155,29 @@ app.get("/users", (req,res)=>{
 
 //Selektimi i puneve
 app.get("/jobs",(req,res)=>{
-  const q = "SELECT id, job_category, job_location, job_company_name, job_source, jobs_date_expired, DATE_FORMAT(job_date_created, '%y-%m-%d') AS formatted_date FROM jobs"
+  const q = "SELECT id, job_category, job_location, job_company_name, job_source,job_date_expired,job_date_created FROM jobs"
   db.query(q,(err,data)=>{
     if(err)return res.json(err)
     return res.json(data)
   })
 })
+
+//krijimi apo shtimi i puneve
+
+app.post('/krijoPune', (req,res) =>{
+  const query = "INSERT INTO jobs (`job_category`, `job_location`, `job_company_name`, `job_source`,`job_date_expired`,`job_date_created`,`job_image`)   VALUES(?)";
+
+  const values  = [
+   
+  ]
+
+  db.query(query, [values], (err,data) =>{
+    if(err) return res.json("Error")
+    return res.json(data)
+  })
+})
+
+
   
 
 

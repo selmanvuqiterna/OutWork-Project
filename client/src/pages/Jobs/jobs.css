@@ -1,4 +1,6 @@
-.jobs{
+
+
+.body-jobs{
   background-color: #222831;
   max-width: 100%;
   height: 1200px;
@@ -14,20 +16,25 @@
   border-bottom: 3px solid white;
 
 }
+.navbar{
+  width: 100%;
+  height: auto;
+  
+}
 
 .jobs-search{
   display: flex;
   flex-direction: row;
-  margin-top: -10px;
+  margin-top: 100px;
   cursor: pointer;
- 
+  margin-left: 100px;
 }
 
 .job-div{
   border: 2px solid #00D0B0;
-  width: 300px;
-  height: 150px;
-  margin-left: 40px;
+  width: 150px;
+  height: 50px;
+  margin-left: 50px;
   border-radius: 10px;
   color: #00D0B0;
   text-align: center;
@@ -42,7 +49,7 @@
 
 .job-div:hover{
   background-color: white;
-  color: #00D0B0;
+  color: #222831;
   transition: 1s all;
 }
 .text-card{
@@ -61,14 +68,32 @@
 
 
 .card-img-job{
-  width:290px;
+  width:250px;
   height: auto;
-  margin: 10px 5px;
+  margin: 10px 25px;
 }
 
 .img-div{
   width: 300px;
   height: 200px;
   border-bottom: 1px #00D0B0 solid;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.btn-job{
+  background-color: #00D0B0;
+  color: white;
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+}
+.btn-job:hover{
+  background-color: #222831;
+  color: #00D0B0;
+  border: 1px #00D0B0 solid;
+  transition: 0.6s all;
 }
 

@@ -1,0 +1,33 @@
+.card-container{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+}
+
+.cards-job{
+    width: 300px;
+    min-height: 350px;
+    border: 1px white solid;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    
+   
+}
+.card-img-top{
+    height: auto;
+    width: 90%;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.btn{
+  background-color: #00D0B0;
+  color: white;
+
+}
+.btn:hover{
+    background-color: white;
+    color: #222831;
+    border: 1px #00D0B0 solid;
+}

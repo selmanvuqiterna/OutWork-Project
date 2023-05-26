@@ -10,7 +10,7 @@ const About = () => {
 
 
   return (
-    <div className='body'>
+    <div className='body-about'>
       <div className="navbar">
         <Navbar />
       </div>
@@ -44,12 +44,6 @@ const About = () => {
         <p>Video cannot be displayed at the moment</p>
       )}
     </div>
-      </div>
-
-
-
-      <div className='our-team-div'>
-
       </div>
     </div>
   );
