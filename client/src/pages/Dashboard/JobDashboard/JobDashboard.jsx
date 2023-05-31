@@ -50,7 +50,7 @@ const JobDashboard = () => {
         </div>
       </div>
       <div className="table-div">
-        <Link to="/AddUser">
+        <Link to="/Shpallje">
           <button className="button-add">Add Jobs</button>
         </Link>
 

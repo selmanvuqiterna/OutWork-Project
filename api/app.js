@@ -170,10 +170,10 @@ app.post('/krijoPune', (req,res) =>{
   const values  = [
    req.body.category,
    req.body.location,
-   req.body.company,
-   req.body.source,
-   req.body.date_expired,
-   req.body.job_image
+   req.body.company_name,
+   req.body.company_source,
+   req.body.expiration_date,
+   req.body.company_logo
   ]
 
   db.query(query, [values], (err,data) =>{

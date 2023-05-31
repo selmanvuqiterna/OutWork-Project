@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import './jobs.css'
 import JobCards from '../../components/JobCards/JobCards'
+import { Link } from 'react-router-dom'
 
 
 const Jobs = () => {
@@ -23,13 +24,13 @@ const Jobs = () => {
               <p className='text-card'>Kerko Pune</p>
               </div>
             <div className='job-div' id='job-posto'>
-            <p className='text-card'>Krijo Shpallje</p>
+           <Link to='/Shpallje' className='text-card'> <p className='text-card'>Krijo Shpallje</p></Link> 
             </div>
             </div>
             
           </div>
 
-          <div className="cards-div">
+          <div className="jobCards-div">
               <JobCards/>
           </div>
             </div>
