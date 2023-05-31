@@ -155,7 +155,7 @@ app.get("/users", (req,res)=>{
 
 //Selektimi i puneve
 app.get("/jobs",(req,res)=>{
-  const q = "SELECT id, job_category, job_location, job_company_name, job_source,job_date_expired,job_date_created FROM jobs"
+  const q = "SELECT id, job_category, job_location, job_company_name, job_source,job_date_expired,job_image FROM jobs"
   db.query(q,(err,data)=>{
     if(err)return res.json(err)
     return res.json(data)
@@ -165,10 +165,15 @@ app.get("/jobs",(req,res)=>{
 //krijimi apo shtimi i puneve
 
 app.post('/krijoPune', (req,res) =>{
-  const query = "INSERT INTO jobs (`job_category`, `job_location`, `job_company_name`, `job_source`,`job_date_expired`,`job_date_created`,`job_image`)   VALUES(?)";
+  const query = "INSERT INTO jobs (`job_category`, `job_location`, `job_company_name`, `job_source`,`job_date_expired`,`job_image`)   VALUES(?)";
 
   const values  = [
-   
+   req.body.category,
+   req.body.location,
+   req.body.company,
+   req.body.source,
+   req.body.date_expired,
+   req.body.job_image
   ]
 
   db.query(query, [values], (err,data) =>{

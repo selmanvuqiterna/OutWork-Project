@@ -14,7 +14,7 @@ import AddUser from './pages/Dashboard/UserDashboard/AddUser';
 import UpdateUser from './pages/Dashboard/UserDashboard/UpdateUser';
 import EmployeesDashboard from './pages/Dashboard/EmployeeDashboard/EmployeesDashboard';
 import UpdateEmployees from './pages/Dashboard/EmployeeDashboard/UpdateEmployees';
-import SuggestionDashboard from './pages/Dashboard/SuggestionDashboard/SuggestionDashboard';
+import JobDashboard from './pages/Dashboard/JobDashboard/JobDashboard';
 import About from './pages/About/About'
 import Jobs from './pages/Jobs/Jobs'
 import PostJob from './pages/PostJob/PostJob'
@@ -49,7 +49,7 @@ import {
         <Route path='/AddUser' element={<AddUser/>} />
         <Route path='/EmployeesDashboard' element={<EmployeesDashboard/>} />
         <Route path='/updateEmployees/:id' element={<UpdateEmployees/>} />
-        <Route path='/SuggestionDashboard' element={<SuggestionDashboard/>} />
+        <Route path='/JobDashboard' element={<JobDashboard/>} />
         <Route path='/About' element={<About/>} />
         <Route path='/Jobs' element={<Jobs/>} />
         <Route path='/Shpallje' element={<PostJob/>} />

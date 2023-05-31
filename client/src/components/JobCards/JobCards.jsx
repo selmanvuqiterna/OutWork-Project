@@ -3,6 +3,7 @@ import "./JobCard.css"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 function JobCards() {
 
     const [jobs, setJobs] = useState([])
@@ -33,8 +34,7 @@ function JobCards() {
                 <h5 class="card-title">{jobs.job_category}</h5>
                 <p class="card-text">Kompania: {jobs.job_company_name}</p>
                 <p class="card-text">Vendi: {jobs.job_location}</p>
-                <p class="card-text">Koha e skadimit: {jobs.job_date_created}</p>
-                <p class="card-text">Koha e shpalljes: {jobs.job_date_expired}</p>
+                <p class="card-text">Skadon me: {jobs.job_date_expired}</p>
                 <a href={jobs.job_source} target='_blank' rel="noopener noreferrer" class="btn">Apliko Ketu</a>
             </div>
         </div>

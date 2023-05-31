@@ -32,9 +32,7 @@
 
 }
 
-#introText{
-    display: none;
-}
+
 
 .footer{
     width: 100%;
@@ -109,7 +107,7 @@
     }
 
     #introText{
-       display: unset;
+      
        text-align: center;
        
        
@@ -120,9 +118,9 @@
         margin-top: -300px;
         font-size:20px;
         font: bolder;
-        color: white;
+        color: rgba(255, 255, 255, 0.497);
         font-family: 'Poppins', sans-serif;
-        opacity: 0.6;
+       
         
     }
 

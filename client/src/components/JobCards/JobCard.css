@@ -6,7 +6,7 @@
 
 .cards-job{
     width: 300px;
-    min-height: 350px;
+    min-height: 300px;
     border: 1px white solid;
     text-align: center;
     color: white;
@@ -15,10 +15,11 @@
    
 }
 .card-img-top{
-    height: auto;
+    max-height: 150px;
     width: 90%;
     margin-top: 10px;
     align-self: center;
+
 }
 
 .btn{
@@ -31,3 +32,6 @@
     color: #222831;
     border: 1px #00D0B0 solid;
 }
+
+
+

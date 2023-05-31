@@ -45,9 +45,9 @@ const Dashboard =()=>{
                     </div>
 
                     <div className="card">
-                        <h3 className="cards-title" >Suggestions Dashboard</h3>
-                        <Link to="/SuggestionDashboard">
-                        <button className="button-card" >Go to Suggestions Dashboard</button>
+                        <h3 className="cards-title" >Job Dashboard</h3>
+                        <Link to="/JobDashboard">
+                        <button className="button-card" >Go to Job Dashboard</button>
                         </Link>
                     </div>
 
