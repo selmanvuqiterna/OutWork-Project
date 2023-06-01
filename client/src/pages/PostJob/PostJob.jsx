@@ -9,7 +9,7 @@ function PostJob() {
       const[category, setCategory] = useState('');
       const[location, setLocation] = useState('');
       const[company_name, setCompany_name] = useState('');
-      const[company_source, setompany_source] = useState('');
+      const[company_source, setCompany_source] = useState('');
       const[expiration_date, setExpiration_date] = useState('');
       const[company_logo, setCompany_logo] = useState('');
 
@@ -63,7 +63,7 @@ function PostJob() {
               name="company_name"
             />
             <input
-            onChange={e=>setompany_source(e.target.value)}
+            onChange={e=>setCompany_source(e.target.value)}
               className="inputs-form"
               type="text"
               placeholder="Apply Link"
