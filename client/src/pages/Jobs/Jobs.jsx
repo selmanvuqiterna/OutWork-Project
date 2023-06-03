@@ -13,12 +13,16 @@ import "smoothscroll-polyfill";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllJobs = async () => {
       try {
         const res = await axios.get("http://localhost:8800/jobs");
         setJobs(res.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       } catch (error) {
         console.log(error);
       }
@@ -31,6 +35,14 @@ const Jobs = () => {
   const handleSearchClick = () => {
     postRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  if (isLoading) {
+    return (
+      <div className="pre-loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="body-jobs">

@@ -1,4 +1,4 @@
-.Job{
+.Job {
   min-height: 1000px;
 }
 
@@ -9,14 +9,14 @@
 }
 
 .go-back-jobs {
-  color: #00D0B0;
+  color: #00d0b0;
   text-decoration: none;
 
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
 }
-.go-back-jobs :hover{
+.go-back-jobs :hover {
   color: 222831;
 }
 
@@ -203,12 +203,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
-  color: #00D0B0;
+  color: #00d0b0;
 }
 
 .shpallje-apliko {
   border: none;
-  background-color: #00D0B0;
+  background-color: #00d0b0;
   color: white;
   font-size: 12px;
   font-weight: 500;
@@ -222,4 +222,30 @@
 
 .shpallje-apliko:hover {
   background-color: #222831;
+}
+
+.pre-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222831;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #f3f3f3;
+  border-top-color: #00d0b0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

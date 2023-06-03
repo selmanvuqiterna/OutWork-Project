@@ -14,12 +14,16 @@ import axios from "axios";
 const Job = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const res = await axios.get(`http://localhost:8800/job/${id}`);
-        setJob(res.data.data); // Assuming the job data is returned as res.data.data
+        setJob(res.data.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       } catch (err) {
         console.log(err);
       }
@@ -27,6 +31,15 @@ const Job = () => {
 
     fetchPost();
   }, [id]);
+
+  if (isLoading) {
+    return (
+      <div className="pre-loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="Job">
       <div className="navbar">
