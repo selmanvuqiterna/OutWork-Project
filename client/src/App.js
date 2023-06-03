@@ -46,8 +46,8 @@ const App = () => {
             <Route path="/JobDashboard" element={<JobDashboard />} />
             <Route path="/About" element={<About />} />
             <Route path="/Jobs" element={<Jobs />} />
-            <Route path="/Shpallje" element={<PostJob />} />
-            <Route path="/Shpallje/:id" element={<Job />} />
+             <Route path="/Shpallje" element={<PostJob />} />
+            <Route path="/Shpallje/:id" element={<Job />} /> 
           </Routes>
         </CSSTransition>
       </TransitionGroup>

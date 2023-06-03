@@ -1,6 +1,6 @@
 
 .body-employees{
-    height: 2500px;
+    height: auto;
 }
 
 #search-bar{
@@ -37,7 +37,7 @@
 @media screen and (min-width:480px) {
 
     .body-employees{
-        height: 1000px;
+        height: auto;
         background-color: #222831;
     }
     .search-div{
