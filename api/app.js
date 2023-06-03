@@ -1,4 +1,3 @@
-
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
@@ -47,6 +46,26 @@ app.post("/create", (req, res) => {
   db.query(query, [values], (err, data) => {
     if (err) return res.json("Error");
     return res.json(data);
+  });
+});
+
+//login user
+app.post("/login", (req, res) => {
+  const query =
+    "Select email,password from users where email=? and password=? ";
+  const values = [req.body.email, req.body.password];
+
+  db.query(query, values, (err, data) => {
+    if (err) {
+      res.send({ err: err });
+    }
+
+    if (data.length > 0) {
+      res.send(data);
+      console.log(data);
+    } else {
+      res.send({ message: "Wrong username/password combination!" });
+    }
   });
 });
 
