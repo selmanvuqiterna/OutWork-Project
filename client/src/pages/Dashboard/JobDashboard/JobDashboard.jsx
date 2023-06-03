@@ -58,12 +58,17 @@ const JobDashboard = () => {
           <thead className="table-header">
             <tr id="head-row">
               <th className="table-head">ID</th>
-              <th className="table-head">Category</th>
-              <th className="table-head">Location</th>
-              <th className="table-head">Company</th>
-              <th className="table-head">Source</th>
-              <th className="table-head">Expiration Date</th>
-              <th className="table-head">Image</th>
+              <th className="table-head">Titulli</th>
+              <th className="table-head">Emri Kompanise</th>
+              <th className="table-head">Kategoria</th>
+              <th className="table-head">Lloji</th>
+              <th className="table-head">Data e skadimit</th>
+              <th className="table-head">Rroga</th>
+              <th className="table-head">Email</th>
+              <th className="table-head">Shteti</th>
+              <th className="table-head">Telefoni</th>
+              <th className="table-head">Logo</th>
+              <th className="table-head">Pershkrimi</th>
               <th className="table-head">Action</th>
             </tr>
           </thead>
@@ -72,12 +77,17 @@ const JobDashboard = () => {
             {jobs.map((jobs, i) => (
               <tr key={i}>
                 <td className="table-data">{jobs.id}</td>
-                <td className="table-data">{jobs.job_category}</td>
-                <td className="table-data">{jobs.job_location}</td>
-                <td className="table-data">{jobs.job_company_name}</td>
-                <td className="table-data">{jobs.job_source}</td>
-                <td className="table-data">{jobs.job_date_expired}</td>
-                <td className="table-data">{jobs.job_image}</td>
+                <td className="table-data">{jobs.shpallje_titulli}</td>
+                <td className="table-data">{jobs.shpallje_emri_kompanise}</td>
+                <td className="table-data">{jobs.shpallje_kategoria}</td>
+                <td className="table-data">{jobs.shpallje_lloji}</td>
+                <td className="table-data">{jobs.shpallje_data_skadimit}</td>
+                <td className="table-data">{jobs.shpallje_rroga}</td>
+                <td className="table-data">{jobs.shpallja_email}</td>
+                <td className="table-data">{jobs.shpallja_shteti}</td>
+                <td className="table-data">{jobs.shpallja_telefoni}</td>
+                <td className="table-data">{jobs.shpallja_logo_kompanise}</td>
+                <td className="table-data">{jobs.shpallja_pershkrimi}</td>
                 <td className="table-data">
                   {/* <button id="btn-up">
                     {" "}
