@@ -37,7 +37,7 @@
 @media screen and (min-width:480px) {
 
     .body-employees{
-        height: auto;
+        min-height: 1200px;
         background-color: #222831;
     }
     .search-div{
