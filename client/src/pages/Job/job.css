@@ -1,3 +1,7 @@
+.Job{
+  min-height: 1000px;
+}
+
 .job-container {
   padding-top: 100px;
   margin: 0 400px;
@@ -5,11 +9,15 @@
 }
 
 .go-back-jobs {
-  color: #e67e22;
+  color: #00D0B0;
+  text-decoration: none;
 
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
+}
+.go-back-jobs :hover{
+  color: 222831;
 }
 
 .job-container-header {
@@ -195,12 +203,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
-  color: #e67e22;
+  color: #00D0B0;
 }
 
 .shpallje-apliko {
   border: none;
-  background-color: #e67e22;
+  background-color: #00D0B0;
   color: white;
   font-size: 12px;
   font-weight: 500;
@@ -213,5 +221,5 @@
 }
 
 .shpallje-apliko:hover {
-  background-color: #c26a1c;
+  background-color: #222831;
 }

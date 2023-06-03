@@ -137,7 +137,7 @@ const Job = () => {
             </div>
 
             <div className="shpallja-punekerkuesi">
-              <h3 className="shpallje-h3">Kontakto me shpallesinë</h3>
+              <h3 className="shpallje-h3">Kontakto me shpallesin</h3>
               <div className="margin-top">
                 <p className="shpallja-punedhenesi-p">Emri</p>
                 <input type="text" className="input-pune-kerkuesi" />
