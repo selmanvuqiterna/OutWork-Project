@@ -1,0 +1,129 @@
+.job-container {
+  padding-top: 100px;
+  margin: 0 400px;
+  /* border: 3px solid black; */
+}
+
+.go-back-jobs {
+  color: #e67e22;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.job-container-header {
+  color: #000000;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 30px;
+}
+
+.job-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.job-description {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.job-description-image {
+  width: 100%;
+}
+
+.job-description-types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 95%;
+}
+.job-description-types-bold {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+  width: 98%;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.job-description-detajet {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 130px;
+  /* margin-top: 10px; */
+  width: 98%;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.types {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #999;
+}
+
+.types-bold {
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: #424242;
+}
+
+.types-semi-bold {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #141414;
+}
+
+.job-dergo-shpallje {
+  flex: 1;
+}
+
+.job-pershkrimi {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.job-info-shtesë {
+  width: 98%;
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.job-pershkrimi-kontakt {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  gap: 130px;
+}
+
+.job-pershkrimi-label {
+  flex: 1;
+}
+
+.job-pershkrimi-real {
+  flex: 4;
+}
+
+.info-type {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
