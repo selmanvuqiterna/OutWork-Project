@@ -73,7 +73,7 @@ const PostJob = () => {
         </p>
         <form
           action=""
-          className="form"
+          className="form-post-job"
           encType="multipart/form-data"
           onSubmit={addShpallje}
         >
@@ -306,7 +306,7 @@ const PostJob = () => {
             type="submit"
             className="button-submit"
             value="Posto shpalljen"
-            // onClick={addShpallje}
+            onClick={addShpallje}
           />
           <br />
           <br />

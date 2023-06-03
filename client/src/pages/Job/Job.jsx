@@ -120,7 +120,43 @@ const Job = () => {
             </div>
           </div>
 
-          <div className="job-dergo-shpallje">Dergo shpallje</div>
+          <div className="job-dergo-shpallje">
+            <div className="shpallja-punedhenesi">
+              <p className="shpallja-punedhenesi-p">Emri</p>
+              <p className="shpallja-punedhenesi-p-bold">
+                {job.shpallje_email}
+              </p>
+              <p className="shpallja-punedhenesi-p">Numri kontaktues</p>
+              <p className="shpallja-punedhenesi-p-bold">
+                {job.shpallje_telefoni}
+              </p>
+              <p className="shpallja-punedhenesi-p">Vendndodhja</p>
+              <p className="shpallja-punedhenesi-p-bold">
+                {job.shpallje_shteti}
+              </p>
+            </div>
+
+            <div className="shpallja-punekerkuesi">
+              <h3 className="shpallje-h3">Kontakto me shpallesinë</h3>
+              <div className="margin-top">
+                <p className="shpallja-punedhenesi-p">Emri</p>
+                <input type="text" className="input-pune-kerkuesi" />
+              </div>
+              <div className="margin-top">
+                <p className="shpallja-punedhenesi-p">E-mail</p>
+                <input type="text" className="input-pune-kerkuesi" />
+              </div>
+              <div className="margin-top">
+                <p className="shpallja-punedhenesi-p">Numri i telefonit</p>
+                <input type="text" className="input-pune-kerkuesi" />
+              </div>
+              <div className="margin-top">
+                <p className="shpallja-punedhenesi-p">Mesazhi</p>
+                <textarea class="input-pune-kerkuesi-textarea"></textarea>
+              </div>
+              <button className="shpallje-apliko">Apliko</button>
+            </div>
+          </div>
 
           <br />
           <br />

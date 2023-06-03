@@ -114,11 +114,11 @@
 }
 
 .job-pershkrimi-label {
-  flex: 1;
+  flex: 3;
 }
 
 .job-pershkrimi-real {
-  flex: 4;
+  flex: 5;
 }
 
 .info-type {
@@ -126,4 +126,92 @@
   font-size: 14px;
   line-height: 20px;
   color: #333;
+}
+
+.job-dergo-shpallje {
+  margin-left: 10px;
+  border: 1px solid rgb(233, 233, 233);
+  height: 75vh;
+  width: 100%;
+}
+
+.shpallja-punedhenesi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  /* border: 3px solid black; */
+  padding-left: 15px;
+  padding-top: 20px;
+  padding-right: 15px;
+}
+
+.shpallja-punedhenesi-p {
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 17px;
+  color: #999999;
+  margin-bottom: 0 !important;
+}
+
+.shpallja-punedhenesi-p-bold {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 23px;
+  font-family: sans-serif;
+  color: #4b4b4b;
+}
+
+.shpallja-punedhenesi-p-bold:last-child {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.shpallja-punekerkuesi {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  /* border: 3px solid black; */
+  padding-left: 15px;
+  padding-top: 20px;
+  padding-right: 15px;
+}
+
+.input-pune-kerkuesi {
+  border: 1px solid rgb(172, 168, 168);
+}
+
+.input-pune-kerkuesi-textarea {
+  border: 1px solid rgb(172, 168, 168);
+  width: 94%;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.shpallje-h3 {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #e67e22;
+}
+
+.shpallje-apliko {
+  border: none;
+  background-color: #e67e22;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 0;
+  width: 94%;
+  margin-top: 10px;
+  border-radius: 2px;
+
+  transition: 0.5s all;
+}
+
+.shpallje-apliko:hover {
+  background-color: #c26a1c;
 }

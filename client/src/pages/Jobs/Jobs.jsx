@@ -100,6 +100,9 @@ const Jobs = () => {
                         {jobs.shpallje_data_skadimit.substring(0, 10)}
                       </strong>
                     </p>
+                    <Link to={`/Shpallje/${jobs.id}`} className="job-apply">
+                      <button className="job-apply">Apliko</button>
+                    </Link>
                   </div>
                 </div>
               </div>
