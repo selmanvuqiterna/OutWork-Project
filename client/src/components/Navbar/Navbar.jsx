@@ -76,9 +76,15 @@ const Navbar = () => {
               {modalLogin && (
                 <div className="modal-login">
                   <div className="login-opsionet">
-                    <p className="login-aplikimet">Menaxho Shpalljet</p>
-                    <p className="login-aplikimet">Menaxho aplikimet</p>
-                    <p className="login-aplikimet">Profili im</p>
+                    <Link to="/Profili" className="link-login">
+                      <p className="login-aplikimet">Menaxho Shpalljet</p>
+                    </Link>
+                    <Link to="/Profili" className="link-login">
+                      <p className="login-aplikimet">Menaxho aplikimet</p>
+                    </Link>
+                    <Link to="/Profili" className="link-login">
+                      <p className="login-aplikimet">Profili im</p>
+                    </Link>
                     <p className="login-aplikimet">Ç'kyçu</p>
                   </div>
                 </div>

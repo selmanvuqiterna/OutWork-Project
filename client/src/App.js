@@ -19,6 +19,9 @@ import About from "./pages/About/About";
 import Jobs from "./pages/Jobs/Jobs";
 import PostJob from "./pages/PostJob/PostJob";
 import Job from "./pages/Job/Job";
+import Shpalljet from "./pages/Shpalljet/Shpalljet";
+import Aplikimet from "./pages/Aplikimet/Aplikimet";
+import Profili from "./pages/Profili/Profili";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -47,6 +50,9 @@ const App = () => {
             <Route path="/About" element={<About />} />
             <Route path="/Jobs" element={<Jobs />} />
             <Route path="/Shpallje" element={<PostJob />} />
+            <Route path="/Shpalljet" element={<Shpalljet />} />
+            <Route path="/Aplikimet" element={<Aplikimet />} />
+            <Route path="/Profili" element={<Profili />} />
             <Route path="/Shpallje/:id" element={<Job />} />
           </Routes>
         </CSSTransition>
