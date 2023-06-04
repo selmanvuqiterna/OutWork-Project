@@ -2,9 +2,31 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Cards from "../../components/Cards/Cards";
 import "./employees.css";
+import { useState,useEffect } from "react";
 
 
 const Employees  =()=>{
+
+
+    const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="pre-loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
+
     return(
         <div className="body-employees">
             <div className="navbar">

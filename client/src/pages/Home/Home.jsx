@@ -1,9 +1,29 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import './home.css'
-import ImageWorkers from "../../assets/ImageWorkers.png"
+import ImageWorkers from "../../assets/ImageWorkers.png";
+import { useState,useEffect } from "react";
 
 const Home =()=>{
+
+     const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="pre-loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
    return(
     <div className="body">
             <div className="navbar">

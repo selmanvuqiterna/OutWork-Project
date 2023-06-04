@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./apply.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
 const Apply  =()=>{
+
+
+
     
     const[fullname, setFullname] = useState('');
     const[location, setLocation] = useState('');
@@ -34,6 +37,27 @@ const Apply  =()=>{
             navigate('/Employees');
         }).catch(err => console.log(err))
      }
+
+
+
+
+     const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="pre-loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
    return(
     <div className="body-aapply">
         <div className="navbar">
