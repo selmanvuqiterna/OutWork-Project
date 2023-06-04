@@ -37,16 +37,14 @@ const App = () => {
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/AddEmployees" element={<AddEmployees />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
+            
+            <Route path="/Dashboard/" element={<Dashboard />} />
             <Route path="/UserDashboard" element={<UserDashboard />} />
+            <Route path="/EmployeesDashrd" element={<EmployeesDashboard />}/>
+            <Route path="/JobDashboard" element={<JobDashboard />} />
             <Route path="/update/:id" element={<UpdateUser />} />
             <Route path="/AddUser" element={<AddUser />} />
-            <Route
-              path="/EmployeesDashboard"
-              element={<EmployeesDashboard />}
-            />
             <Route path="/updateEmployees/:id" element={<UpdateEmployees />} />
-            <Route path="/JobDashboard" element={<JobDashboard />} />
             <Route path="/About" element={<About />} />
             <Route path="/Jobs" element={<Jobs />} />
             <Route path="/Shpallje" element={<PostJob />} />

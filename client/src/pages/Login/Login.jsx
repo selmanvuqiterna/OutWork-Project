@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+
   const navigate = useNavigate();
 
   function handleSubmit(event) {
@@ -61,7 +62,7 @@ const Login = () => {
               }}
               required
             />
-            {loginStatus && (
+             {loginStatus && (
               <p className="error-login">
                 <FontAwesomeIcon
                   icon={faExclamationCircle}
@@ -71,6 +72,7 @@ const Login = () => {
                 {loginStatus}
               </p>
             )}
+            
             <input className="inputs-button" type="submit" value={"Login"} />
 
             <div className="inputs-button">

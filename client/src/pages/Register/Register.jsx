@@ -12,10 +12,20 @@ const Register = () => {
   const [privilege] = useState("User");
   const navigate = useNavigate();
 
+  
+  
+
+ 
+  
+
   function handleSubmit(event) {
+    
     event.preventDefault();
-    axios
-      .post("http://localhost:8800/create", {
+
+    if (!email.includes('@') || !email.includes('.com')) {
+      alert('Please enter a valid email address.');
+    } else if (password === confirmPassword) {
+      axios.post("http://localhost:8800/create", {
         fullname,
         email,
         password,
@@ -27,6 +37,11 @@ const Register = () => {
         navigate("/");
       })
       .catch((err) => console.log(err));
+      alert('Registered Successfully')
+      
+    } else {
+      alert('Password and confirm password do not match.');
+    }
   }
 
   return (

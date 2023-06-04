@@ -61,10 +61,10 @@ app.post("/login", (req, res) => {
     }
 
     if (data.length > 0) {
-      res.send(data);
+      res.send("Login Successfully");
       console.log(data);
     } else {
-      res.send({ message: "Wrong username/password combination!" });
+      res.send({ message: "Wrong email/password combination!" });
     }
   });
 });
@@ -318,6 +318,10 @@ app.get("/job/:id", (req, res) => {
     return res.status(200).json({ status: 200, data: data[0] });
   });
 });
+
+
+
+
 
 app.listen(8800, () => {
   console.log("connected to backend");
