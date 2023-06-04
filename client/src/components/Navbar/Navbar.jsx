@@ -67,7 +67,7 @@ const Navbar = () => {
                 Jobs
               </Link>
             </li>
-            <li className="nav-item" style={{ marginLeft: "268px" }}>
+            <li className="nav-item" style={{ marginLeft: "100px" }}>
               <FontAwesomeIcon
                 icon={faUser}
                 className="login-icon nav-link"
