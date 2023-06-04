@@ -8,6 +8,11 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [modalLogin, setModalLogin] = useState(false);
+
+  const toggleModalLogin = () => {
+    setModalLogin(!modalLogin);
+  };
 
   return (
     //
@@ -62,9 +67,23 @@ const Navbar = () => {
                 Jobs
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" style={{ marginLeft: "268px" }}>
+              <FontAwesomeIcon
+                icon={faUser}
+                className="login-icon nav-link"
+                onClick={toggleModalLogin}
+              />
+              {modalLogin && (
+                <div className="modal-login">
+                  <div className="login-opsionet">
+                    <p className="login-aplikimet">Menaxho Shpalljet</p>
+                    <p className="login-aplikimet">Menaxho aplikimet</p>
+                    <p className="login-aplikimet">Profili im</p>
+                    <p className="login-aplikimet">Ç'kyçu</p>
+                  </div>
+                </div>
+              )}
               <Link className="nav-link" to="/Login">
-                <FontAwesomeIcon icon={faUser} className="login-icon" />
                 <p style={{ display: "none" }}> Login </p>
               </Link>
             </li>
