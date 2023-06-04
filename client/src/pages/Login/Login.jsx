@@ -25,7 +25,7 @@ const Login = () => {
           setLoginStatus(response.data.message);
           console.log(response.data[0]);
         } else {
-          //   setLoginStatus(response.data[0].email);
+          setLoginStatus(response.data[0].email);
           navigate("/");
         }
       });

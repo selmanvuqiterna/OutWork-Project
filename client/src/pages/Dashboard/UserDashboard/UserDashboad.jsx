@@ -52,7 +52,6 @@ return(
                             <th className="table-head">Fullname</th>
                             <th className="table-head">Email</th>
                             <th className="table-head">Password</th>
-                            <th className="table-head">Confirm Password</th>
                             <th className="table-head">Privilege</th>
                             <th className="table-head">Action</th>
                         </tr>
@@ -66,7 +65,6 @@ return(
                                     <td className="table-data">{data.fullname}</td>
                                     <td className="table-data">{data.email}</td>
                                     <td className="table-data">{data.password}</td>
-                                    <td className="table-data">{data.confirmPassword}</td>
                                     <td className="table-data">{data.privilege}</td>
                                     <td className="table-data">
                                        <button id="btn-up"> <Link to={`/update/${data.id}`} id="btn-up" >Update</Link></button>

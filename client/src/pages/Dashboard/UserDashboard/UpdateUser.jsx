@@ -10,14 +10,13 @@ function UpdateUser() {
     const [fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [privilege,setPrivilege] = useState('');
     const {id} = useParams();
     const navigate = useNavigate(); 
 
     function handleSubmit(event){
        event.preventDefault();
-       axios.put('http://localhost:8800/update/'+id, {fullname,email,password,confirmPassword,privilege})
+       axios.put('http://localhost:8800/update/'+id, {fullname,email,password,privilege})
        .then(res =>{
            console.log(res);
            navigate('/UserDashboard');
@@ -38,10 +37,9 @@ return(
 
            <div className="register-form">
                <form action="" className="form" method="POST" onSubmit={handleSubmit} >
-               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)} autoComplete='on' />
+               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)}    />
                <input className="inputs-form"  type="text" placeholder="Email" name="email" onChange={e=> setEmail(e.target.value)} />
                <input className="inputs-form" type="text" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
-               <input className="inputs-form" type="text" placeholder="Confirm Password" name="confirmPassword" onChange={e=> setConfirmPassword(e.target.value)} />
                <select className="inputs-form" name="privilege" id="" onChange={e=> setPrivilege(e.target.value)}>
                 <option value="?">Zgjedhni Rolin</option>
                 <option value="Admin">Admin</option>

@@ -33,13 +33,12 @@ app.get("/", (req, res) => {
 //create users
 app.post("/create", (req, res) => {
   const query =
-    "INSERT INTO users (`fullname`, `email`, `password`, `confirmPassword`,`privilege`)   VALUES(?)";
+    "INSERT INTO users (`fullname`, `email`, `password`,`privilege`)   VALUES(?)";
 
   const values = [
     req.body.fullname,
     req.body.email,
     req.body.password,
-    req.body.confirmPassword,
     req.body.privilege,
   ];
 
@@ -49,7 +48,7 @@ app.post("/create", (req, res) => {
   });
 });
 
-//login user
+
 app.post("/login", (req, res) => {
   const query =
     "Select email,password from users where email=? and password=? ";

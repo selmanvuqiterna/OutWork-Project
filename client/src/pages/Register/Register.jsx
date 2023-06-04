@@ -8,7 +8,6 @@ const Register = () => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [privilege] = useState("User");
   const navigate = useNavigate();
 
@@ -24,24 +23,21 @@ const Register = () => {
 
     if (!email.includes('@') || !email.includes('.com')) {
       alert('Please enter a valid email address.');
-    } else if (password === confirmPassword) {
+    } else {
       axios.post("http://localhost:8800/create", {
         fullname,
         email,
         password,
-        confirmPassword,
         privilege,
       })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/Login");
       })
       .catch((err) => console.log(err));
       alert('Registered Successfully')
       
-    } else {
-      alert('Password and confirm password do not match.');
-    }
+    } 
   }
 
   return (
@@ -84,14 +80,6 @@ const Register = () => {
               placeholder="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <input
-              className="inputs-form"
-              type="password"
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
             <button
