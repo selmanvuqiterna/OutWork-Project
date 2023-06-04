@@ -75,7 +75,7 @@ const Navbar = () => {
               />
               {modalLogin && (
                 <div className="modal-login">
-                  <div className="login-opsionet">
+                 <div className="login-opsionet">
                     <p className="login-aplikimet">Menaxho Shpalljet</p>
                     <p className="login-aplikimet">Menaxho aplikimet</p>
                     <p className="login-aplikimet">Profili im</p>
