@@ -1,18 +1,40 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Logo from "../../assets/logo-no-background-OW.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
+
 
 const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalLogin, setModalLogin] = useState(false);
+  const [login, setLogin] = useState(false);
+
 
   const toggleModalLogin = () => {
     setModalLogin(!modalLogin);
   };
+
+  
+
+    useEffect(() => {
+    axios
+      .get("http://localhost:8800/login")
+      .then((response) => {
+        if (response.data.loggedIn) {
+          setLogin(true);
+        } else {
+          setLogin(false);
+        }
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(error);
+      });
+  }, []);
 
   return (
     //
@@ -67,14 +89,16 @@ const Navbar = () => {
                 Jobs
               </Link>
             </li>
+
+            {login ? (
             <li className="nav-item" style={{ marginLeft: "100px" }}>
               <FontAwesomeIcon
                 icon={faUser}
                 className="login-icon nav-link"
                 onClick={toggleModalLogin}
-                style={{display:"none"}}
+                
               />
-              {modalLogin && (
+                {modalLogin && (
                 <div className="modal-login">
                   <div className="login-opsionet">
                     <Link to="/Shpalljet" className="link-login">
@@ -89,11 +113,15 @@ const Navbar = () => {
                     <p className="login-aplikimet">Ç'kyçu</p>
                   </div>
                 </div>
-              )}
-              <Link className="nav-link" to="/Login">
-                <p > Login</p>
-              </Link>
-            </li>
+                )}
+                </li>):(
+                   <li className="nav-item" style={{ marginLeft: "100px" }}>
+                   <Link className="nav-link" to="/Login">
+                     <p >Login</p>
+                   </Link>
+                 </li>
+                )}
+               
           </ul>
         </div>
       </div>

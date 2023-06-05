@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./login.css";
 import axios from "axios";
@@ -29,25 +29,11 @@ const Login = () => {
         } else {
           localStorage.setItem("token", response.data.token);
           setLoginStatus(true);
-          // navigate("/");
+          navigate("/");
         }
       });
   }
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8800/login")
-  //     .then((response) => {
-  //       if (response.data.loggedIn) {
-  //         console.log("Logged in user:", response.data.user[0].fullname);
-  //       } else {
-  //         console.log("User not logged in");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors here
-  //       console.error(error);
-  //     });
-  // }, []);
+
   
   const userAuthenticated = () => {
     axios
