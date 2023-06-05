@@ -3,6 +3,8 @@ import mysql from "mysql";
 import cors from "cors";
 import multer from "multer";
 import moment from "moment";
+import bcrypt from 'bcrypt';
+
 
 const app = express();
 app.use("/uploads", express.static("./uploads"));
@@ -32,27 +34,45 @@ app.get("/", (req, res) => {
 
 //create users
 app.post("/create", (req, res) => {
-  const query =
-    "INSERT INTO users (`fullname`, `email`, `password`,`privilege`)   VALUES(?)";
+  const { fullname, email, password, privilege } = req.body;
 
-  const values = [
-    req.body.fullname,
-    req.body.email,
-    req.body.password,
-    req.body.privilege,
-  ];
+  // Generate a salt
+  const saltRounds = 10;
+  bcrypt.genSalt(saltRounds, function (err, salt) {
+    if (err) {
+      // Handle error
+      return res.json("Error");
+    }
 
-  db.query(query, [values], (err, data) => {
-    if (err) return res.json("Error");
-    return res.json(data);
+    // Hash the password with the generated salt
+    bcrypt.hash(password, salt, function (err, hash) {
+      if (err) {
+
+        return res.json("Error");
+      }
+
+      const query =
+        "INSERT INTO users (`fullname`, `email`, `password`, `privilege`) VALUES (?, ?, ?, ?)";
+      const values = [fullname, email, hash, privilege];
+
+      db.query(query, values, (err, data) => {
+        if (err) {
+
+          return res.json("Error");
+        }
+        return res.json(data);
+      });
+    });
   });
 });
 
 
 app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
   const query =
-    "Select email,password from users where email=? and password=? ";
-  const values = [req.body.email, req.body.password];
+    "SELECT email, password FROM users WHERE email = ?";
+  const values = [email];
 
   db.query(query, values, (err, data) => {
     if (err) {
@@ -60,8 +80,22 @@ app.post("/login", (req, res) => {
     }
 
     if (data.length > 0) {
-      res.send("Login Successfully");
-      console.log(data);
+      const hashedPassword = data[0].password;
+
+      // Compare the provided password with the hashed password
+      bcrypt.compare(password, hashedPassword, function (err, result) {
+        if (err) {
+          // Handle error
+          res.send({ err: err });
+        }
+
+        if (result) {
+          res.send("Login Successfully");
+          console.log(data);
+        } else {
+          res.send({ message: "Wrong email/password combination!" });
+        }
+      });
     } else {
       res.send({ message: "Wrong email/password combination!" });
     }

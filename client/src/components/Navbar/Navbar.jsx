@@ -72,6 +72,7 @@ const Navbar = () => {
                 icon={faUser}
                 className="login-icon nav-link"
                 onClick={toggleModalLogin}
+                style={{display:"none"}}
               />
               {modalLogin && (
                 <div className="modal-login">
@@ -90,7 +91,7 @@ const Navbar = () => {
                 </div>
               )}
               <Link className="nav-link" to="/Login">
-                <p style={{ display: "none" }}> Login </p>
+                <p > Login </p>
               </Link>
             </li>
           </ul>
