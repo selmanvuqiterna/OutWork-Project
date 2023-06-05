@@ -167,7 +167,7 @@ app.get("/", (req, res) => {
 //update users
 app.put("/update/:id", (req, res) => {
   const query =
-    "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `confirmPassword` = ?, `privilege` = ? WHERE ID = ? ";
+    "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
 
   const values = [
     req.body.fullname,
@@ -362,7 +362,7 @@ app.post("/krijoPune", (req, res) => {
 
     try {
       const query =
-        "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`shpallje_pershkrimi`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`	shpallja_pershkrimi`) VALUES (?)";
 
       const values = [
         titulli,
