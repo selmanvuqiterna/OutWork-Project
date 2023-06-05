@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
 
 
   axios.defaults.withCredentials = true;
@@ -24,32 +24,45 @@ const Login = () => {
         password,
       })
       .then((response) => {
-        if (response.data.message) {
-          setLoginStatus(response.data.message);
-          // console.log(response.data[0]);
+        if (!response.data.auth) {
+          setLoginStatus(false);;
         } else {
-          setLoginStatus(response.data.email);
-          navigate("/");
+          localStorage.setItem("token", response.data.token);
+          setLoginStatus(true);
+          // navigate("/");
         }
       });
   }
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8800/login")
+  //     .then((response) => {
+  //       if (response.data.loggedIn) {
+  //         console.log("Logged in user:", response.data.user[0].fullname);
+  //       } else {
+  //         console.log("User not logged in");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors here
+  //       console.error(error);
+  //     });
+  // }, []);
+  
+  const userAuthenticated = () => {
     axios
-      .get("http://localhost:8800/login")
+      .get("http://localhost:8800/isUserAuth", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      })
       .then((response) => {
-        if (response.data.loggedIn) {
-          console.log("Logged in user:", response.data.user[0].fullname);
-          setLoginStatus(response.data.user[0].fullname);
-        } else {
-          console.log("User not logged in");
-        }
+        console.log(response);
       })
       .catch((error) => {
-        // Handle any errors here
         console.error(error);
       });
-  }, []);
-  
+  };
 
   return (
     <div className="bodyLogin">
@@ -92,7 +105,9 @@ const Login = () => {
                 {loginStatus}
               </p>
             )}
-            
+            {loginStatus && (
+              <button onClick={userAuthenticated}>Check if authenticated</button>
+            )}
             <input className="inputs-button" type="submit" value={"Login"} />
 
             <div className="inputs-button">

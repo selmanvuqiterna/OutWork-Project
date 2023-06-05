@@ -40,6 +40,30 @@ app.use(session({
   },
 }))
 
+//middleware for requests
+
+const verifyJWT = (req,res, next) =>{
+  const token = req.headers["x-access-token"]; //ktu pe marrim tokenin
+
+  if(!token){
+    res.send("There is no token , plz give it to us");
+  } else{
+    jwt.verify(token, "jwtUserLabOutwork", (err,decoded) =>{
+      if (err){
+        res.json({auth: false, message:"U failed to authanticate"});
+      }else{
+        req.userId = decoded.id;
+        next();
+      }
+    })
+  }
+}
+
+
+app.get('/isUserAuth', verifyJWT ,(req,res)=>{
+  res.send('YOU ARE AUTHENTICATED');
+})
+
 app.get("/login",(req,res)=>{
   if(req.session.user){
     res.send({loggedIn:true, user: req.session.user});
@@ -62,15 +86,28 @@ app.post("/login", (req, res) => {
     if(result.length > 0){
       bcrypt.compare(password, result[0].password, (err, response)=>{
         if(response){
+          
+    
+          const id = result[0].id;
+          const token = jwt.sign({id}, "jwtUserLabOutwork", {
+            expiresIn: 300, //sa minuta e kemi tokenin
+          })
           req.session.user = result;
-          console.log(req.session.user);
-          res.send(result)
+
+
+          res.json({
+            auth:true, token: token, result: result
+          })
         }else{
-          res.send({message:"Wrong username/password combination!"});
+          res.send({
+            auth:false,
+            message:"Wrong email/password combination!"});
         }
       })
     }else{
-      res.send({message:"User doesnt exist"});
+      res.json({
+        auth:false,  message:"no user exists"
+      })
     }
 
   });
