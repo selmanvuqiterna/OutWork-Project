@@ -173,7 +173,6 @@ app.put("/update/:id", (req, res) => {
     req.body.fullname,
     req.body.email,
     req.body.password,
-    req.body.confirmPassword,
     req.body.privilege,
   ];
   const id = req.params.id;

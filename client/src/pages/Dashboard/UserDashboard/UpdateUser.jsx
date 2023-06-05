@@ -24,6 +24,9 @@ function UpdateUser() {
     }
 
 
+    
+
+
 return(
    <div className="body-register">
        
@@ -37,7 +40,7 @@ return(
 
            <div className="register-form">
                <form action="" className="form" method="POST" onSubmit={handleSubmit} >
-               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)}    />
+               <input className="inputs-form"  type="text" placeholder="Full Name" name="fullname" onChange={e=> setFullname(e.target.value)}   />
                <input className="inputs-form"  type="text" placeholder="Email" name="email" onChange={e=> setEmail(e.target.value)} />
                <input className="inputs-form" type="text" placeholder="Password" name="password" onChange={e=> setPassword(e.target.value)} />
                <select className="inputs-form" name="privilege" id="" onChange={e=> setPrivilege(e.target.value)}>
