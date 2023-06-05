@@ -1,10 +1,13 @@
-import express from "express";
+import express, { response } from "express";
 import mysql from "mysql";
 import cors from "cors";
 import multer from "multer";
 import moment from "moment";
-import bcrypt from 'bcrypt';
-
+import bcrypt from 'bcrypt'; //criptim te passwordit
+import bodyParser from "body-parser"; //for session login save
+import cookieParser from "cookie-parser"; //for session login save
+import session from "express-session" //for session login save
+import jwt from 'jsonwebtoken';
 
 const app = express();
 app.use("/uploads", express.static("./uploads"));
@@ -18,21 +21,62 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:3000"],
+  methods:["GET","POST"],
+  credentials:true //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
+}));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:true})); //kjo vendoset qdoher by defualt per me funsionu.
 
-//insertimi i nje useri prej backend ne databaz
-app.get("/", (req, res) => {
-  const sqlInsert =
-    "INSERT INTO users (fullname, email, password, confirmPassword)VALUES ('Filan Fisteku', 'filan@gmail.com','filan123','filan123')";
 
-  db.query(sqlInsert, (err, result) => {
-    console.log("error", err);
-    console.log("result", result);
-    res.json("hello this is backend");
+app.use(session({
+  key: "userId",
+  secret: "labProjekt",
+  resave: false,
+  saveUninitialized:false,
+  cookie:{
+    expires: 60 * 60 * 6 //ne sajtin tone ka me u rujt cookie 6 ore ose 1 dite
+  },
+}))
+
+app.get("/login",(req,res)=>{
+  if(req.session.user){
+    res.send({loggedIn:true, user: req.session.user});
+  }else{
+    res.send({loggedIn:false});
+  }
+}) 
+
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const query = "SELECT * FROM users WHERE email = ?";
+  const values = [email];
+
+  db.query(query, values, (err, result) => {
+    if (err) {
+      res.send({ err: err });
+    }
+
+    if(result.length > 0){
+      bcrypt.compare(password, result[0].password, (err, response)=>{
+        if(response){
+          req.session.user = result;
+          console.log(req.session.user);
+          res.send(result)
+        }else{
+          res.send({message:"Wrong username/password combination!"});
+        }
+      })
+    }else{
+      res.send({message:"User doesnt exist"});
+    }
+
   });
 });
 
-//create users
+
 app.post("/create", (req, res) => {
   const { fullname, email, password, privilege } = req.body;
 
@@ -67,40 +111,21 @@ app.post("/create", (req, res) => {
 });
 
 
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
+//insertimi i nje useri prej backend ne databaz
+app.get("/", (req, res) => {
+  const sqlInsert =
+    "INSERT INTO users (fullname, email, password, confirmPassword)VALUES ('Filan Fisteku', 'filan@gmail.com','filan123','filan123')";
 
-  const query =
-    "SELECT email, password FROM users WHERE email = ?";
-  const values = [email];
-
-  db.query(query, values, (err, data) => {
-    if (err) {
-      res.send({ err: err });
-    }
-
-    if (data.length > 0) {
-      const hashedPassword = data[0].password;
-
-      // Compare the provided password with the hashed password
-      bcrypt.compare(password, hashedPassword, function (err, result) {
-        if (err) {
-          // Handle error
-          res.send({ err: err });
-        }
-
-        if (result) {
-          res.send("Login Successfully");
-          console.log(data);
-        } else {
-          res.send({ message: "Wrong email/password combination!" });
-        }
-      });
-    } else {
-      res.send({ message: "Wrong email/password combination!" });
-    }
+  db.query(sqlInsert, (err, result) => {
+    console.log("error", err);
+    console.log("result", result);
+    res.json("hello this is backend");
   });
 });
+
+//create users
+
+
 
 //update users
 app.put("/update/:id", (req, res) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./login.css";
 import axios from "axios";
@@ -10,6 +10,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+
+
+  axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
 
@@ -23,13 +26,30 @@ const Login = () => {
       .then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
-          console.log(response.data[0]);
+          // console.log(response.data[0]);
         } else {
-          setLoginStatus(response.data[0].email);
+          setLoginStatus(response.data.email);
           navigate("/");
         }
       });
   }
+  useEffect(() => {
+    axios
+      .get("http://localhost:8800/login")
+      .then((response) => {
+        if (response.data.loggedIn) {
+          console.log("Logged in user:", response.data.user[0].fullname);
+          setLoginStatus(response.data.user[0].fullname);
+        } else {
+          console.log("User not logged in");
+        }
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(error);
+      });
+  }, []);
+  
 
   return (
     <div className="bodyLogin">

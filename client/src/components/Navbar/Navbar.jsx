@@ -91,7 +91,7 @@ const Navbar = () => {
                 </div>
               )}
               <Link className="nav-link" to="/Login">
-                <p > Login </p>
+                <p > Login</p>
               </Link>
             </li>
           </ul>

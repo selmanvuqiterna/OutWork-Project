@@ -23,18 +23,24 @@ import Shpalljet from "./pages/Shpalljet/Shpalljet";
 import Aplikimet from "./pages/Aplikimet/Aplikimet";
 import Profili from "./pages/Profili/Profili";
 
+
+
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const App = () => {
+
+
+
   return (
     <BrowserRouter>
       <TransitionGroup>
         <CSSTransition timeout={300} classNames="fade">
+          <div>
           <Routes>
             <Route path="/" index element={<Home />} />
             <Route path="/Employees" element={<Employees />} />
             <Route path="/Apply" element={<Apply />} />
-            <Route path="/Login" element={<Login />} />
+            <Route path="/Login" element={<Login  />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/AddEmployees" element={<AddEmployees />} />
             
@@ -53,6 +59,7 @@ const App = () => {
             <Route path="/Profili" element={<Profili />} />
             <Route path="/Shpallje/:id" element={<Job />} />
           </Routes>
+          </div>
         </CSSTransition>
       </TransitionGroup>
     </BrowserRouter>
