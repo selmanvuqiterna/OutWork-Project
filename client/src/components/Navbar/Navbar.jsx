@@ -6,33 +6,47 @@ import Logo from "../../assets/logo-no-background-OW.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalLogin, setModalLogin] = useState(false);
   const [login, setLogin] = useState(false);
 
+  const [userId, setUserId] = useState(null);
+
+  const navigate = useNavigate();
 
   const toggleModalLogin = () => {
     setModalLogin(!modalLogin);
   };
 
-  
+  function handleLogout(){
+    localStorage.removeItem("token");
+    setLogin(false);
+    navigate("/login")
+  }
 
-    useEffect(() => {
+  useEffect(() => {
     axios
-      .get("http://localhost:8800/login")
+      .get("http://localhost:8800/isUserAuth", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      })
       .then((response) => {
-        if (response.data.loggedIn) {
+        console.log(response.data);
+        if (response.data.auth) {
+          const userId = response.data.userId;
           setLogin(true);
+          setUserId(userId);
         } else {
           setLogin(false);
         }
       })
       .catch((error) => {
-        // Handle any errors here
         console.error(error);
+        setLogin(false); // Set login to false if an error occurred
       });
   }, []);
 
@@ -107,10 +121,11 @@ const Navbar = () => {
                     <Link to="/Aplikimet" className="link-login">
                       <p className="login-aplikimet">Menaxho aplikimet</p>
                     </Link>
-                    <Link to="/Profili" className="link-login">
+                    <Link to={`/Profili/${userId}`} className="link-login">
                       <p className="login-aplikimet">Profili im</p>
                     </Link>
-                    <p className="login-aplikimet">Ç'kyçu</p>
+                    {/* <p className="login-aplikimet">Ç'kyçu</p> */}
+                    <button onClick={handleLogout} className="login-aplikimet">Ç'kyçu</button>
                   </div>
                 </div>
                 )}

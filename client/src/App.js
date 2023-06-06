@@ -56,7 +56,7 @@ const App = () => {
             <Route path="/Shpallje" element={<PostJob />} />
             <Route path="/Shpalljet" element={<Shpalljet />} />
             <Route path="/Aplikimet" element={<Aplikimet />} />
-            <Route path="/Profili" element={<Profili />} />
+            <Route path="/Profili/:userId" element={<Profili />} />
             <Route path="/Shpallje/:id" element={<Job />} />
           </Routes>
           </div>

@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
-
+  const [loginStatus, setLoginStatus] = useState(null);
+  
 
   axios.defaults.withCredentials = true;
 
@@ -34,21 +34,6 @@ const Login = () => {
       });
   }
 
-  
-  const userAuthenticated = () => {
-    axios
-      .get("http://localhost:8800/isUserAuth", {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   return (
     <div className="bodyLogin">
@@ -81,19 +66,18 @@ const Login = () => {
               }}
               required
             />
-             {loginStatus && (
+             {loginStatus === false && (
               <p className="error-login">
                 <FontAwesomeIcon
                   icon={faExclamationCircle}
                   className="error-icon"
                   style={{ marginRight: "5px" }}
                 />
+                Wront email/password combination!
                 {loginStatus}
               </p>
             )}
-            {loginStatus && (
-              <button onClick={userAuthenticated}>Check if authenticated</button>
-            )}
+
             <input className="inputs-button" type="submit" value={"Login"} />
 
             <div className="inputs-button">

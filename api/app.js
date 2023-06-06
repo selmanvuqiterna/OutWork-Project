@@ -49,7 +49,7 @@ const verifyJWT = (req,res, next) =>{
     res.send("There is no token , plz give it to us");
   } else{
     jwt.verify(token, "jwtUserLabOutwork", (err,decoded) =>{
-      if (err){
+    if (err){
         res.json({auth: false, message:"U failed to authanticate"});
       }else{
         req.userId = decoded.id;
@@ -61,7 +61,9 @@ const verifyJWT = (req,res, next) =>{
 
 
 app.get('/isUserAuth', verifyJWT ,(req,res)=>{
-  res.send('YOU ARE AUTHENTICATED');
+  
+  const userId = req.userId;
+  res.json({ auth: true, userId: userId });
 })
 
 app.get("/login",(req,res)=>{
@@ -361,7 +363,7 @@ app.post("/krijoPune", (req, res) => {
 
     try {
       const query =
-        "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`	shpallja_pershkrimi`) VALUES (?)";
+      "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`shpallje_pershkrimi`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       const values = [
         titulli,
