@@ -9,11 +9,11 @@
 
     margin: 50px 500px;
     border: 1px solid rgb(139, 139, 139);
-    height: 100vh;
+   max-height: 1000px;
 }
 
 .container-informacionet{
-    border: 3px solid black;
+    /* border: 3px solid black; */
     margin-top: 50px;
     margin-left: 20px;
     display: flex;
@@ -24,4 +24,57 @@
     width: 250px;
     height: 170px;
     margin-right: 40px;
+}
+
+.informacionet-profili{
+    margin-top: 15px;
+}
+
+
+.profili-info-bold:nth-child(1){
+    font-size: 18px !important;
+    color: black;
+    font-weight: 500;
+}
+
+.profili-info-bold{
+    font-size: 14px;
+    color: rgb(63, 63, 63);
+    font-weight: 500;
+}
+
+.profili-info-bold{
+    margin-bottom: 0 !important;
+}
+
+.profili-info{
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.container-profili-about-me{
+    margin: 20px 20px;
+    
+}
+
+.profili-text-area{
+    width: 100%;
+}
+
+.profili-ruaj{
+    border: none;
+    font-size: 18px;
+    background-color: rgb(34, 34, 211);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    width: 100px;
+
+    transition: all 0.5s;
+}
+
+.profili-ruaj:hover{
+    background-color: rgb(228, 226, 226);
+    color: rgb(34, 34, 211);
 }
