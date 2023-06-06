@@ -1,15 +1,17 @@
 
 .break-line{
-    padding-top:100px;
+    padding-top:60px;
     margin: 0 500px;
-    border: 1px solid rgb(236, 236, 236);
+    /* border: 1px solid rgb(236, 236, 236); */
 }
 
 .container-profili{
 
     margin: 50px 500px;
-    border: 1px solid rgb(139, 139, 139);
+    border: 1px solid rgb(238, 237, 237);
+    box-shadow: 0px -3px 5px rgba(0,0,0,0.1);
    max-height: 1000px;
+   border-radius: 10px;
 }
 
 .container-informacionet{
@@ -59,17 +61,19 @@
 
 .profili-text-area{
     width: 100%;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 10px;
 }
 
 .profili-ruaj{
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     background-color: rgb(34, 34, 211);
     color: white;
-    padding: 10px;
+    padding: 7px;
     border-radius: 4px;
     font-weight: 500;
-    width: 100px;
+    width: 70px;
 
     transition: all 0.5s;
 }
