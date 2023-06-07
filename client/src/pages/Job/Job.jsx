@@ -10,12 +10,16 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Job = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
+
+  //me i marr postet
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -31,6 +35,80 @@ const Job = () => {
 
     fetchPost();
   }, [id]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const authorized = await handleAmIAuthorized();
+      console.log("Authorized:", authorized);
+      console.log("userId:", userId);
+
+      if (authorized) {
+        await apliko(userId); // Use await to wait for apliko to finish
+        // navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // me check nese jam logged in
+  const handleAmIAuthorized = async () => {
+    try {
+      const response = await axios.get("http://localhost:8800/isUserAuth", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
+
+      console.log(response.data);
+
+      if (response.data.auth) {
+        setUserId(response.data.userId);
+        return true;
+      } else {
+        console.log(response);
+        navigate("/login");
+        return false;
+      }
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
+
+  const [emri, setEmri] = useState("");
+  const [email, setEmail] = useState("");
+  const [numri, setNumri] = useState("");
+  const [mesazhi, setMesazhi] = useState("");
+  const [userId, setUserId] = useState("");
+
+  //me apliku  , me qit aplikimin tek tabela aplikuesit
+  const apliko = async (userId) => {
+    axios
+      .post("http://localhost:8800/apliko", {
+        emri,
+        email,
+        numri,
+        mesazhi,
+        userId,
+        shpalljaId: shpalljaId.id,
+      })
+      .then(() => {
+        aplikimet(userId); // Call aplikimet after userId is set
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const shpalljaId = { id };
+
+  const aplikimet = async (userId) => {
+    axios.post("http://localhost:8800/aplikimet", {
+      shpalljaId: shpalljaId.id,
+      userId,
+    });
+  };
 
   if (isLoading) {
     return (
@@ -149,26 +227,51 @@ const Job = () => {
               </p>
             </div>
 
-            <div className="shpallja-punekerkuesi">
-              <h3 className="shpallje-h3">Kontakto me shpallesin</h3>
-              <div className="margin-top">
-                <p className="shpallja-punedhenesi-p">Emri</p>
-                <input type="text" className="input-pune-kerkuesi" />
+            <form
+              action=""
+              className="form-post-job"
+              encType="multipart/form-data"
+              onSubmit={handleSubmit}
+            >
+              <div className="shpallja-punekerkuesi">
+                <h3 className="shpallje-h3">Kontakto me shpallesin</h3>
+
+                <div className="margin-top">
+                  <p className="shpallja-punedhenesi-p">Emri</p>
+                  <input
+                    type="text"
+                    className="input-pune-kerkuesi"
+                    onChange={(e) => setEmri(e.target.value)}
+                  />
+                </div>
+                <div className="margin-top">
+                  <p className="shpallja-punedhenesi-p">E-mail</p>
+                  <input
+                    type="text"
+                    className="input-pune-kerkuesi"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="margin-top">
+                  <p className="shpallja-punedhenesi-p">Numri i telefonit</p>
+                  <input
+                    type="text"
+                    className="input-pune-kerkuesi"
+                    onChange={(e) => setNumri(e.target.value)}
+                  />
+                </div>
+                <div className="margin-top">
+                  <p className="shpallja-punedhenesi-p">Mesazhi</p>
+                  <textarea
+                    class="input-pune-kerkuesi-textarea"
+                    onChange={(e) => setMesazhi(e.target.value)}
+                  ></textarea>
+                </div>
+                <button className="shpallje-apliko" type="submit">
+                  Apliko
+                </button>
               </div>
-              <div className="margin-top">
-                <p className="shpallja-punedhenesi-p">E-mail</p>
-                <input type="text" className="input-pune-kerkuesi" />
-              </div>
-              <div className="margin-top">
-                <p className="shpallja-punedhenesi-p">Numri i telefonit</p>
-                <input type="text" className="input-pune-kerkuesi" />
-              </div>
-              <div className="margin-top">
-                <p className="shpallja-punedhenesi-p">Mesazhi</p>
-                <textarea class="input-pune-kerkuesi-textarea"></textarea>
-              </div>
-              <button className="shpallje-apliko">Apliko</button>
-            </div>
+            </form>
           </div>
 
           <br />

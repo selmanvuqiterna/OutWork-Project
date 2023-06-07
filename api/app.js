@@ -3,11 +3,11 @@ import mysql from "mysql";
 import cors from "cors";
 import multer from "multer";
 import moment from "moment";
-import bcrypt from 'bcrypt'; //criptim te passwordit
+import bcrypt from "bcrypt"; //criptim te passwordit
 import bodyParser from "body-parser"; //for session login save
 import cookieParser from "cookie-parser"; //for session login save
-import session from "express-session" //for session login save
-import jwt from 'jsonwebtoken';
+import session from "express-session"; //for session login save
+import jwt from "jsonwebtoken";
 
 const app = express();
 app.use("/uploads", express.static("./uploads"));
@@ -21,58 +21,59 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json());
-app.use(cors({
-  origin:["http://localhost:3000"],
-  methods:["GET","POST"],
-  credentials:true //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true, //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
+  })
+);
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended:true})); //kjo vendoset qdoher by defualt per me funsionu.
+app.use(bodyParser.urlencoded({ extended: true })); //kjo vendoset qdoher by defualt per me funsionu.
 
-
-app.use(session({
-  key: "userId",
-  secret: "labProjekt",
-  resave: false,
-  saveUninitialized:false,
-  cookie:{
-    expires: 60 * 60 * 6 //ne sajtin tone ka me u rujt cookie 6 ore ose 1 dite
-  },
-}))
+app.use(
+  session({
+    key: "userId",
+    secret: "labProjekt",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 6, //ne sajtin tone ka me u rujt cookie 6 ore ose 1 dite
+    },
+  })
+);
 
 //middleware for requests
 
-const verifyJWT = (req,res, next) =>{
+const verifyJWT = (req, res, next) => {
   const token = req.headers["x-access-token"]; //ktu pe marrim tokenin
 
-  if(!token){
+  if (!token) {
     res.send("There is no token , plz give it to us");
-  } else{
-    jwt.verify(token, "jwtUserLabOutwork", (err,decoded) =>{
-    if (err){
-        res.json({auth: false, message:"U failed to authanticate"});
-      }else{
+  } else {
+    jwt.verify(token, "jwtUserLabOutwork", (err, decoded) => {
+      if (err) {
+        res.json({ auth: false, message: "U failed to authanticate" });
+      } else {
         req.userId = decoded.id;
         next();
       }
-    })
+    });
   }
-}
+};
 
-
-app.get('/isUserAuth', verifyJWT ,(req,res)=>{
-  
+app.get("/isUserAuth", verifyJWT, (req, res) => {
   const userId = req.userId;
   res.json({ auth: true, userId: userId });
-})
+});
 
-app.get("/login",(req,res)=>{
-  if(req.session.user){
-    res.send({loggedIn:true, user: req.session.user});
-  }else{
-    res.send({loggedIn:false});
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
   }
-}) 
+});
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -85,36 +86,66 @@ app.post("/login", (req, res) => {
       res.send({ err: err });
     }
 
-    if(result.length > 0){
-      bcrypt.compare(password, result[0].password, (err, response)=>{
-        if(response){
-          
-    
+    if (result.length > 0) {
+      bcrypt.compare(password, result[0].password, (err, response) => {
+        if (response) {
           const id = result[0].id;
-          const token = jwt.sign({id}, "jwtUserLabOutwork", {
+          const token = jwt.sign({ id }, "jwtUserLabOutwork", {
             expiresIn: 300, //sa minuta e kemi tokenin
-          })
+          });
           req.session.user = result;
 
-
           res.json({
-            auth:true, token: token, result: result
-          })
-        }else{
+            auth: true,
+            token: token,
+            result: result,
+          });
+        } else {
           res.send({
-            auth:false,
-            message:"Wrong email/password combination!"});
+            auth: false,
+            message: "Wrong email/password combination!",
+          });
         }
-      })
-    }else{
+      });
+    } else {
       res.json({
-        auth:false,  message:"no user exists"
-      })
+        auth: false,
+        message: "no user exists",
+      });
     }
-
   });
 });
 
+app.post("/apliko", (req, res) => {
+  const { emri, email, mesazhi, userId, shpalljaId, numri } = req.body;
+
+  const query =
+    "INSERT INTO aplikuesit(`emri_aplikuesi`,`email_aplikuesi`,`mesazhi_aplikuesi`,`user_id`,`shpallja_id`,`numri`) VALUES(?,?,?,?,?,?)";
+
+  const values = [emri, email, mesazhi, userId, shpalljaId, numri];
+
+  db.query(query, values, (err, data) => {
+    if (err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  });
+});
+
+app.post("/aplikimet", (req, res) => {
+  const { shpalljaId, userId } = req.body;
+
+  const query = "INSERT INTO aplikimet(`shpallja_id`,`user_id`) VALUES(?,?)";
+
+  const values = [shpalljaId, userId];
+
+  db.query(query, values, (err, data) => {
+    if (err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  });
+});
 
 app.post("/create", (req, res) => {
   const { fullname, email, password, privilege } = req.body;
@@ -130,7 +161,6 @@ app.post("/create", (req, res) => {
     // Hash the password with the generated salt
     bcrypt.hash(password, salt, function (err, hash) {
       if (err) {
-
         return res.json("Error");
       }
 
@@ -140,7 +170,6 @@ app.post("/create", (req, res) => {
 
       db.query(query, values, (err, data) => {
         if (err) {
-
           return res.json("Error");
         }
         return res.json(data);
@@ -149,12 +178,7 @@ app.post("/create", (req, res) => {
   });
 });
 
-
-
-
 //create users
-
-
 
 //update users
 app.put("/update/:id", (req, res) => {
@@ -353,7 +377,7 @@ app.post("/krijoPune", (req, res) => {
 
     try {
       const query =
-      "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`shpallje_pershkrimi`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO shpallje (`shpallje_titulli`, `shpallje_emri_kompanisë`, `shpallje_kategoria`, `shpallje_lloji`, `shpallje_data_skadimit`, `shpallje_rroga`, `shpallje_email`, `shpallje_shteti`, `shpallje_telefoni`, `shpallje_logo_kompanise`,`shpallje_pershkrimi`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       const values = [
         titulli,
@@ -404,10 +428,6 @@ app.get("/job/:id", (req, res) => {
     return res.status(200).json({ status: 200, data: data[0] });
   });
 });
-
-
-
-
 
 app.listen(8800, () => {
   console.log("connected to backend");
