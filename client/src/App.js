@@ -23,42 +23,43 @@ import Shpalljet from "./pages/Shpalljet/Shpalljet";
 import Aplikimet from "./pages/Aplikimet/Aplikimet";
 import Profili from "./pages/Profili/Profili";
 
-
-
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const App = () => {
-
-
-
   return (
     <BrowserRouter>
       <TransitionGroup>
         <CSSTransition timeout={300} classNames="fade">
           <div>
-          <Routes>
-            <Route path="/" index element={<Home />} />
-            <Route path="/Employees" element={<Employees />} />
-            <Route path="/Apply" element={<Apply />} />
-            <Route path="/Login" element={<Login  />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/AddEmployees" element={<AddEmployees />} />
-            
-            <Route path="/Dashboard/" element={<Dashboard />} />
-            <Route path="/UserDashboard" element={<UserDashboard />} />
-            <Route path="/EmployeesDashboard" element={<EmployeesDashboard />}/>
-            <Route path="/JobDashboard" element={<JobDashboard />} />
-            <Route path="/update/:id" element={<UpdateUser />} />
-            <Route path="/AddUser" element={<AddUser />} />
-            <Route path="/updateEmployees/:id" element={<UpdateEmployees />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Jobs" element={<Jobs />} />
-            <Route path="/Shpallje" element={<PostJob />} />
-            <Route path="/Shpalljet" element={<Shpalljet />} />
-            <Route path="/Aplikimet" element={<Aplikimet />} />
-            <Route path="/Profili/:userId" element={<Profili />} />
-            <Route path="/Shpallje/:id" element={<Job />} />
-          </Routes>
+            <Routes>
+              <Route path="/" index element={<Home />} />
+              <Route path="/Employees" element={<Employees />} />
+              <Route path="/Apply" element={<Apply />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Register" element={<Register />} />
+              <Route path="/AddEmployees" element={<AddEmployees />} />
+
+              <Route path="/Dashboard/" element={<Dashboard />} />
+              <Route path="/UserDashboard" element={<UserDashboard />} />
+              <Route
+                path="/EmployeesDashboard"
+                element={<EmployeesDashboard />}
+              />
+              <Route path="/JobDashboard" element={<JobDashboard />} />
+              <Route path="/update/:id" element={<UpdateUser />} />
+              <Route path="/AddUser" element={<AddUser />} />
+              <Route
+                path="/updateEmployees/:id"
+                element={<UpdateEmployees />}
+              />
+              <Route path="/About" element={<About />} />
+              <Route path="/Jobs" element={<Jobs />} />
+              <Route path="/Shpallje" element={<PostJob />} />
+              <Route path="/Shpalljet" element={<Shpalljet />} />
+              <Route path="/Aplikimet/:userId" element={<Aplikimet />} />
+              <Route path="/Profili/:userId" element={<Profili />} />
+              <Route path="/Shpallje/:id" element={<Job />} />
+            </Routes>
           </div>
         </CSSTransition>
       </TransitionGroup>

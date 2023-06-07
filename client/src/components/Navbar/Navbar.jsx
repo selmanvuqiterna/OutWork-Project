@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Logo from "../../assets/logo-no-background-OW.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -21,10 +21,10 @@ const Navbar = () => {
     setModalLogin(!modalLogin);
   };
 
-  function handleLogout(){
+  function handleLogout() {
     localStorage.removeItem("token");
     setLogin(false);
-    navigate("/login")
+    navigate("/login");
   }
 
   useEffect(() => {
@@ -105,38 +105,42 @@ const Navbar = () => {
             </li>
 
             {login ? (
-            <li className="nav-item" style={{ marginLeft: "100px" }}>
-              <FontAwesomeIcon
-                icon={faUser}
-                className="login-icon nav-link"
-                onClick={toggleModalLogin}
-                
-              />
+              <li className="nav-item" style={{ marginLeft: "100px" }}>
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="login-icon nav-link"
+                  onClick={toggleModalLogin}
+                />
                 {modalLogin && (
-                <div className="modal-login">
-                  <div className="login-opsionet">
-                    <Link to="/Shpalljet" className="link-login">
-                      <p className="login-aplikimet">Menaxho Shpalljet</p>
-                    </Link>
-                    <Link to="/Aplikimet" className="link-login">
-                      <p className="login-aplikimet">Menaxho aplikimet</p>
-                    </Link>
-                    <Link to={`/Profili/${userId}`} className="link-login">
-                      <p className="login-aplikimet">Profili im</p>
-                    </Link>
-                    {/* <p className="login-aplikimet">Ç'kyçu</p> */}
-                    <button onClick={handleLogout} className="login-aplikimet">Ç'kyçu</button>
+                  <div className="modal-login">
+                    <div className="login-opsionet">
+                      <Link to="/Shpalljet" className="link-login">
+                        <p className="login-aplikimet">Menaxho Shpalljet</p>
+                      </Link>
+                      <Link to={`/Aplikimet/${userId}`} className="link-login">
+                        <p className="login-aplikimet">Menaxho aplikimet</p>
+                      </Link>
+                      <Link to={`/Profili/${userId}`} className="link-login">
+                        <p className="login-aplikimet">Profili im</p>
+                      </Link>
+                      {/* <p className="login-aplikimet">Ç'kyçu</p> */}
+                      <button
+                        onClick={handleLogout}
+                        className="login-aplikimet"
+                      >
+                        Ç'kyçu
+                      </button>
+                    </div>
                   </div>
-                </div>
                 )}
-                </li>):(
-                   <li className="nav-item" style={{ marginLeft: "100px" }}>
-                   <Link className="nav-link" to="/Login">
-                     <p >Login</p>
-                   </Link>
-                 </li>
-                )}
-               
+              </li>
+            ) : (
+              <li className="nav-item" style={{ marginLeft: "100px" }}>
+                <Link className="nav-link" to="/Login">
+                  <p>Login</p>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
