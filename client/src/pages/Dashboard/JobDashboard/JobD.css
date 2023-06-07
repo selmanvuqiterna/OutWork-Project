@@ -2,3 +2,15 @@
     background-color: #222831 ;
     min-height: 1000px;
 }
+
+#action{
+    display: flex;
+    height: 81px;
+}
+
+#btn-up{
+    height: 40%;
+}
+#btn-del{
+    height: 40%;
+}
