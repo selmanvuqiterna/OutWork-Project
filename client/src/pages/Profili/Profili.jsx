@@ -14,7 +14,7 @@ const Profili = () => {
         <Navbar />
       </div>
 
-    <div className="break-line"><h1>test</h1></div>
+    <div className="break-line"></div>
 
     <div className="container-profili">
       <div className="container-informacionet">
@@ -34,9 +34,9 @@ const Profili = () => {
       </div>
 
       <div className="container-profili-about-me">
-        <p>Në lidhje me mua</p>
+        <p className="profili-info">Në lidhje me</p>
         <textarea name="" id="" cols="30" rows="10" className="profili-text-area"></textarea>
-        <p>Përshkrim i shkurtër për profilin tuaj.</p>
+        <p className="profili-info">Përshkrim i shkurtër për profilin tuaj.</p>
         <button className="profili-ruaj">Ruaj</button>
       </div>
 
