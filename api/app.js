@@ -178,12 +178,12 @@ app.post("/create", (req, res) => {
   });
 });
 
-//create users
+
 
 //update users
 app.put("/update/:id", (req, res) => {
   const query =
-    "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
+  "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
 
   const values = [
     req.body.fullname,
@@ -259,7 +259,7 @@ app.delete("/employees/:id", (req, res) => {
   const id = req.params.id;
 
   db.query(query, [id], (err, data) => {
-    if (err) return res.json("Error");
+    if (err) return res.json(err);
     return res.json(data);
   });
 });
