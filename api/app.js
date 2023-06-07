@@ -178,14 +178,7 @@ app.post("/create", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
 
-
-
-
-=======
-//create users
->>>>>>> e09489ccf8f5f70091930fefea3e9957c07211dc
 
 //update users
 app.put("/update/:id", (req, res) => {
