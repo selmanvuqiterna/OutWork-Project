@@ -150,17 +150,7 @@ app.post("/create", (req, res) => {
 });
 
 
-//insertimi i nje useri prej backend ne databaz
-app.get("/", (req, res) => {
-  const sqlInsert =
-    "INSERT INTO users (fullname, email, password, confirmPassword)VALUES ('Filan Fisteku', 'filan@gmail.com','filan123','filan123')";
 
-  db.query(sqlInsert, (err, result) => {
-    console.log("error", err);
-    console.log("result", result);
-    res.json("hello this is backend");
-  });
-});
 
 //create users
 
