@@ -8,17 +8,31 @@ import {
   faUser,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
 const Aplikimet = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { userId } = useParams();
+  const [aplikimet, setAplikimet] = useState({});
 
+  // //me i marr postet
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    const fetchPost = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8800/merrAplikimet/${userId}`
+        );
+        setAplikimet(res.data.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-    return () => clearTimeout(timeout);
-  }, []);
+    fetchPost();
+  }, [userId]);
 
   if (isLoading) {
     return (
@@ -43,19 +57,17 @@ const Aplikimet = () => {
 
         <div className="puna-aplikimi">
           <div className="aplikimi-titulli">
-            <p className="titulli-aplikimi">
-              Praktikante ne Inxhinieri softuerike
-            </p>
+            <p className="titulli-aplikimi">{aplikimet.shpallje_titulli}</p>
             <p className="emri-kompanis-aplikimi">
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-              PR CONSULTING SH.P.K
+              {aplikimet.shpallje_emri_kompanisë}
             </p>
             <p className="shteti-aplikimi">
               <FontAwesomeIcon
                 icon={faMapMarkerAlt}
                 style={{ marginRight: "7px" }}
               />
-              Kosovë
+              {aplikimet.shpallje_shteti}
             </p>
           </div>
 
@@ -66,102 +78,16 @@ const Aplikimet = () => {
                 icon={faCalendarAlt}
                 style={{ marginRight: "7px" }}
               />
-              Apr 06, 2023
+              {new Date(aplikimet.shpallje_data_skadimit).toLocaleDateString(
+                "en-US",
+                {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                }
+              )}
             </p>
-            <p className="aplikimi-lloji">Full Time</p>
-          </div>
-        </div>
-
-        <div className="puna-aplikimi">
-          <div className="aplikimi-titulli">
-            <p className="titulli-aplikimi">
-              Praktikante ne Inxhinieri softuerike
-            </p>
-            <p className="emri-kompanis-aplikimi">
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-              PR CONSULTING SH.P.K
-            </p>
-            <p className="shteti-aplikimi">
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Kosovë
-            </p>
-          </div>
-
-          <div className="aplikimi-largo">
-            <button className="aplikimi-fshije">Largo</button>
-            <p className="aplikimi-data">
-              <FontAwesomeIcon
-                icon={faCalendarAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Apr 06, 2023
-            </p>
-            <p className="aplikimi-lloji">Full Time</p>
-          </div>
-        </div>
-
-        <div className="puna-aplikimi">
-          <div className="aplikimi-titulli">
-            <p className="titulli-aplikimi">
-              Praktikante ne Inxhinieri softuerike
-            </p>
-            <p className="emri-kompanis-aplikimi">
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-              PR CONSULTING SH.P.K
-            </p>
-            <p className="shteti-aplikimi">
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Kosovë
-            </p>
-          </div>
-
-          <div className="aplikimi-largo">
-            <button className="aplikimi-fshije">Largo</button>
-            <p className="aplikimi-data">
-              <FontAwesomeIcon
-                icon={faCalendarAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Apr 06, 2023
-            </p>
-            <p className="aplikimi-lloji">Full Time</p>
-          </div>
-        </div>
-
-        <div className="puna-aplikimi">
-          <div className="aplikimi-titulli">
-            <p className="titulli-aplikimi">
-              Praktikante ne Inxhinieri softuerike
-            </p>
-            <p className="emri-kompanis-aplikimi">
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-              PR CONSULTING SH.P.K
-            </p>
-            <p className="shteti-aplikimi">
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Kosovë
-            </p>
-          </div>
-
-          <div className="aplikimi-largo">
-            <button className="aplikimi-fshije">Largo</button>
-            <p className="aplikimi-data">
-              <FontAwesomeIcon
-                icon={faCalendarAlt}
-                style={{ marginRight: "7px" }}
-              />
-              Apr 06, 2023
-            </p>
-            <p className="aplikimi-lloji">Full Time</p>
+            <p className="aplikimi-lloji">{aplikimet.shpallje_lloji}</p>
           </div>
         </div>
       </div>

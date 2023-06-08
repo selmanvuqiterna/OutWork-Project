@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const Job = () => {
   const { id } = useParams();
+
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 

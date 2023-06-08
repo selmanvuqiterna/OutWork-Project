@@ -413,6 +413,25 @@ app.post("/krijoPune", (req, res) => {
   });
 });
 
+app.get("/merrAplikimet/:id", (req, res) => {
+  const userId = req.params.id;
+  const query =
+    "SELECT * FROM aplikimet a INNER JOIN shpallje sh ON a.shpallja_id = sh.id WHERE a.user_id = ?";
+
+  db.query(query, [userId], (err, data) => {
+    if (err) {
+      return res.json({ message: err });
+    }
+    if (data.length === 0) {
+      return res
+        .status(404)
+        .json({ status: 404, message: "Asnje aplikim nuk u gjend" });
+    }
+    console.log(data); // Log the retrieved data
+    return res.status(200).json({ status: 200, data: data[0] });
+  });
+});
+
 app.get("/job/:id", (req, res) => {
   const jobId = req.params.id;
   const query = "SELECT * FROM shpallje WHERE id = ?";
