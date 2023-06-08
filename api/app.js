@@ -148,7 +148,7 @@ app.post("/aplikimet", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  const { fullname, email, personalNumber, password, privilege } = req.body;
+  const { fullname, email, password, privilege, personalNumber } = req.body;
 
   // Generate a salt
   const saltRounds = 10;
@@ -166,7 +166,7 @@ app.post("/create", (req, res) => {
 
       const query =
         "INSERT INTO users (`fullname`, `email`, `password`, `privilege`,`user_numri_personal`) VALUES (?, ?, ?, ?, ?)";
-      const values = [fullname, email, personalNumber, hash, privilege];
+      const values = [fullname, email, hash, privilege, personalNumber];
 
       db.query(query, values, (err, data) => {
         if (err) {

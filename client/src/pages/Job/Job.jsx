@@ -18,6 +18,11 @@ const Job = () => {
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const [emri, setEmri] = useState("");
+  const [email, setEmail] = useState("");
+  const [numri, setNumri] = useState("");
+  const [mesazhi, setMesazhi] = useState("");
+  const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
   //me i marr postet
@@ -54,7 +59,6 @@ const Job = () => {
     }
   }
 
-  // me check nese jam logged in
   const handleAmIAuthorized = async () => {
     try {
       const response = await axios.get("http://localhost:8800/isUserAuth", {
@@ -66,7 +70,8 @@ const Job = () => {
       console.log(response.data);
 
       if (response.data.auth) {
-        setUserId(response.data.userId);
+        const userId = response.data.userId;
+        setUserId(userId);
         return true;
       } else {
         console.log(response);
@@ -78,12 +83,6 @@ const Job = () => {
       return false;
     }
   };
-
-  const [emri, setEmri] = useState("");
-  const [email, setEmail] = useState("");
-  const [numri, setNumri] = useState("");
-  const [mesazhi, setMesazhi] = useState("");
-  const [userId, setUserId] = useState("");
 
   //me apliku  , me qit aplikimin tek tabela aplikuesit
   const apliko = async (userId) => {

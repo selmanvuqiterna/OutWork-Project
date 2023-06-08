@@ -61,7 +61,7 @@ const Profili = () => {
             <p className="profili-info-bold">Emri dhe Mbiemri</p>
             <p className="profili-info">{userData.fullname}</p>
             <p className="profili-info-bold">Numri personal</p>
-            <p className="profili-info">1249380527</p>
+            <p className="profili-info">{userData.user_numri_personal}</p>
           </div>
         </div>
 

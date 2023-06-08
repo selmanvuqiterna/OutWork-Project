@@ -8,14 +8,14 @@ const Register = () => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [personalNumber, setPersonalNumber] = useState("");
   const [privilege] = useState("User");
+  const [personalNumber, setPersonalNumber] = useState("");
   const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (emailRegex.test(email)) {
+    if (!emailRegex.test(email)) {
       alert("Please enter a valid email address.");
     } else if (!passwordRegex.test(password)) {
       alert(
@@ -30,9 +30,9 @@ const Register = () => {
         .post("http://localhost:8800/create", {
           fullname,
           email,
-          personalNumber,
           password,
           privilege,
+          personalNumber,
         })
         .then((res) => {
           console.log(res);
