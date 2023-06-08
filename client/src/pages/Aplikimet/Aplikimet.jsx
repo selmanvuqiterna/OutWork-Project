@@ -14,8 +14,17 @@ const Aplikimet = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { userId } = useParams();
   const [aplikimet, setAplikimet] = useState({});
+  const [errorMsg, setErrorMsg] = useState("");
 
-  // //me i marr postet
+  function handleLargo(e, userId, shpalljaId) {
+    e.preventDefault();
+    try {
+      axios.post(`http://localhost:8800/fshiAplikimet/${userId}/${shpalljaId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -28,6 +37,10 @@ const Aplikimet = () => {
         }, 500);
       } catch (err) {
         console.log(err);
+        setIsLoading(false);
+        if (err.response && err.response.data && err.response.data.message) {
+          setErrorMsg(err.response.data.message);
+        }
       }
     };
 
@@ -38,6 +51,20 @@ const Aplikimet = () => {
     return (
       <div className="pre-loader">
         <div className="spinner"></div>
+      </div>
+    );
+  }
+  if (errorMsg) {
+    return (
+      <div className="aplikimet">
+        <div className="navbar">
+          <Navbar />
+        </div>
+        <div className="container-aplikimet">
+          <p className="aplikimet-header">Aplikimet per vende pune</p>
+
+          <p style={{ marginTop: "10px", marginLeft: "40px" }}>{errorMsg}</p>
+        </div>
       </div>
     );
   }
@@ -55,41 +82,49 @@ const Aplikimet = () => {
           Aktualisht keni aplikuar në këto pozita pune
         </p>
 
-        <div className="puna-aplikimi">
-          <div className="aplikimi-titulli">
-            <p className="titulli-aplikimi">{aplikimet.shpallje_titulli}</p>
-            <p className="emri-kompanis-aplikimi">
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-              {aplikimet.shpallje_emri_kompanisë}
-            </p>
-            <p className="shteti-aplikimi">
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                style={{ marginRight: "7px" }}
-              />
-              {aplikimet.shpallje_shteti}
-            </p>
-          </div>
+        <form action="" onSubmit={handleLargo}>
+          <div className="puna-aplikimi" key={aplikimet.shpallja_id}>
+            <div className="aplikimi-titulli">
+              <p className="titulli-aplikimi">{aplikimet.shpallje_titulli}</p>
+              <p className="emri-kompanis-aplikimi">
+                <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
+                {aplikimet.shpallje_emri_kompanisë}
+              </p>
+              <p className="shteti-aplikimi">
+                <FontAwesomeIcon
+                  icon={faMapMarkerAlt}
+                  style={{ marginRight: "7px" }}
+                />
+                {aplikimet.shpallje_shteti}
+              </p>
+            </div>
 
-          <div className="aplikimi-largo">
-            <button className="aplikimi-fshije">Largo</button>
-            <p className="aplikimi-data">
-              <FontAwesomeIcon
-                icon={faCalendarAlt}
-                style={{ marginRight: "7px" }}
-              />
-              {new Date(aplikimet.shpallje_data_skadimit).toLocaleDateString(
-                "en-US",
-                {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                }
-              )}
-            </p>
-            <p className="aplikimi-lloji">{aplikimet.shpallje_lloji}</p>
+            <div className="aplikimi-largo">
+              <button
+                className="aplikimi-fshije"
+                type="submit"
+                onClick={(e) => handleLargo(e, userId, aplikimet.shpallja_id)}
+              >
+                Largo
+              </button>
+              <p className="aplikimi-data">
+                <FontAwesomeIcon
+                  icon={faCalendarAlt}
+                  style={{ marginRight: "7px" }}
+                />
+                {new Date(aplikimet.shpallje_data_skadimit).toLocaleDateString(
+                  "en-US",
+                  {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  }
+                )}
+              </p>
+              <p className="aplikimi-lloji">{aplikimet.shpallje_lloji}</p>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

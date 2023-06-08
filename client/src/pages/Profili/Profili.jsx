@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./profili.css";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
 const Profili = () => {
+  const { userId } = useParams();
+
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8800/merrUserData/${userId}`
+        );
+
+        setUserData(res.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchUserData();
+  }, [userId]);
+
   return (
     <div className="profili">
       <div className="navbar">
@@ -11,7 +32,7 @@ const Profili = () => {
 
       <div className="break-line"></div>
 
-      <div className="container-profili">
+      <div className="container-profili" key={userData.id}>
         <div className="container-informacionet">
           <div style={{ display: "flex", flexDirection: "column" }}>
             <img
@@ -38,7 +59,7 @@ const Profili = () => {
               ndani.
             </p>
             <p className="profili-info-bold">Emri dhe Mbiemri</p>
-            <p className="profili-info">Selman Vuciterna</p>
+            <p className="profili-info">{userData.fullname}</p>
             <p className="profili-info-bold">Numri personal</p>
             <p className="profili-info">1249380527</p>
           </div>

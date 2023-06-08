@@ -148,7 +148,7 @@ app.post("/aplikimet", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  const { fullname, email, password, privilege } = req.body;
+  const { fullname, email, personalNumber, password, privilege } = req.body;
 
   // Generate a salt
   const saltRounds = 10;
@@ -165,8 +165,8 @@ app.post("/create", (req, res) => {
       }
 
       const query =
-        "INSERT INTO users (`fullname`, `email`, `password`, `privilege`) VALUES (?, ?, ?, ?)";
-      const values = [fullname, email, hash, privilege];
+        "INSERT INTO users (`fullname`, `email`, `password`, `privilege`,`user_numri_personal`) VALUES (?, ?, ?, ?, ?)";
+      const values = [fullname, email, personalNumber, hash, privilege];
 
       db.query(query, values, (err, data) => {
         if (err) {
@@ -178,12 +178,10 @@ app.post("/create", (req, res) => {
   });
 });
 
-
-
 //update users
 app.put("/update/:id", (req, res) => {
   const query =
-  "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
+    "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
 
   const values = [
     req.body.fullname,
@@ -413,6 +411,21 @@ app.post("/krijoPune", (req, res) => {
   });
 });
 
+app.post("/fshiAplikimet/:userId/:shpalljaId", (req, res) => {
+  const userId = req.params.userId;
+  const shpalljaId = req.params.shpalljaId;
+
+  console.log(shpalljaId, userId);
+
+  const query = "DELETE FROM aplikimet where user_id = ? and shpallja_id = ?";
+  db.query(query, [userId, shpalljaId], (err, data) => {
+    if (err) {
+      return res.json({ message: err });
+    }
+    return res.json(data);
+  });
+});
+
 app.get("/merrAplikimet/:id", (req, res) => {
   const userId = req.params.id;
   const query =
@@ -445,6 +458,25 @@ app.get("/job/:id", (req, res) => {
 
     console.log(data); // Log the retrieved data
     return res.status(200).json({ status: 200, data: data[0] });
+  });
+});
+
+app.get("/merrUserData/:id", (req, res) => {
+  const userId = req.params.id;
+
+  const query = "SELECT * FROM users where id = ?";
+
+  db.query(query, [userId], (err, data) => {
+    if (err) {
+      return res.status(500).json({ statis: 500, message: "Database Error" });
+    }
+
+    if (data.length === 0) {
+      return res.json({ message: "Ky user nuk ka asnje te dhene" });
+    }
+
+    console.log(data);
+    return res.json({ data: data[0] });
   });
 });
 

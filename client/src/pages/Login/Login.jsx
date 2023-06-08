@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./login.css";
 import axios from "axios";
@@ -10,7 +10,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(null);
-  
 
   axios.defaults.withCredentials = true;
 
@@ -25,7 +24,7 @@ const Login = () => {
       })
       .then((response) => {
         if (!response.data.auth) {
-          setLoginStatus(false);;
+          setLoginStatus(false);
         } else {
           localStorage.setItem("token", response.data.token);
           setLoginStatus(true);
@@ -33,7 +32,6 @@ const Login = () => {
         }
       });
   }
-
 
   return (
     <div className="bodyLogin">
@@ -66,19 +64,24 @@ const Login = () => {
               }}
               required
             />
-             {loginStatus === false && (
+            {loginStatus === false && (
               <p className="error-login">
                 <FontAwesomeIcon
                   icon={faExclamationCircle}
                   className="error-icon"
                   style={{ marginRight: "5px" }}
                 />
-                Wront email/password combination!
+                Wrong email/password combination!
                 {loginStatus}
               </p>
             )}
 
-            <input className="inputs-button" type="submit" value={"Login"} />
+            <input
+              className="inputs-button"
+              type="submit"
+              value={"Login"}
+              onClick={handleSubmit}
+            />
 
             <div className="inputs-button">
               <a href="/Register" id="register-btn">

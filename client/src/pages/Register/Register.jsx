@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import "./register.css";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
@@ -8,37 +8,43 @@ const Register = () => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [personalNumber, setPersonalNumber] = useState("");
   const [privilege] = useState("User");
   const navigate = useNavigate();
 
-  
-  
-
- 
-  
-
   function handleSubmit(event) {
-    
     event.preventDefault();
 
-    if (!email.includes('@') || !email.includes('.com')) {
-      alert('Please enter a valid email address.');
+    if (emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+    } else if (!passwordRegex.test(password)) {
+      alert(
+        "Password must contain at least one letter, one digit, and be at least 8 characters long."
+      );
+    } else if (!personalNumberRegex.test(personalNumber)) {
+      alert(
+        "Numri personal duhet te kete fiks 10 karaktere , dhe te kete vetem numra"
+      );
     } else {
-      axios.post("http://localhost:8800/create", {
-        fullname,
-        email,
-        password,
-        privilege,
-      })
-      .then((res) => {
-        console.log(res);
-        navigate("/Login");
-      })
-      .catch((err) => console.log(err));
-      alert('Registered Successfully')
-      
-    } 
+      axios
+        .post("http://localhost:8800/create", {
+          fullname,
+          email,
+          personalNumber,
+          password,
+          privilege,
+        })
+        .then((res) => {
+          console.log(res);
+          navigate("/Login");
+        })
+        .catch((err) => console.log(err));
+      alert("Registered Successfully");
+    }
   }
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const personalNumberRegex = /^\d{10}$/;
 
   return (
     <div className="bodyRegister">
@@ -74,6 +80,16 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+
+            <input
+              className="inputs-form"
+              type="text"
+              placeholder="Personal Number"
+              name="personalnumber"
+              onChange={(e) => setPersonalNumber(e.target.value)}
+              required
+            />
+
             <input
               className="inputs-form"
               type="password"
