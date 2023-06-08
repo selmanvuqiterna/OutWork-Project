@@ -205,7 +205,7 @@ app.delete("/users/:id", (req, res) => {
   const id = req.params.id;
 
   db.query(query, [id], (err, data) => {
-    if (err) return res.json("Error");
+    if (err) return res.json(err);
     return res.json(data);
   });
 });
