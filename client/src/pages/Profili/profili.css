@@ -1,84 +1,85 @@
-
-.break-line{
-    padding-top:60px;
-    margin: 0 500px;
-    /* border: 1px solid rgb(236, 236, 236); */
+.img-user-change:hover {
+  z-index: 1000000000000000;
+  background-color: grey;
 }
 
-.container-profili{
-
-    margin: 50px 500px;
-    border: 1px solid rgb(238, 237, 237);
-    box-shadow: 0px -3px 5px rgba(0,0,0,0.1);
-   max-height: 1000px;
-   border-radius: 10px;
+.break-line {
+  padding-top: 60px;
+  margin: 0 500px;
+  /* border: 1px solid rgb(236, 236, 236); */
 }
 
-.container-informacionet{
-    /* border: 3px solid black; */
-    margin-top: 50px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: row;
+.container-profili {
+  margin: 50px 500px;
+  border: 1px solid rgb(238, 237, 237);
+  box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+  max-height: 1000px;
+  border-radius: 10px;
 }
 
-.profili-img{
-    width: 250px;
-    height: 170px;
-    margin-right: 40px;
+.container-informacionet {
+  /* border: 3px solid black; */
+  margin-top: 50px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
-.informacionet-profili{
-    margin-top: 15px;
+.profili-img {
+  width: 250px;
+  height: 170px;
+  margin-right: 40px;
 }
 
-
-.profili-info-bold:nth-child(1){
-    font-size: 18px !important;
-    color: black;
-    font-weight: 500;
+.informacionet-profili {
+  margin-top: 15px;
 }
 
-.profili-info-bold{
-    font-size: 14px;
-    color: rgb(63, 63, 63);
-    font-weight: 500;
+.profili-info-bold:nth-child(1) {
+  font-size: 18px !important;
+  color: black;
+  font-weight: 500;
 }
 
-.profili-info-bold{
-    margin-bottom: 0 !important;
+.profili-info-bold {
+  font-size: 14px;
+  color: rgb(63, 63, 63);
+  font-weight: 500;
 }
 
-.profili-info{
-    margin-bottom: 10px;
-    font-size: 14px;
+.profili-info-bold {
+  margin-bottom: 0 !important;
 }
 
-.container-profili-about-me{
-    margin: 20px 20px;
-    
+.profili-info {
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
-.profili-text-area{
-    width: 100%;
-    border: 1px solid rgb(206, 206, 206);
-    border-radius: 10px;
+.container-profili-about-me {
+  margin: 20px 20px;
 }
 
-.profili-ruaj{
-    border: none;
-    font-size: 16px;
-    background-color: rgb(34, 34, 211);
-    color: white;
-    padding: 7px;
-    border-radius: 4px;
-    font-weight: 500;
-    width: 70px;
-
-    transition: all 0.5s;
+.profili-text-area {
+  width: 100%;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 10px;
 }
 
-.profili-ruaj:hover{
-    background-color: rgb(228, 226, 226);
-    color: rgb(34, 34, 211);
+.profili-ruaj {
+  border: none;
+  font-size: 16px;
+  background-color: rgb(34, 34, 211);
+  color: white;
+  padding: 7px;
+  border-radius: 4px;
+  font-weight: 500;
+  width: 70px;
+
+  transition: all 0.5s;
+}
+
+.profili-ruaj:hover {
+  background-color: rgb(228, 226, 226);
+  color: rgb(34, 34, 211);
 }

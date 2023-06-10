@@ -11,6 +11,7 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.use("/uploads", express.static("./uploads"));
+app.use("/uploadsImageProfili", express.static("./uploadsImageProfili"));
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -24,7 +25,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT"],
     credentials: true, //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
   })
 );
@@ -477,6 +478,71 @@ app.get("/merrUserData/:id", (req, res) => {
 
     console.log(data);
     return res.json({ data: data[0] });
+  });
+});
+
+//Update profile:
+
+//img storage konfigurimi
+const imgconfigProfile = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./uploadsImageProfili");
+  },
+  filename: (req, file, callback) => {
+    callback(null, `image-${Date.now()}.${file.originalname}`);
+  },
+});
+
+//check nese eshte foto apo qkadoqofte
+const isImageProfili = (req, file, callback) => {
+  if (file.mimetype.startsWith("image")) {
+    callback(null, true);
+  } else {
+    callback(new Error("Only image files are allowed"));
+  }
+};
+
+const uploadImageProfile = multer({
+  storage: imgconfigProfile,
+  fileFilter: null,
+}).single("photo"); // Use the same field name as in your frontend form
+
+app.put("/updateProdile/:id", (req, res) => {
+  uploadImageProfile(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      // A multer error occurred
+      return res.status(422).json({ status: 422, message: err.message });
+    } else if (err) {
+      // An unknown error occurred
+      return res
+        .status(500)
+        .json({ status: 500, message: "Internal Server Error" });
+    }
+    const userPershkrimi = req.body.userPershkrimi;
+    const userImage = req.file;
+
+    try {
+      const query =
+        "UPDATE users SET `user_photo`= ?, `user_pershkrimi` = ? WHERE id = ?";
+      const id = req.params.id;
+      const values = [userImage.filename, userPershkrimi, id];
+
+      db.query(query, values, (err, data) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ status: 500, message: "Database Error" });
+        }
+        // Insert successful
+        return res
+          .status(200)
+          .json({ status: 200, message: "Job created successfully" });
+      });
+    } catch (err) {
+      return res
+        .status(500)
+        .json({ status: 500, message: "Internal Server Error" });
+    }
   });
 });
 
