@@ -1,6 +1,7 @@
 .bodyLogin {
   background-color: #222831;
-  height: 800px;
+  height: 1000px;
+  overflow-x: hidden;
 }
 .title-login {
   margin-left: 150px;
@@ -13,6 +14,9 @@
   margin-top: 70px;
 }
 
+.mainDiv-login{
+  margin-left: 200px;
+}
 .inputs-form {
   margin-top: 40px;
   width: 250px;

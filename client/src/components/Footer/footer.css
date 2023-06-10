@@ -44,6 +44,7 @@
 @media screen and (min-width:480px) {
     .footer-main{
         background-color: white;
+        
     }
     #kerkoj{
         width:320px;
@@ -68,10 +69,11 @@
     
     .images{
         padding-left: 100px;
+       
     }
     
     #title-footer{
-        margin-left: 620px;
+        margin-left: 800px;
         padding-top: 300px;
         color: #00D0B0;
 

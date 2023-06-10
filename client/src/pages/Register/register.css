@@ -1,6 +1,6 @@
 .bodyRegister{
     background-color: #222831;
-    height: 900px;
+    height: 1000px;
 }
 .title-register{
     margin-top: 40px;
@@ -9,7 +9,7 @@
 }
 
 .register-form{
-    margin-left: 70px;
+    margin-left: 250px;
 }
 
 #already{
@@ -24,11 +24,11 @@
 @media screen and (min-width:480px) {
    
 .main-divRegister{
-    padding-top: 100px;
+    padding-top: 180px;
 }
 
 .title-register{
-    margin-left: 690px;
+    margin-left: 870px;
     
 }
 

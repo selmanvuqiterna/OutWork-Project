@@ -109,6 +109,7 @@
     #introText{
       
        text-align: center;
+       margin-left: 150px;
        
        
     }
@@ -122,6 +123,10 @@
         font-family: 'Poppins', sans-serif;
        
         
+    }
+
+    #link-id{
+        margin-left: 150px;
     }
 
     
@@ -140,7 +145,7 @@
     .body-img{
         width: fit-content;
         height: 300px;
-        margin-left:170px;
+        margin-left:400px;
         margin-top:-0px ;
     }
     .footer{

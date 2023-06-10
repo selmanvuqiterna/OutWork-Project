@@ -19,7 +19,7 @@ const JobDashboard = () => {
         }catch(error){
           console.log(error)
         }
-      }
+      } 
       fetchAllJobs()
   
     },[])

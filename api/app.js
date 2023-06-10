@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PUT"],
+    methods: ["GET", "POST", "PUT","DELETE"],
     credentials: true, //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
   })
 );
@@ -153,7 +153,7 @@ app.post("/create", (req, res) => {
 
   // Generate a salt
   const saltRounds = 10;
-  bcrypt.genSalt(saltRounds, function (err, salt) {
+  bcrypt.genSalt(saltRounds, function (err, salt) { 
     if (err) {
       // Handle error
       return res.json("Error");
@@ -166,8 +166,8 @@ app.post("/create", (req, res) => {
       }
 
       const query =
-        "INSERT INTO users (`fullname`, `email`, `password`, `privilege`,`user_numri_personal`) VALUES (?, ?, ?, ?, ?)";
-      const values = [fullname, email, hash, privilege, personalNumber];
+        "INSERT INTO users (`fullname`, `email`, `password` ,`user_numri_personal`, `privilege`) VALUES (?, ?, ?, ?, ?)";
+      const values = [fullname, email, hash,personalNumber ,privilege ];
 
       db.query(query, values, (err, data) => {
         if (err) {
@@ -181,22 +181,57 @@ app.post("/create", (req, res) => {
 
 //update users
 app.put("/update/:id", (req, res) => {
-  const query =
-    "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?,`privilege` = ? WHERE ID = ? ";
 
-  const values = [
-    req.body.fullname,
-    req.body.email,
-    req.body.password,
-    req.body.privilege,
-  ];
+  const { fullname, email, password, privilege, personalNumber } = req.body;
+
   const id = req.params.id;
+  // Generate a salt
+  const saltRounds = 10;
+  bcrypt.genSalt(saltRounds, function (err, salt) { 
+    if (err) {
+      // Handle error
+      return res.json("Error");
+    }
 
-  db.query(query, [...values, id], (err, data) => {
-    if (err) return res.json(err);
-    return res.json(data);
+    // Hash the password with the generated salt
+    bcrypt.hash(password, salt, function (err, hash) {
+      if (err) {
+        return res.json("Error");
+      }
+
+      const query =
+      "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `user_numri_personal`=?, `privilege` = ? WHERE ID = ? ";
+      const values = [fullname, email, hash,personalNumber ,privilege ];
+
+      db.query(query, [...values, id], (err, data) => {
+        if (err) {
+          return res.json("Error");
+        }
+        return res.json(data);
+      });
+    });
   });
 });
+
+// //update users
+// app.put("/update/:id", (req, res) => {
+//   const query =
+//     "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `user_numri_personal`=?, `privilege` = ? WHERE ID = ? ";
+
+//   const values = [
+//     req.body.fullname,
+//     req.body.email,
+//     req.body.password,
+//     req.body.numriPersonal,
+//     req.body.privilege,
+//   ];
+//   const id = req.params.id;
+
+//   db.query(query, [...values, id], (err, data) => {
+//     if (err) return res.json(err);
+//     return res.json(data);
+//   });
+// });
 
 //fshirja e userave
 app.delete("/users/:id", (req, res) => {
@@ -255,6 +290,16 @@ app.put("/updateEmployees/:id", (req, res) => {
 //fshirja e punetorve
 app.delete("/employees/:id", (req, res) => {
   const query = "DELETE FROM employees WHERE id=?";
+  const id = req.params.id;
+
+  db.query(query, [id], (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+//fshirja e punetorve
+app.delete("/jobs/:id", (req, res) => {
+  const query = "DELETE FROM shpallje WHERE id=?";
   const id = req.params.id;
 
   db.query(query, [id], (err, data) => {
