@@ -52,7 +52,9 @@ const Job = () => {
 
       if (authorized) {
         await apliko(userId); // Use await to wait for apliko to finish
-        // navigate("/");
+        alert('Keni aplikuar me sukses')
+        navigate("/Aplikimet/:id");
+        
       }
     } catch (error) {
       console.error(error);
@@ -67,7 +69,7 @@ const Job = () => {
         },
       });
 
-      console.log(response.data);
+      
 
       if (response.data.auth) {
         const userId = response.data.userId;
