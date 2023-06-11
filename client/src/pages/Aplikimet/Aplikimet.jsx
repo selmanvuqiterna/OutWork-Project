@@ -20,6 +20,7 @@ const Aplikimet = () => {
     e.preventDefault();
     try {
       axios.post(`http://localhost:8800/fshiAplikimet/${userId}/${shpalljaId}`);
+      window.location.reload()
     } catch (err) {
       console.log(err);
     }
@@ -81,8 +82,9 @@ const Aplikimet = () => {
         <p className="aplikimet-secondary">
           Aktualisht keni aplikuar në këto pozita pune
         </p>
-
+        
         <form action="" onSubmit={handleLargo}>
+        
           <div className="puna-aplikimi" key={aplikimet.shpallja_id}>
             <div className="aplikimi-titulli">
               <p className="titulli-aplikimi">{aplikimet.shpallje_titulli}</p>
@@ -125,6 +127,7 @@ const Aplikimet = () => {
             </div>
           </div>
         </form>
+            
       </div>
     </div>
   );

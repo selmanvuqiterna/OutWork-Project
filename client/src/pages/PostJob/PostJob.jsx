@@ -38,7 +38,7 @@ const PostJob = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const updateShpallje = async (e) => {
+  const addShpallje = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -62,8 +62,8 @@ const PostJob = () => {
       },
     };
 
-    const res = await axios.put(
-      "http://localhost:8800/jobUpdate",
+    const res = await axios.post(
+      "http://localhost:8800/krijoPune",
       formData,
       config
     );
@@ -93,17 +93,17 @@ const PostJob = () => {
         </div>
       ) : (
         <div className="container-post-job">
-          <h4 className="post-job-title">UPDATE KONKURSIN E PUNËS</h4>
+          <h4 className="post-job-title">POSTO KONKURSIN E PUNËS</h4>
           <br />
           <p className="post-job-kushti">
-            Plotëso informatat e shpalljes (Shpallja juaj do të rifreskohet brenda
+            Plotëso informatat e shpalljes (Shpallja juaj do të postohet brenda
             24 orëve!)
           </p>
           <form
             action=""
             className="form-post-job"
             encType="multipart/form-data"
-            onSubmit={updateShpallje}
+            onSubmit={addShpallje}
           >
             <div className="post-job-informatat">
               <div className="post-job-informata-shpallje">
@@ -339,8 +339,8 @@ const PostJob = () => {
             <input
               type="submit"
               className="button-submit"
-              value="Update shpalljen"
-              onClick={updateShpallje}
+              value="Posto shpalljen"
+              onClick={addShpallje}
             />
             <br />
             <br />
