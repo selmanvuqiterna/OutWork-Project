@@ -24,7 +24,8 @@ import Aplikimet from "./pages/Aplikimet/Aplikimet";
 import Profili from "./pages/Profili/Profili";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import JobUpdate from "./pages/Dashboard/JobDashboard/JobUpdate";
+// import JobUpdate from "./pages/Dashboard/JobDashboard/JobUpdate";
+import Admins from "./pages/Dashboard/Admins/Admins";
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
               <Route path="/About" element={<About />} />
               <Route path="/Jobs" element={<Jobs />} />
               {/* <Route path="/JobUpdate/:id" element={<JobUpdate />} /> */}
+              <Route path="/Admins" element={<Admins/>} />
               <Route path="/Shpallje" element={<PostJob />} />
               <Route path="/Shpalljet" element={<Shpalljet />} />
               <Route path="/Aplikimet/:userId" element={<Aplikimet />} />

@@ -319,7 +319,7 @@ app.get("/employees", (req, res) => {
 
 //selektimi i te gjithe userave
 app.get("/users", (req, res) => {
-  const q = "SELECT * FROM users";
+  const q = "SELECT * FROM users  WHERE `privilege`= 'User';";
   db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -329,6 +329,15 @@ app.get("/users", (req, res) => {
 //Selektimi i puneve
 app.get("/jobs", (req, res) => {
   const q = "SELECT * FROM shpallje";
+  db.query(q, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+//Selektimi i admin
+app.get("/admins", (req, res) => {
+  const q = "SELECT * FROM `users` WHERE `privilege`= 'Admin';";
   db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -459,105 +468,6 @@ app.post("/krijoPune", (req, res) => {
 
 
 
-// // job update
-// app.put("/jobUpdate/:id", (req, res) => {
-//   // Call the multer middleware to handle file upload
-//   upload(req, res, function (err) {
-//     if (err instanceof multer.MulterError) {
-//       // A multer error occurred
-//       return res.status(422).json({ status: 422, message: err.message });
-//     } else if (err) {
-//       // An unknown error occurred
-//       return res
-//         .status(500)
-//         .json({ status: 500, message: "Internal Server Error" });
-//     }
-
-//     // File upload is successful, continue processing the request
-//     const {
-//       titulli,
-//       emriKompanise,
-//       kategoria,
-//       lloji,
-//       rroga,
-//       email,
-//       shteti,
-//       telefoni,
-//       pershkrimi,
-//     } = req.body;
-//     const logoKompanise = req.file;
-
-//     let dataSkadimit = req.body.dataSkadimit;
-
-//     console.log("Type of dataSkadimit:", typeof dataSkadimit);
-//     console.log("Value of dataSkadimit:", dataSkadimit);
-//     console.log("Value of dataSkadimit:", req.body);
-
-//     if (moment(dataSkadimit, "YYYY-MM-DD", true).isValid()) {
-//       dataSkadimit = moment(dataSkadimit, "YYYY-MM-DD").format("YYYY-MM-DD");
-//     } else {
-//       return res
-//         .status(422)
-//         .json({ status: 422, message: "Invalid date format" });
-//     }
-
-//     if (
-//       !titulli ||
-//       !emriKompanise ||
-//       !kategoria ||
-//       !lloji ||
-//       !dataSkadimit ||
-//       !rroga ||
-//       !email ||
-//       !telefoni ||
-//       !logoKompanise ||
-//       !shteti ||
-//       !pershkrimi
-//     ) {
-//       return res
-//         .status(422)
-//         .json({ status: 422, message: "Fill in all the details" });
-//     }
-
-//     try {
-//       const query =
-//         "UPDATE shpallje SET(`shpallje_titulli`=?, `shpallje_emri_kompanisë`=?, `shpallje_kategoria`=?, `shpallje_lloji`=?, `shpallje_data_skadimit`=?, `shpallje_rroga`=?, `shpallje_email`=?, `shpallje_shteti`=?, `shpallje_telefoni`=?, `shpallje_logo_kompanise`=?,`shpallje_pershkrimi`=?)";
-
-//       const values = [
-//         titulli,
-//         emriKompanise,
-//         kategoria,
-//         lloji,
-//         dataSkadimit,
-//         rroga,
-//         email,
-//         shteti,
-//         telefoni,
-//         logoKompanise.filename,
-//         pershkrimi,
-//       ];
-
-//       const id = req.params.id;
-
-//       db.query(query, values, (err, data) => {
-//         if (err) {
-//           return res
-//             .status(500)
-//             .json({ status: 500, message: "Database Error" });
-//         }
-
-//         // Insert successful
-//         return res
-//           .status(200)
-//           .json({ status: 200, message: "Job created successfully" });
-//       });
-//     } catch (error) {
-//       return res
-//         .status(500)
-//         .json({ status: 500, message: "Internal Server Error" });
-//     }
-//   });
-// });
 
 
 

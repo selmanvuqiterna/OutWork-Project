@@ -1,8 +1,8 @@
 .body-dashboard{
     margin: 0;
     padding: 0;
-    height: 800px;
-    background-color: #222831;
+    height: 900px;
+    background-color: white;
     font-family: 'Poppins',sans-serif;
 }
 
@@ -10,23 +10,24 @@
 /*#03254C */
 
 .navbar-dashboard{
-    background-color: #222831 ;
-    color: white;
+    background-color: white ;
+    color: #222831;
     margin-top: 0px;
-    border-bottom: 2px white solid;
+    border-bottom: 2px #2228313b solid;
     font-family: 'Poppins' ,sans-serif;
     
 }
 #logo{
-    width: 120px;
+    width: 150px;
     margin-top: 10px;
+   
         
     }
 .nav-div{
     display: flex;
     margin-left: 300px;
     text-align: center;
-    height: 85px;
+    height: 150px;
 
 }
 
@@ -35,58 +36,12 @@
 }
 
 
-.title{
-    color:#00D0B0 ;
-    margin-left: 450px;
-
-}
-
-.cards-div{
-    margin-left: 60px;
-    margin-top: 100px;
-    display: flex;
-}
-.card{
-    margin-left: 100px;
-    border: 2px solid #00D0B0 ;
-    width: 340px;
-    height: 150px;
-    background-color: transparent;
-    color: white;
-}
-
-
-.img-card{
-    width: 900px;
-    height: 200px;
-    margin-top: -200px;
-    margin-left: 310px;
-}
-.cards-title{
-    text-align: center;
-    margin-top:20px ;
-}
-
-.button-card{
-    background-color: #00D0B0;
-    color: white;
-    border: none;
-    width: 150px;
-    font-weight: bold;
-    margin-left:80px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-}
-
-
-
 .home-c{
     text-decoration: none;
-    color: white;
+    color: #222831;
     font-size: 22px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 60px;
     width: 30px;
     height: 10px;
     margin-left: 70px;
@@ -95,3 +50,57 @@
 .home-c:hover{
     color: #00D0B0;
 }
+
+
+.left-sidebar{
+    height: 100%;
+    width: 20%;
+    background-color: white;
+    border-right: 2px #2228313b solid;
+}
+
+.navigations{
+    width: 90%;
+    height: 80px;
+    margin-left: 15px;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    
+
+}
+
+.navigations:hover{
+    background-color: #222831;
+    transition: 0.5s;
+}
+
+.contents{
+    padding-top: 50px;
+}
+
+
+.title-sidebar{
+    color:#00D0B0;
+    font-size: 20px;
+    padding-top: 30px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.title-sidebar:hover{
+    color: #00D0B0;
+    cursor: pointer;
+}
+
+
+.img-dash{
+    width: 30px;
+    height: 30px;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.link-side{
+    text-decoration: none;
+}
+/*#222831*/

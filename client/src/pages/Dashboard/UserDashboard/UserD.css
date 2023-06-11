@@ -1,19 +1,18 @@
 
-.mainDiv-d{
-    margin-top: 100px;
-}
 .body-div-dashboard{
-    min-height: 1000px;
-    background-color: #222831;
+    height: 900px;
+    background-color: white;
 }
 .dashboard-table{
     margin-top: 30px;
 }
 .table-div{
     text-align: center;
-    margin-left: 170px;
+    margin-left:400px;
     height: auto;
     width: 1200px;
+    margin-top: -300px;
+    
 }
 
 #head-row{
@@ -25,19 +24,35 @@
     
     width: 500px;
     border: 1px #00D0B0 solid;
-    color: white;
+    color: #221831;
+    
 }
 .table-data{
     border: 1px #00D0B0 solid;
-    color: white;
+    color: #221831;
+
 }
+
+/* #action-td{
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+} */
+
+.btn-form{
+    width: 80px;
+    margin-top: 10px;
+}
+
+
+
 
 
 
 
 .button-add{
     background-color: #00D0B0;
-    color: white;
+    color: #221831;
     margin-top: 20px;
     border: none;
     border-radius: 10px;
@@ -50,7 +65,7 @@
     background-color: #00c851;
     color: white;
     border: none;
-    width: 65px;
+   
     border-radius: 5px;
     text-decoration: none;
     
@@ -60,7 +75,7 @@
     color: white;
     border: none;
     margin-left: 10px;
-    width: 65px;
+    
     border-radius: 5px;
     text-decoration: none;
 }

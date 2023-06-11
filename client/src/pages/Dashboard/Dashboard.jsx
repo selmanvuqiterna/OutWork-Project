@@ -1,7 +1,12 @@
 import "./Dashboard.css";
-import Logo from "../../assets/logo-no-background-OW.png";
+import Logo from "../../assets/logo-black-OW.png";
 import { Link } from "react-router-dom";
-import Image from "../../assets/ImageWorkers.png";
+
+import  userLogo from "../../assets/userIcon.png"
+import  employeeLogo from "../../assets/employeeIcon.png"
+import jobLogo from "../../assets/jobIcon.png"
+import adminLogo from "../../assets/adminIcon.png"
+import homeLogo from "../../assets/homeIcon.png"
 
 
 
@@ -19,37 +24,44 @@ const Dashboard =()=>{
             </div>
             
 
-            <div className="mainDiv">
-            <div>
-                <img className="img-card"  src={Image} alt="" />
-            </div>
-                <div className="title-div">
-                    <h1 className="title">Welcome to OutWork Dashboard</h1>
-                </div>
+            <div className="left-sidebar">
+                <div className="contents">
 
-                <div className="cards-div">
+                    <Link className="link-side" to='/UserDashboard'>
+                        <div className="navigations">
+                            <img src={userLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">User Dashboard</h1>
+                        </div>
+                    </Link>
 
-                    <div className="card">
-                        <h3 className="cards-title"> Employees Dashboard</h3>
-                        <Link to="/EmployeesDashboard">
-                        <button className="button-card" >Go to Employee Dashboard</button>
-                        </Link>
-                    </div>
 
-                    <div className="card">
-                        <h3 className="cards-title">Users Dashboard</h3>
-                        <Link to="/UserDashboard">
-                        <button className="button-card" >Go to Users Dashboard</button>
-                        </Link>
-                    </div>
+                    <Link className="link-side" to='/EmployeesDashboard'>
+                        <div className="navigations">
+                            <img src={employeeLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Employee Dashboard</h1>
+                        </div>
+                    </Link>
 
-                    <div className="card">
-                        <h3 className="cards-title" >Job Dashboard</h3>
-                        <Link to="/JobDashboard">
-                        <button className="button-card" >Go to Job Dashboard</button>
-                        </Link>
-                    </div>
+                    <Link className="link-side" to='/JobDashboard'>
+                        <div className="navigations">
+                            <img src={jobLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Job Dashboard</h1>
+                        </div>
+                    </Link>
 
+                    <Link className="link-side" to='/Admins'>
+                        <div className="navigations">
+                            <img src={adminLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Admins</h1>
+                        </div>
+                    </Link>
+
+                    <Link className="link-side" to='/'>
+                        <div className="navigations">
+                            <img src={homeLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Home</h1>
+                        </div>
+                    </Link>
                 </div>
                 
             </div>

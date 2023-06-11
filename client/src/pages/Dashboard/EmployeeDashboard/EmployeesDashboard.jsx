@@ -1,9 +1,14 @@
 import React from "react";
 import "./EmployeesD.css";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/logo-no-background-OW.png";
+import Logo from "../../../assets/logo-black-OW.png";
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import  userLogo from "../../../assets/userIcon.png"
+import  employeeLogo from "../../../assets/employeeIcon.png"
+import jobLogo from "../../../assets/jobIcon.png"
+import adminLogo from "../../../assets/adminIcon.png"
+import homeLogo from "../../../assets/homeIcon.png"
 
 function EmployeesDashboard() {
     const [employees,setEmployees] = useState([]);
@@ -25,6 +30,7 @@ function EmployeesDashboard() {
         }
     }
 return(
+
     <div className="body-div-dashboard">
         <div className="navbar-dashboard">
              <div className="nav-div">
@@ -37,7 +43,49 @@ return(
             <div className="mainDiv-d">
 
                 
-                <div className="table-div">
+            <div className="left-sidebar">
+                <div className="contents">
+
+                    <Link className="link-side" to='/UserDashboard'>
+                        <div className="navigations">
+                            <img src={userLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">User Dashboard</h1>
+                        </div>
+                    </Link>
+
+
+                    <Link className="link-side" to='/EmployeesDashboard'>
+                        <div className="navigations">
+                            <img src={employeeLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Employee Dashboard</h1>
+                        </div>
+                    </Link>
+
+                    <Link className="link-side" to='/JobDashboard'>
+                        <div className="navigations">
+                            <img src={jobLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Job Dashboard</h1>
+                        </div>
+                    </Link>
+
+                    <Link className="link-side" to='/Admins'>
+                        <div className="navigations" >
+                            <img src={adminLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Admins</h1>
+                        </div>
+                    </Link>
+
+                    <Link className="link-side" to='/'>
+                        <div className="navigations">
+                            <img src={homeLogo} className="img-dash" alt="" />
+                            <h1 className="title-sidebar">Home</h1>
+                        </div>
+                    </Link>
+                </div>
+
+
+
+                <div className="table-div" >
                 <Link to='/AddEmployees'>
                 <button className="button-add-e">Add Employees</button>
                 </Link>
@@ -79,9 +127,17 @@ return(
                     </tbody>
                 </table>
                 </div>
-
-
+                
             </div>
+
+
+
+
+                
+                </div>
+
+
+           
 
             
     </div>

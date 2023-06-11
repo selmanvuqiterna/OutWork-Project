@@ -1,4 +1,5 @@
-import "./UserD.css";
+import React from 'react'
+import "../UserDashboard/UserD.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/logo-black-OW.png";
 import axios from 'axios';
@@ -10,29 +11,28 @@ import adminLogo from "../../../assets/adminIcon.png"
 import homeLogo from "../../../assets/homeIcon.png"
 
 
-
-const UserDashboard = ()=>{
-
-
+function Admins() {
     const [user,setUser] = useState([]);
 
 
 
     useEffect(()=>{
-        axios.get('http://localhost:8800/users')
+        axios.get('http://localhost:8800/admins')
         .then(res=> setUser(res.data))
         .catch(err=> console.log(err));
     }, [])
 
     const handleDelete = async (id) =>{
         try {
-            await axios.delete('http://localhost:8800/users/' +id,)
+            await axios.delete('http://localhost:8800/admins/' +id,)
             window.location.reload()
         }catch(err){
             console.log(err)
         }
     }
-return(
+
+    
+  return (
     <div className="body-div-dashboard">
         <div className="navbar-dashboard">
              <div className="nav-div">
@@ -136,13 +136,7 @@ return(
 
             
     </div>
-)
-
+  )
 }
 
-
-
-
-
-
-export default UserDashboard;
+export default Admins
