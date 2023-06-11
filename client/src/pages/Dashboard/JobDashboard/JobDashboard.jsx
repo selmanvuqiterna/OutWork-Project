@@ -74,27 +74,26 @@ const JobDashboard = () => {
           </thead>
 
           { <tbody>
-            {jobs.map((jobs, i) => (
+            {jobs.map((data, i) => (
               <tr key={i}>
-                <td className="table-data">{jobs.id}</td>
-                <td className="table-data">{jobs.shpallje_titulli}</td>
-                <td className="table-data">{jobs.shpallje_emri_kompanisë}</td>
-                <td className="table-data">{jobs.shpallje_kategoria}</td>
-                <td className="table-data">{jobs.shpallje_lloji}</td>
-                <td className="table-data">{jobs.shpallje_data_skadimit}</td>
-                <td className="table-data">{jobs.shpallje_rroga}</td>
-                <td className="table-data">{jobs.shpallje_email}</td>
-                <td className="table-data">{jobs.shpallje_shteti}</td>
-                <td className="table-data">{jobs.shpallje_telefoni}</td>
-                <td className="table-data">{jobs.shpallje_logo_kompanise}</td>
-                <td className="table-data">{jobs.shpallje_pershkrimi}</td>
+                <td className="table-data">{data.id}</td>
+                <td className="table-data">{data.shpallje_titulli}</td>
+                <td className="table-data">{data.shpallje_emri_kompanisë}</td>
+                <td className="table-data">{data.shpallje_kategoria}</td>
+                <td className="table-data">{data.shpallje_lloji}</td>
+                <td className="table-data">{data.shpallje_data_skadimit}</td>
+                <td className="table-data">{data.shpallje_rroga}</td>
+                <td className="table-data">{data.shpallje_email}</td>
+                <td className="table-data">{data.shpallje_shteti}</td>
+                <td className="table-data">{data.shpallje_telefoni}</td>
+                <td className="table-data">{data.shpallje_logo_kompanise}</td>
+                <td className="table-data">{data.shpallje_pershkrimi}</td>
                 <td className="table-data" id="action">
-                  { <button id="btn-up">
-                    {" "}
-                    <Link to={`/update/${jobs.id}`} id="btn-up">
+                   <button id="btn-up">
+                    <Link to={`/JobUpdate/${data.id}`} id="btn-up">
                       Update
                     </Link>
-                  </button> }
+                  </button> 
                   <button id="btn-del" onClick={(e) => handleDelete(jobs.id)}>
                     Delete
                   </button>
