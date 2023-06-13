@@ -68,7 +68,7 @@ const About = () => {
             <span className="header-second-span">award-winning employees</span>
           </div>
           <Link to="/ContactUs">
-            <button className="btn-about">HIRE US</button>
+            <button className="btn-about">Contact Us</button>
           </Link>
         </div>
 
