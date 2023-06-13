@@ -26,6 +26,7 @@ import Profili from "./pages/Profili/Profili";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 // import JobUpdate from "./pages/Dashboard/JobDashboard/JobUpdate";
 import Admins from "./pages/Dashboard/Admins/Admins";
+import Contact from "./pages/Contact/Contact";
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
               <Route path="/Jobs" element={<Jobs />} />
               {/* <Route path="/JobUpdate/:id" element={<JobUpdate />} /> */}
               <Route path="/Admins" element={<Admins/>} />
+              <Route path="/ContactUs" element={<Contact/>} />
               <Route path="/Shpallje" element={<PostJob />} />
               <Route path="/Shpalljet" element={<Shpalljet />} />
               <Route path="/Aplikimet/:userId" element={<Aplikimet />} />
