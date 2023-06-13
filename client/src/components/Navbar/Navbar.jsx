@@ -114,9 +114,9 @@ const Navbar = () => {
                 {modalLogin && (
                   <div className="modal-login">
                     <div className="login-opsionet">
-                      <Link to="/Shpalljet" className="link-login">
+                      {/* <Link to="/Shpalljet" className="link-login">
                         <p className="login-aplikimet">Menaxho Shpalljet</p>
-                      </Link>
+                      </Link> */}
                       <Link to={`/Aplikimet/${userId}`} className="link-login">
                         <p className="login-aplikimet">Menaxho aplikimet</p>
                       </Link>

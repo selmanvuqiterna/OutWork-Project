@@ -52,9 +52,8 @@ const Job = () => {
 
       if (authorized) {
         await apliko(userId); // Use await to wait for apliko to finish
-        alert('Keni aplikuar me sukses')
+        alert("Keni aplikuar me sukses");
         navigate("/Aplikimet/:id");
-        
       }
     } catch (error) {
       console.error(error);
@@ -68,8 +67,6 @@ const Job = () => {
           "x-access-token": localStorage.getItem("token"),
         },
       });
-
-      
 
       if (response.data.auth) {
         const userId = response.data.userId;
@@ -244,6 +241,7 @@ const Job = () => {
                     type="text"
                     className="input-pune-kerkuesi"
                     onChange={(e) => setEmri(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="margin-top">
@@ -252,6 +250,7 @@ const Job = () => {
                     type="text"
                     className="input-pune-kerkuesi"
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="margin-top">
@@ -260,6 +259,7 @@ const Job = () => {
                     type="text"
                     className="input-pune-kerkuesi"
                     onChange={(e) => setNumri(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="margin-top">
