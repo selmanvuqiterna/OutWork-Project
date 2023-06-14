@@ -20,7 +20,7 @@ const  Modal = ({closeModal}) =>{
           <Link className="nav-link" to='/Apply'>Apply</Link>
           </li>
           <li className="nav-item">
-          <Link className="nav-link" to='/Login'>Login</Link>
+          <Link className="nav-link" to='/Login'>Login </Link>
           </li>
             <li className="nav-item">
           <Link className="nav-link" to='/Register'>Register</Link>
