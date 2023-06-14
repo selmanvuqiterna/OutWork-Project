@@ -18,11 +18,8 @@ const Job = () => {
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const [emri, setEmri] = useState("");
-  const [email, setEmail] = useState("");
-  const [numri, setNumri] = useState("");
-  const [mesazhi, setMesazhi] = useState("");
   const [userId, setUserId] = useState("");
+  const [error, setError] = useState(""); // New state for error message
   const navigate = useNavigate();
 
   //me i marr postet
@@ -46,17 +43,16 @@ const Job = () => {
     e.preventDefault();
 
     try {
-      const authorized = await handleAmIAuthorized();
-      console.log("Authorized:", authorized);
-      console.log("userId:", userId);
+      const authorizedUserId = await handleAmIAuthorized();
+      console.log("Authorized UserId:", authorizedUserId);
 
-      if (authorized) {
-        await apliko(userId); // Use await to wait for apliko to finish
-        alert("Keni aplikuar me sukses");
-        navigate("/Aplikimet/:id");
+      if (authorizedUserId) {
+        setUserId(authorizedUserId); // Set the userId state
+        const response = await aplikimet(authorizedUserId); // Use await to wait for apliko to finish
+        console.log(response);
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 
@@ -68,46 +64,50 @@ const Job = () => {
         },
       });
 
+      // console.log(response.data);
+
       if (response.data.auth) {
         const userId = response.data.userId;
-        setUserId(userId);
-        return true;
+        return userId; // Return the userId
       } else {
-        console.log(response);
+        // console.log(response);
         navigate("/login");
-        return false;
+        return null;
       }
     } catch (error) {
       console.error(error);
-      return false;
+      return null;
     }
-  };
-
-  //me apliku  , me qit aplikimin tek tabela aplikuesit
-  const apliko = async (userId) => {
-    axios
-      .post("http://localhost:8800/apliko", {
-        emri,
-        email,
-        numri,
-        mesazhi,
-        userId,
-        shpalljaId: shpalljaId.id,
-      })
-      .then(() => {
-        aplikimet(userId); // Call aplikimet after userId is set
-      })
-      .catch((err) => console.log(err));
   };
 
   const shpalljaId = { id };
 
   const aplikimet = async (userId) => {
-    axios.post("http://localhost:8800/aplikimet", {
-      shpalljaId: shpalljaId.id,
-      userId,
-    });
+    try {
+      const response = await axios.post("http://localhost:8800/aplikimet", {
+        shpalljaId: shpalljaId.id,
+        userId,
+      });
+
+      // Handle the response here if needed
+      // console.log(response.data);
+      if (response.data === "!!!!!Keni aplikur nje herë") {
+        setError(response.data);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+      return { error: "!!!!!!!!Keni aplikuar nje here" };
+    }
   };
+
+  // const aplikimet = async (userId) => {
+  //   axios.post("http://localhost:8800/aplikimet", {
+  //     shpalljaId: shpalljaId.id,
+  //     userId,
+  //   });
+  // };
 
   if (isLoading) {
     return (
@@ -234,44 +234,33 @@ const Job = () => {
             >
               <div className="shpallja-punekerkuesi">
                 <h3 className="shpallje-h3">Kontakto me shpallesin</h3>
-
                 <div className="margin-top">
                   <p className="shpallja-punedhenesi-p">Emri</p>
-                  <input
-                    type="text"
-                    className="input-pune-kerkuesi"
-                    onChange={(e) => setEmri(e.target.value)}
-                    required
-                  />
+                  <input type="text" className="input-pune-kerkuesi" required />
                 </div>
                 <div className="margin-top">
                   <p className="shpallja-punedhenesi-p">E-mail</p>
-                  <input
-                    type="text"
-                    className="input-pune-kerkuesi"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+                  <input type="text" className="input-pune-kerkuesi" required />
                 </div>
                 <div className="margin-top">
                   <p className="shpallja-punedhenesi-p">Numri i telefonit</p>
-                  <input
-                    type="text"
-                    className="input-pune-kerkuesi"
-                    onChange={(e) => setNumri(e.target.value)}
-                    required
-                  />
+                  <input type="text" className="input-pune-kerkuesi" required />
                 </div>
                 <div className="margin-top">
                   <p className="shpallja-punedhenesi-p">Mesazhi</p>
                   <textarea
                     class="input-pune-kerkuesi-textarea"
-                    onChange={(e) => setMesazhi(e.target.value)}
+                    required
                   ></textarea>
                 </div>
                 <button className="shpallje-apliko" type="submit">
                   Apliko
                 </button>
+                {error && (
+                  <div className="error" style={{ color: "red" }}>
+                    {error}
+                  </div>
+                )}
               </div>
             </form>
           </div>

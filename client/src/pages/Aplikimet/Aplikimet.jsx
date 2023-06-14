@@ -13,14 +13,20 @@ import axios from "axios";
 const Aplikimet = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { userId } = useParams();
-  const [aplikimet, setAplikimet] = useState({});
+  const [aplikimet, setAplikimet] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
 
   function handleLargo(e, userId, shpalljaId) {
     e.preventDefault();
     try {
-      axios.post(`http://localhost:8800/fshiAplikimet/${userId}/${shpalljaId}`);
-      window.location.reload()
+      axios
+        .post(`http://localhost:8800/fshiAplikimet/${userId}/${shpalljaId}`)
+        .then(() => {
+          window.location.reload(); // Reload the page
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +38,9 @@ const Aplikimet = () => {
         const res = await axios.get(
           `http://localhost:8800/merrAplikimet/${userId}`
         );
+        // console.log("aplikimet:", aplikimet, typeof aplikimet);
         setAplikimet(res.data.data);
+        console.log(res.data.data);
         setTimeout(() => {
           setIsLoading(false);
         }, 500);
@@ -82,52 +90,55 @@ const Aplikimet = () => {
         <p className="aplikimet-secondary">
           Aktualisht keni aplikuar në këto pozita pune
         </p>
-        
-        <form action="" onSubmit={handleLargo}>
-        
-          <div className="puna-aplikimi" key={aplikimet.shpallja_id}>
-            <div className="aplikimi-titulli">
-              <p className="titulli-aplikimi">{aplikimet.shpallje_titulli}</p>
-              <p className="emri-kompanis-aplikimi">
-                <FontAwesomeIcon icon={faUser} style={{ marginRight: "7px" }} />
-                {aplikimet.shpallje_emri_kompanisë}
-              </p>
-              <p className="shteti-aplikimi">
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  style={{ marginRight: "7px" }}
-                />
-                {aplikimet.shpallje_shteti}
-              </p>
-            </div>
 
-            <div className="aplikimi-largo">
-              <button
-                className="aplikimi-fshije"
-                type="submit"
-                onClick={(e) => handleLargo(e, userId, aplikimet.shpallja_id)}
-              >
-                Largo
-              </button>
-              <p className="aplikimi-data">
-                <FontAwesomeIcon
-                  icon={faCalendarAlt}
-                  style={{ marginRight: "7px" }}
-                />
-                {new Date(aplikimet.shpallje_data_skadimit).toLocaleDateString(
-                  "en-US",
-                  {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  }
-                )}
-              </p>
-              <p className="aplikimi-lloji">{aplikimet.shpallje_lloji}</p>
+        {aplikimet.map((aplikimi) => (
+          <form action="" onSubmit={handleLargo}>
+            <div className="puna-aplikimi" key={aplikimi.aplikimi_id}>
+              <div className="aplikimi-titulli">
+                <p className="titulli-aplikimi">{aplikimi.shpallje_titulli}</p>
+                <p className="emri-kompanis-aplikimi">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ marginRight: "7px" }}
+                  />
+                  {aplikimi.shpallje_emri_kompanisë}
+                </p>
+                <p className="shteti-aplikimi">
+                  <FontAwesomeIcon
+                    icon={faMapMarkerAlt}
+                    style={{ marginRight: "7px" }}
+                  />
+                  {aplikimi.shpallje_shteti}
+                </p>
+              </div>
+
+              <div className="aplikimi-largo">
+                <button
+                  className="aplikimi-fshije"
+                  type="submit"
+                  onClick={(e) => handleLargo(e, userId, aplikimi.shpallja_id)}
+                >
+                  Largo
+                </button>
+                <p className="aplikimi-data">
+                  <FontAwesomeIcon
+                    icon={faCalendarAlt}
+                    style={{ marginRight: "7px" }}
+                  />
+                  {new Date(aplikimi.shpallje_data_skadimit).toLocaleDateString(
+                    "en-US",
+                    {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    }
+                  )}
+                </p>
+                <p className="aplikimi-lloji">{aplikimi.shpallje_lloji}</p>
+              </div>
             </div>
-          </div>
-        </form>
-            
+          </form>
+        ))}
       </div>
     </div>
   );

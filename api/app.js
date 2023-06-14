@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PUT","DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, //ktu lejojm qe cookie me u kon true , lejojm cookie me u enable
   })
 );
@@ -133,18 +133,48 @@ app.post("/apliko", (req, res) => {
   });
 });
 
+// app.post("/aplikimet", (req, res) => {
+//   const { shpalljaId, userId } = req.body;
+
+//   const query = "INSERT INTO aplikimet(`shpallja_id`,`user_id`) VALUES(?,?)";
+
+//   const values = [shpalljaId, userId];
+
+//   db.query(query, values, (err, data) => {
+//     if (err) {
+//       return res.json("Error");
+//     }
+//     return res.json(data);
+//   });
+// });''
+
 app.post("/aplikimet", (req, res) => {
   const { shpalljaId, userId } = req.body;
 
-  const query = "INSERT INTO aplikimet(`shpallja_id`,`user_id`) VALUES(?,?)";
+  const checkQuery =
+    "SELECT * FROM aplikimet WHERE shpallja_id = ? AND user_id = ?";
+  const checkValues = [shpalljaId, userId];
 
-  const values = [shpalljaId, userId];
-
-  db.query(query, values, (err, data) => {
-    if (err) {
+  db.query(checkQuery, checkValues, (checkErr, checkData) => {
+    if (checkErr) {
       return res.json("Error");
     }
-    return res.json(data);
+
+    if (checkData.length > 0) {
+      // A record with the same shpallja_id and user_id already exists
+      return res.json("!!!!!Keni aplikur nje herë");
+    }
+
+    const query =
+      "INSERT INTO aplikimet(`shpallja_id`, `user_id`) VALUES (?, ?)";
+    const values = [shpalljaId, userId];
+
+    db.query(query, values, (err, data) => {
+      if (err) {
+        return res.json("Error");
+      }
+      return res.json(data);
+    });
   });
 });
 
@@ -153,7 +183,7 @@ app.post("/create", (req, res) => {
 
   // Generate a salt
   const saltRounds = 10;
-  bcrypt.genSalt(saltRounds, function (err, salt) { 
+  bcrypt.genSalt(saltRounds, function (err, salt) {
     if (err) {
       // Handle error
       return res.json("Error");
@@ -167,7 +197,7 @@ app.post("/create", (req, res) => {
 
       const query =
         "INSERT INTO users (`fullname`, `email`, `password` ,`user_numri_personal`, `privilege`) VALUES (?, ?, ?, ?, ?)";
-      const values = [fullname, email, hash,personalNumber ,privilege ];
+      const values = [fullname, email, hash, personalNumber, privilege];
 
       db.query(query, values, (err, data) => {
         if (err) {
@@ -181,13 +211,12 @@ app.post("/create", (req, res) => {
 
 //update users
 app.put("/update/:id", (req, res) => {
-
   const { fullname, email, password, privilege, personalNumber } = req.body;
 
   const id = req.params.id;
   // Generate a salt
   const saltRounds = 10;
-  bcrypt.genSalt(saltRounds, function (err, salt) { 
+  bcrypt.genSalt(saltRounds, function (err, salt) {
     if (err) {
       // Handle error
       return res.json("Error");
@@ -200,8 +229,8 @@ app.put("/update/:id", (req, res) => {
       }
 
       const query =
-      "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `user_numri_personal`=?, `privilege` = ? WHERE ID = ? ";
-      const values = [fullname, email, hash,personalNumber ,privilege ];
+        "UPDATE users SET `fullname` = ?, `email` = ?, `password` = ?, `user_numri_personal`=?, `privilege` = ? WHERE ID = ? ";
+      const values = [fullname, email, hash, personalNumber, privilege];
 
       db.query(query, [...values, id], (err, data) => {
         if (err) {
@@ -466,11 +495,6 @@ app.post("/krijoPune", (req, res) => {
   });
 });
 
-
-
-
-
-
 app.post("/fshiAplikimet/:userId/:shpalljaId", (req, res) => {
   const userId = req.params.userId;
   const shpalljaId = req.params.shpalljaId;
@@ -501,7 +525,8 @@ app.get("/merrAplikimet/:id", (req, res) => {
         .json({ status: 404, message: "Asnje aplikim nuk u gjend" });
     }
     console.log(data); // Log the retrieved data
-    return res.status(200).json({ status: 200, data: data[0] });
+    // return res.status(200).json({ status: 200, data: data[0] });
+    return res.status(200).json({ status: 200, data: data });
   });
 });
 
