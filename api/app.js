@@ -383,6 +383,10 @@ const imgconfig = multer.diskStorage({
   },
 });
 
+
+
+
+
 //check nese eshte foto apo qkadoqofte
 const isImage = (req, file, callback) => {
   if (file.mimetype.startsWith("image")) {
@@ -511,7 +515,7 @@ app.post("/fshiAplikimet/:userId/:shpalljaId", (req, res) => {
 });
 
 app.get("/merrAplikimet/:id", (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.id; 
   const query =
     "SELECT * FROM aplikimet a INNER JOIN shpallje sh ON a.shpallja_id = sh.id WHERE a.user_id = ?";
 

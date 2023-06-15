@@ -27,6 +27,11 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 // import JobUpdate from "./pages/Dashboard/JobDashboard/JobUpdate";
 import Admins from "./pages/Dashboard/Admins/Admins";
 import Contact from "./pages/Contact/Contact";
+import Autosallonet from "./pages/Dashboard/Autosallonet/Autosallonet";
+import ShtoAutosallonet from "./pages/Dashboard/Autosallonet/ShtoAutosallonet";
+import UpdateAutosallonet from "./pages/Dashboard/Autosallonet/UpdateAutosallonet";
+import Vetura from "./pages/Dashboard/Veturat/Veturat";
+import ShtoVetura from "./pages/Dashboard/Veturat/ShtoVetura";
 
 const App = () => {
   return (
@@ -65,6 +70,7 @@ const App = () => {
               <Route path="/Aplikimet/:userId" element={<Aplikimet />} />
               <Route path="/Profili/:userId" element={<Profili />} />
               <Route path="/Shpallje/:id" element={<Job />} />
+              
             </Routes>
           </div>
         </CSSTransition>
